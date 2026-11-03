@@ -28,18 +28,22 @@ export async function improve(episode,policy,feedback=null){
  const {tf,spec,skill}=await prepareAgent();
  const {data:session}=await tf.sessions.create({agent:{spec},metadata:{purpose:'blackthorn-skill-improvement',skill_ref:process.env.SKILL_GIT_REF}});
  const prompt=`Load your registered skill. Improve it based on this completed heist or development feedback. Read no holdout files. Return the required JSON object.\nCurrent skill:\n${skill}\nLegal map (# wall, . floor):\n${MAP.join('\n')}\nCurrent policy:\n${JSON.stringify(policy)}\nCompleted episode:\n${JSON.stringify(episode)}\nDevelopment feedback (if any):\n${JSON.stringify(feedback)}`;
- const stream=await tf.sessions.createTurnStream(session.id,{input:[{type:'user.message',content:prompt}],previousTurnId:'none'},{maxRetries:0});
- const events=[];let reply='',done=false;
- for await(const {data:e} of stream.withMetadata()){
-  events.push(e);
-  if(e.type==='turn.done'){
-   if(e.state.status!=='done')throw Error(`TrueForge turn ended with ${e.state.status}. Session ${session.id}`);
-   const content=e.state.output?.content;reply=typeof content==='string'?content:(content||[]).map(p=>p.text||'').join('');done=true;
-  }
- }
  const stamp=new Date().toISOString().replace(/[:.]/g,'-');
  const dir=join(ROOT,'runs/private',stamp);await mkdir(dir,{recursive:true});
- await writeFile(join(dir,'response.json'),JSON.stringify({sessionId:session.id,events,reply,previousPolicy:policy,model:process.env.TF_MODEL,skillRef:process.env.SKILL_GIT_REF},null,2));
+ const events=[];let reply='',done=false,failure=null;
+ // Evidence is written even when the stream cannot be opened or drops mid-turn.
+ try{
+  const stream=await tf.sessions.createTurnStream(session.id,{input:[{type:'user.message',content:prompt}],previousTurnId:'none'},{maxRetries:0});
+  for await(const {data:e} of stream.withMetadata()){
+   events.push(e);
+   if(e.type==='turn.done'){
+    if(e.state.status!=='done')throw Error(`TrueForge turn ended with ${e.state.status}. Session ${session.id}`);
+    const content=e.state.output?.content;reply=typeof content==='string'?content:(content||[]).map(p=>p.text||'').join('');done=true;
+   }
+  }
+ }catch(e){failure=e.message;}
+ finally{await writeFile(join(dir,'response.json'),JSON.stringify({valid:done&&!failure,error:failure,sessionId:session.id,events,reply,previousPolicy:policy,model:process.env.TF_MODEL,skillRef:process.env.SKILL_GIT_REF},null,2));}
+ if(failure)throw Error(`${failure} Evidence saved for ${session.id}`);
  if(!done)throw Error(`Incomplete TrueForge stream. Session ${session.id}`);
  let output;try{output=JSON.parse(reply.replace(/^```(?:json)?\s*/,'').replace(/\s*```$/,''));}catch{throw Error(`TrueForge returned invalid JSON. Evidence saved for ${session.id}`);}
  const checked=validateRewrite(output);
