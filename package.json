@@ -10,5 +10,10 @@
     "eval:trueforge": "node --env-file=.env scripts/run-trueforge-evals.mjs",
     "learn": "node scripts/learn.mjs"
   },
-  "dependencies": { "@truefoundry/trueforge-sdk": "0.182.0" }
+  "dependencies": {
+    "@truefoundry/trueforge-sdk": "0.182.0"
+  },
+  "devDependencies": {
+    "@truefoundry/trueforge": "^0.182.0"
+  }
 }

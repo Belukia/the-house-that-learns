@@ -5,3 +5,5 @@ node_modules/
 runs/private/
 *.log
 .DS_Store
+.runtime/
+DELIVERY.json

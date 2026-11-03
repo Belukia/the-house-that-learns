@@ -1,1977 +1,2477 @@
 [
   {
-    "id": "south-flank",
+    "id": "realtime-1",
     "holdout": false,
+    "engine": "realtime-platformer-v2",
     "actions": [
       {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      }
-    ]
-  },
-  {
-    "id": "south-flank-late",
-    "holdout": false,
-    "actions": [
-      {
-        "type": "wait"
-      },
-      {
-        "type": "wait"
-      },
-      {
-        "type": "wait"
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      }
-    ]
-  },
-  {
-    "id": "middle-crossing",
-    "holdout": false,
-    "actions": [
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      }
-    ]
-  },
-  {
-    "id": "glass-in-the-hall",
-    "holdout": false,
-    "actions": [
-      {
-        "type": "decoy",
-        "target": {
-          "x": 3,
-          "y": 7
+        "frames": 134,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
         }
       },
       {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      }
-    ]
-  },
-  {
-    "id": "north-return",
-    "holdout": true,
-    "actions": [
-      {
-        "type": "wait"
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      }
-    ]
-  },
-  {
-    "id": "winter-detour",
-    "holdout": true,
-    "actions": [
-      {
-        "type": "wait"
-      },
-      {
-        "type": "wait"
-      },
-      {
-        "type": "wait"
-      },
-      {
-        "type": "wait"
-      },
-      {
-        "type": "wait"
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      }
-    ]
-  },
-  {
-    "id": "gallery-return",
-    "holdout": true,
-    "actions": [
-      {
-        "type": "wait"
-      },
-      {
-        "type": "wait"
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      },
-      {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
-      }
-    ]
-  },
-  {
-    "id": "patient-flank",
-    "holdout": true,
-    "actions": [
-      {
-        "type": "wait"
-      },
-      {
-        "type": "wait"
-      },
-      {
-        "type": "wait"
-      },
-      {
-        "type": "wait"
-      },
-      {
-        "type": "wait"
-      },
-      {
-        "type": "wait"
-      },
-      {
-        "type": "wait"
-      },
-      {
-        "type": "decoy",
-        "target": {
-          "x": 3,
-          "y": 7
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
         }
       },
       {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
+        "frames": 147,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
+        "frames": 124,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
+        "frames": 84,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
+        "frames": 148,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
+        "frames": 152,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
+        "frames": 12,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": true,
+          "decoy": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "realtime-2",
+    "holdout": false,
+    "engine": "realtime-platformer-v2",
+    "actions": [
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
+        "frames": 35,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
+        "frames": 24,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 1,
-        "dy": 0
+        "frames": 35,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
+        "frames": 40,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
+        "frames": 40,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
+        "frames": 40,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": -1
+        "frames": 40,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
+        "frames": 50,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
+        "frames": 23,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
+        "frames": 21,
+        "input": {
+          "left": false,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
+        "frames": 35,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
+        "frames": 24,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": -1,
-        "dy": 0
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
+        "frames": 52,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
       },
       {
-        "type": "move",
-        "dx": 0,
-        "dy": 1
+        "frames": 7,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": true,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": true,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 2,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": true,
+          "decoy": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "realtime-3",
+    "holdout": false,
+    "engine": "realtime-platformer-v2",
+    "actions": [
+      {
+        "frames": 120,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": true
+        }
+      },
+      {
+        "frames": 12,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 136,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": true
+        }
+      },
+      {
+        "frames": 10,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 125,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 83,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 148,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 153,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 12,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": true,
+          "decoy": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "realtime-4",
+    "holdout": false,
+    "engine": "realtime-platformer-v2",
+    "actions": [
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 35,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 24,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 35,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 21,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": true
+        }
+      },
+      {
+        "frames": 18,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 7,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": true
+        }
+      },
+      {
+        "frames": 42,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 23,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 21,
+        "input": {
+          "left": false,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 35,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 24,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 52,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 7,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": true,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": true,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 2,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": true,
+          "decoy": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "realtime-5",
+    "holdout": true,
+    "engine": "realtime-platformer-v2",
+    "actions": [
+      {
+        "frames": 132,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 148,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 125,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 82,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 148,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 154,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 12,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": true,
+          "decoy": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "realtime-6",
+    "holdout": true,
+    "engine": "realtime-platformer-v2",
+    "actions": [
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 35,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 24,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 35,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 50,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 23,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 21,
+        "input": {
+          "left": false,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 35,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 24,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 52,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 7,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": true,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": true,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 2,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": true,
+          "decoy": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "realtime-7",
+    "holdout": true,
+    "engine": "realtime-platformer-v2",
+    "actions": [
+      {
+        "frames": 120,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": true
+        }
+      },
+      {
+        "frames": 10,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 138,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": true
+        }
+      },
+      {
+        "frames": 9,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 126,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 81,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 148,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 155,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 12,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": true,
+          "decoy": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "realtime-8",
+    "holdout": true,
+    "engine": "realtime-platformer-v2",
+    "actions": [
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 35,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 24,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 35,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 21,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": true
+        }
+      },
+      {
+        "frames": 18,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 7,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": true
+        }
+      },
+      {
+        "frames": 42,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 23,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 21,
+        "input": {
+          "left": false,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 35,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 24,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 40,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 52,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 7,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": true,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": true,
+          "down": true,
+          "decoy": false
+        }
+      },
+      {
+        "frames": 2,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": true,
+          "jump": false,
+          "down": true,
+          "decoy": false
+        }
       }
     ]
   }
