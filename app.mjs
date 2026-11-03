@@ -27,7 +27,7 @@ function refresh(){
  $('memory-count').textContent=String(memories.length).padStart(2,'0');
  if(memories.length){$('memories').replaceChildren(...memories.slice(-2).reverse().map(m=>{const d=document.createElement('div');d.className='memory';d.append(text('b',`NIGHT ${String(m.night).padStart(2,'0')} / ${m.outcome==='escaped'?'OUTWITTED':'ENCOUNTER'}`),text('p',m.lesson),text('small',m.mode==='trueforge'?'TRUEFORGE SESSION':'LOCAL MEMORY'));return d;}));}
  $('policy-view').textContent=`Behavior: ${policy.name}\nDecoy skepticism: ${policy.decoySkepticism}/2\nProtects the vault: ${policy.protectRelic?'yes':'no'}\nPatrol stops: ${policy.patrol.length}\nCompleted heists remembered: ${memories.length}`;
- $('runtime-label').textContent=runtime.configured?'TrueForge bridge configured. Completed heists will request a skill rewrite.':'Offline adaptation — not a TrueForge evaluation.';
+ $('runtime-label').textContent=runtime.configured?'TrueForge bridge configured. Completed heists will request a candidate skill revision.':'Offline adaptation — not a TrueForge evaluation.';
 }
 const held=new Set();let accumulator=0,lastTime=0;
 function begin(){held.clear();accumulator=0;clearInterval(replayTimer);replay=null;aiming=false;usedLines=new Set();state=createGame(policy,{tutorial:!courtesyCompleted});started=true;$('intro').classList.add('hidden');$('result').classList.add('hidden');refresh();narrate(opening(state.tutorial,night));canvas.focus();tone(330,.2);}
@@ -49,7 +49,7 @@ async function finish(){
  catch(e){$('learn-status').textContent='TrueForge was unavailable. This lesson uses local game rules.';}}
  if(thisEpoch!==epoch)return;
  policy=next||learnLocal(prior,episode);if(state.tutorial&&episode.outcome==='escaped')courtesyCompleted=true;memories.push({night,outcome:episode.outcome,courtesy:state.tutorial,lesson:policy.lesson,mode,sessionId});memories=memories.slice(-12);night++;save();
- $('lesson').textContent=`“${policy.lesson}”`;if(mode==='trueforge')$('learn-status').textContent=`Skill rewritten in TrueForge · ${sessionId}`;else if(!runtime.configured)$('learn-status').textContent='Local game adaptation. Your next heist will use this lesson.';
+ $('lesson').textContent=`“${policy.lesson}”`;if(mode==='trueforge')$('learn-status').textContent=`TrueForge proposed a skill revision · candidate, not yet active · ${sessionId}`;else if(!runtime.configured)$('learn-status').textContent='Local game adaptation. Your next heist will use this lesson.';
  $('again').disabled=false;$('replay').disabled=false;learning=false;refresh();
 }
 const controlKeys=new Set(['a','d','w','s','arrowleft','arrowright','arrowup','arrowdown',' ','shift','h','f']);
