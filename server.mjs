@@ -26,4 +26,4 @@ const server=http.createServer(async(req,res)=>{
   const file=await readFile(target);res.writeHead(200,{'Content-Type':types[extname(target)]||'application/octet-stream','Cache-Control':'no-cache','X-Content-Type-Options':'nosniff'});res.end(req.method==='HEAD'?undefined:file);
  }catch(e){if(!res.headersSent)json(res,e.code==='ENOENT'?404:500,{error:e.code==='ENOENT'?'Not found.':'Request failed. See the local terminal.'});console.error(e.message);}
 });
-server.listen(PORT,HOST,()=>console.log(`The House That Learns · http://${HOST}:${PORT}`));
+server.listen(PORT,HOST,()=>console.log(`ROB ME AGAIN · http://${HOST}:${PORT}`));
