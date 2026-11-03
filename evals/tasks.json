@@ -1,0 +1,1978 @@
+[
+  {
+    "id": "south-flank",
+    "holdout": false,
+    "actions": [
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      }
+    ]
+  },
+  {
+    "id": "south-flank-late",
+    "holdout": false,
+    "actions": [
+      {
+        "type": "wait"
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      }
+    ]
+  },
+  {
+    "id": "middle-crossing",
+    "holdout": false,
+    "actions": [
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      }
+    ]
+  },
+  {
+    "id": "glass-in-the-hall",
+    "holdout": false,
+    "actions": [
+      {
+        "type": "decoy",
+        "target": {
+          "x": 3,
+          "y": 7
+        }
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      }
+    ]
+  },
+  {
+    "id": "north-return",
+    "holdout": true,
+    "actions": [
+      {
+        "type": "wait"
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      }
+    ]
+  },
+  {
+    "id": "winter-detour",
+    "holdout": true,
+    "actions": [
+      {
+        "type": "wait"
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      }
+    ]
+  },
+  {
+    "id": "gallery-return",
+    "holdout": true,
+    "actions": [
+      {
+        "type": "wait"
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      }
+    ]
+  },
+  {
+    "id": "patient-flank",
+    "holdout": true,
+    "actions": [
+      {
+        "type": "wait"
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "decoy",
+        "target": {
+          "x": 3,
+          "y": 7
+        }
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "move",
+        "dx": 0,
+        "dy": 1
+      }
+    ]
+  }
+]

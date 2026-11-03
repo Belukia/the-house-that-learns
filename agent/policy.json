@@ -1,0 +1,7 @@
+{
+  "name": "The trusting keeper",
+  "decoySkepticism": 0,
+  "protectRelic": false,
+  "patrol": [{"x":9,"y":4},{"x":9,"y":7},{"x":3,"y":7},{"x":3,"y":10},{"x":9,"y":10},{"x":15,"y":10},{"x":15,"y":7},{"x":15,"y":4}],
+  "lesson": "Every sound deserves my attention."
+}

@@ -1,0 +1,7 @@
+node_modules/
+.env
+.cache/
+.sites/
+runs/private/
+*.log
+.DS_Store
