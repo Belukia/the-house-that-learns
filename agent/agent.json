@@ -1,0 +1,9 @@
+{
+  "name": "blackthorn-keeper",
+  "description": "The keeper of Blackthorn: picks a legal defense policy for the mansion and rewrites its warden skill from the heists it lost.",
+  "model": {
+    "name": "anthropic/claude-sonnet-4-6",
+    "params": { "temperature": 0 }
+  },
+  "skill_mode": "git"
+}

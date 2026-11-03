@@ -1,0 +1,129 @@
+{
+  "id": "realtime-1",
+  "title": "Ground floor walk",
+  "holdout": false,
+  "engine": "realtime-platformer-v2",
+  "actions": [
+    {
+      "frames": 134,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false
+      }
+    },
+    {
+      "frames": 147,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false
+      }
+    },
+    {
+      "frames": 124,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false
+      }
+    },
+    {
+      "frames": 84,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false
+      }
+    },
+    {
+      "frames": 148,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false
+      }
+    },
+    {
+      "frames": 152,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false
+      }
+    },
+    {
+      "frames": 12,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": true,
+        "decoy": false
+      }
+    }
+  ]
+}

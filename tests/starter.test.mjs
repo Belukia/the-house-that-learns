@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {DEFAULT_POLICY} from '../dist/engine.mjs';
+import {evaluate} from '../evals/score.mjs';
+import {loadScoredTasks,parsePolicy,scoreRun,scoreTask} from '../evals/score.ts';
+const legacy=JSON.parse(readFileSync(new URL('../evals/tasks.json',import.meta.url),'utf8'));
+const tasks=loadScoredTasks();
+const reply=p=>'Tonight:\n```json\n'+JSON.stringify(p)+'\n```\n';
+test('evals/tasks/ holds the same frozen heists as the legacy tasks.json',()=>{assert.ok(tasks.length>=3);assert.deepEqual(tasks.map(({id,holdout,engine,actions})=>({id,holdout,engine,actions})),legacy);});
+test('the starter scorer agrees with the offline evaluator',()=>{const run=scoreRun(tasks.map(t=>scoreTask(t,reply(DEFAULT_POLICY))));assert.equal(run.score,evaluate(DEFAULT_POLICY,legacy).score);assert.equal(run.tasks_total,tasks.length);});
+test('replies without a legal policy score zero and say why',()=>{const r=scoreTask(tasks[0],'No JSON here.');assert.equal(r.score,0);assert.equal(r.parsed,false);assert.ok(r.invalid);assert.equal(parsePolicy(reply({...DEFAULT_POLICY,decoySkepticism:7})).policy,null);});

@@ -35,33 +35,41 @@ node --env-file=.env server.mjs
 
 The server binds loopback only and does not expose .env, agent files, or run evidence. Model calls use the operator's configured provider and may be billable. Do not set configuration until that runtime and its budget are ready. The hosted static preview makes no TrueForge calls.
 
-## Evaluation
+## Evaluation: the TrueForge loop
+
+The contest loop follows the [NERDCONF TrueForge starter](https://github.com/nerdconf/trueforge-starter): one run is one TrueForge session, the agent rewrites its own `agent/` files, and every run lands in `runs/summary.csv`.
 
 ```sh
-npm test
-node scripts/evaluate.mjs --policy agent/policy.json --output runs/private/baseline
-node --env-file=.env scripts/learn.mjs --feedback runs/private/baseline/development.json
-# Re-evaluate the saved candidate policy against the exact same frozen tasks.
-node scripts/evaluate.mjs --policy <candidate-policy.json> --output runs/private/candidate
+npx @truefoundry/trueforge@latest   # its own terminal; add the model in Settings → Models
+npm ci && cp .env.example .env      # set TF_MODEL=provider/model
+npm run setup                       # create the "blackthorn-keeper" agent from agent/
+npm run run-evals                   # run 1: one session, one root turn per heist, scored and committed
+npm run improve                     # the keeper rewrites its warden skill from the heists it lost; commit ends with Agent-Session: <id>
+git show                            # review it; keep it, or drop it with git reset --hard HEAD~1
+npm run run-evals                   # run 2: same tasks, same scorer
 ```
 
-The local evaluator replays fixed thief action traces against a policy. It measures guard defense, not real people or feedback. Development and reserved cases are scored separately. The learner receives development feedback only. Neither the agent nor the game may alter the scorer or frozen task set after baseline. Policy files and evidence directories are explicit; scripts do not automatically commit or promote model changes.
+- **Tasks** (`evals/tasks/*.json`): eight fixed thief traces at 60 ticks per second. Tasks marked `"holdout": true` count in the score, but `improve` never shows them to the agent.
+- **Scorer** (`evals/score.ts`): the agent's reply must end with a legal defense policy as JSON. Each trace is replayed against it in `dist/engine.mjs`, the same engine the game uses. Score = 100 × the share of heists stopped (caught by contact, or still inside at dawn). `npm run score -- --selftest` checks it.
+- **Skills and sandbox:** `agent/agent.json` uses `"skill_mode": "git"`, so the warden skill is a real TrueForge skill cloned into the sandbox from this public repo, pinned to the commit that runs. Push before each `run-evals`.
+- After run 1, `evals/` does not change again.
 
-For the actual contest baseline, use `npm run eval:trueforge` after configuration. This asks the registered TrueForge warden for a defense policy in fresh root turns without showing the thief's action traces, then scores the decisions against the frozen traces. It saves streamed session events and separate development/holdout scores. Use only its development.json for learning. Review the proposed skill, commit it with its real `Agent-Session:` trailer, push it, set SKILL_GIT_REF to that new immutable commit, and repeat the same TrueForge evaluation. Do not rename offline engine runs as TrueForge runs. The SDK integration is implemented but remains unverified against a configured live model.
+`npm test` and `node scripts/evaluate.mjs` are offline engine checks. They are not TrueForge runs and never go into `runs/summary.csv`.
 
 ## Run 1 vs run N
 
-- Task: stop fixed heist traces under identical mansion rules and time budget.
-- Score: percentage of traces stopped; report development and holdout separately.
-- TrueForge baseline: **not run**.
-- Agent-authored skill revision / session: **not yet established**.
-- Later TrueForge run and improvement: **not yet established**.
+> Filled in after the runs. Five lines max.
 
-Offline engine checks and local rule-based demonstrations are never entered as TrueForge scores. Contest readiness still requires genuine runtime sessions, an agent-authored revision, a comparable scored improvement, the required platform capabilities, a public repo, a short English demo, and final evidence review/submission by the owner.
+- **Task and score:** stop 8 fixed heists (4 of them holdout) by choosing a defense policy before seeing the thief; score = 100 × heists stopped / heists.
+- **Run 1 → run N:** _not run yet._
+- **The change that did it:** _not yet: a commit with `Agent-Session:`._
+- **What the agent learned:** _not yet._
+- **What still fails:** _not yet._
+
 
 ## Project structure
 
-`dist/`: playable game, canvas renderer and shared engine. `agent/`: keeper's seed instructions, skill and policy. `evals/`: fixed scenarios and scorer. `scripts/`: evaluation and TrueForge adapter. `runs/private/`: ignored raw evidence.
+`dist/`: playable game, canvas renderer and shared engine. `agent/`: the keeper's agent definition (`agent.json`), instructions, warden skill and seed policy. `evals/`: fixed heists (`tasks/`) and scorer. `scripts/`: the starter loop (`setup`, `run-evals`, `improve`, `export-session`) plus the game's TrueForge bridge. `runs/`: one folder per counted run and `summary.csv`; `runs/private/` stays ignored.
 
 The private Sites preview is separate from this public source repository. Deployment is not a contest submission or an announcement of public launch.
 
