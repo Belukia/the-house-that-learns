@@ -47,6 +47,14 @@ export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null}={}){
   if(!guard&&s.hasRelic)rect(x-4,y+9,4,5,'#65d7b2');
  };
  if(!s.tutorial&&!s.hidden&&Math.abs(s.guard.x-s.player.x)<160){rect(s.guard.x-3,s.guard.y-13,15,1,'#d17a65');rect(s.guard.x+3,s.guard.y-21,3,6,'#f5ba81');rect(s.guard.x+3,s.guard.y-13,3,2,'#f5ba81');}
+ // What the keeper has learned about you, drawn where it happens.
+ const H=s.policy.habits;
+ if(!s.tutorial&&H){
+  const mark=(x,str)=>{rect(x-4,296,9,2,'#e8604c');rect(x-1,289,3,9,'#e8604c');c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.textAlign='center';c.fillText(str,Math.round(x-camera),229);c.textAlign='left';};
+  if(H.waitAt!=null)mark(H.waitAt*16+5,'HE WAITS HERE');
+  if(H.wardrobe!=null){const w=HIDING[H.wardrobe];rect(w.x-9,w.y-37,27,2,'#e8604c');c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.fillText('HE OPENS IT',Math.round(w.x-14-camera),w.y-108);}
+  if(H.door||s.rules.door){c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.fillText('HE GUARDS',Math.round(24-camera),184);c.fillText('THE DOOR',Math.round(26-camera),193);}
+ }
  // Your last heist, as the keeper remembers it.
  if(ghost?.length){for(const p of ghost)rect(p.x+3,p.y+10,3,3,'rgba(238,125,88,.75)');}
  if(replay?.length){for(const p of replay)rect(p.x+4,p.y+20,2,2,'#e8d4a0');}
@@ -54,8 +62,8 @@ export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null}={}){
  const label=(str,x,y,color='#e3d6af')=>{c.font='7px monospace';c.fillStyle=color;c.fillText(str,Math.round(x-camera),y-48);};
  if(s.tutorial)label('zzz',s.guard.x,s.guard.y-10,'#a5a1b7');
  label('EXIT',30,253,'#8bddb5');label('HIDE',150,260,'#a9bbd8');label('VAULT',929,254,'#d9bd80');
- c.fillStyle='#101622';c.fillRect(0,0,480,16);c.font='7px monospace';c.fillStyle='#b1b9bd';c.fillText(s.tutorial?'COURTESY ROUND • SECURITY IS DECORATIVE':'A / D RUN   SPACE JUMP   H HIDE   F DECOY',10,11);
- if(s.status==='caught'){c.fillStyle='rgba(10,8,14,.55)';c.fillRect(0,0,480,288);c.fillStyle='rgba(122,24,32,.92)';c.fillRect(0,112,480,50);c.textAlign='center';c.font='bold 30px Georgia,serif';c.fillStyle='#f4e7c8';c.fillText(s.time>=90?'DAWN. CAUGHT.':'CAUGHT.',240,146);c.font='7px monospace';c.fillStyle='#f0b9a6';c.fillText(s.time>=90?'THE HOUSE SEALED ITS DOORS':'THE KEEPER HAS YOUR NUMBER',240,158);c.textAlign='left';}
+ c.fillStyle='#101622';c.fillRect(0,0,480,16);c.font='7px monospace';c.fillStyle='#b1b9bd';c.fillText(s.tutorial?'THE KEEPER IS ASLEEP. TAKE THE EMERALD.':'A / D RUN   SPACE JUMP   H HIDE   F DECOY',10,11);
+ if(s.status==='caught'){c.fillStyle='rgba(10,8,14,.55)';c.fillRect(0,0,480,288);c.fillStyle='rgba(122,24,32,.92)';c.fillRect(0,112,480,50);c.textAlign='center';c.font='bold 30px Georgia,serif';c.fillStyle='#f4e7c8';c.fillText(s.time>=s.rules.limit?'DAWN. CAUGHT.':'CAUGHT.',240,146);c.font='7px monospace';c.fillStyle='#f0b9a6';c.fillText(s.time>=s.rules.limit?'THE HOUSE SEALED ITS DOORS':'THE KEEPER HAS YOUR NUMBER',240,158);c.textAlign='left';}
  const out=canvas.getContext('2d');out.imageSmoothingEnabled=false;out.clearRect(0,0,canvas.width,canvas.height);out.drawImage(buffer,0,0,canvas.width,canvas.height);
 }
 export function tileAt(canvas,e){const r=canvas.getBoundingClientRect();return {x:Math.floor(((e.clientX-r.left)/r.width*480+camera)/16),y:18};}

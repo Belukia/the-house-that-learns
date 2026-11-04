@@ -16,7 +16,7 @@ function validHabits(h){
  if(!h||typeof h!=='object')throw Error('Invalid habits.');
  const wardrobe=h.wardrobe==null?null:(Number.isInteger(h.wardrobe)&&h.wardrobe>=0&&h.wardrobe<HIDING.length?h.wardrobe:(()=>{throw Error('Invalid habit.')})());
  const known=Array.isArray(h.known)?h.known.slice(-6).filter(k=>k&&typeof k.key==='string'&&k.key.length<=20&&typeof k.line==='string'&&k.line.length<=160).map(({key,line})=>({key,line})):[];
- return {waitAt:tileX(h.waitAt),wardrobe,exit:Boolean(h.exit),known};
+ return {waitAt:tileX(h.waitAt),wardrobe,exit:Boolean(h.exit),door:Boolean(h.door),known};
 }
 export function validatePolicy(p,{habits=false}={}){
  if(!p||!Array.isArray(p.patrol)||p.patrol.length<2||p.patrol.length>12||!p.patrol.every(floor))throw Error('Patrol needs 2–12 ground-floor waypoints (x:2–61, y:18).');
@@ -29,8 +29,12 @@ export function validatePolicy(p,{habits=false}={}){
 const actor=(x,y)=>({x,y,vx:0,vy:0,w:10,h:22,grounded:false,facing:1});
 const overlaps=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
 export function sight(a,b,radius=160){return Math.hypot(a.x-b.x,a.y-b.y)<radius&&Math.abs(a.y-b.y)<38&&!BLOCKS.some(o=>o.h>=30&&o.x>Math.min(a.x,b.x)&&o.x<Math.max(a.x,b.x)&&a.y+10>o.y);}
+// The hosted game's five nights. Evaluations never pass {night}, so they keep the frozen exam rules.
+export const EXAM_RULES=Object.freeze({limit:90,speed:1,vision:160,decoys:3,door:false});
+export const NIGHTS=Object.freeze({2:{limit:55,speed:1,vision:160,decoys:3,door:false},3:{limit:50,speed:1.15,vision:190,decoys:2,door:false},4:{limit:45,speed:1.3,vision:220,decoys:1,door:false},5:{limit:40,speed:1.45,vision:250,decoys:0,door:true}});
 export function createGame(policy=DEFAULT_POLICY,options={}){
- return {player:actor(ENTRY.x,ENTRY.y),guard:actor(options.tutorial?600:480,282),tutorial:Boolean(options.tutorial),turn:0,time:0,patrolIndex:0,dwell:0,policy:validatePolicy(policy,{habits:Boolean(options.habits)}),suspicion:0,decoys:3,noise:null,hidden:false,hasRelic:false,status:'playing',message:'A/D to run, Space to jump, F throws a decoy ahead of you, H hides you in a wardrobe. The emerald is to the right.',history:[],inputs:[],events:[],decoysThrown:0,seen:0,lastJump:false,lastDecoy:false,lastHide:false};
+ const rules=NIGHTS[options.night]||EXAM_RULES;
+ return {rules,player:actor(ENTRY.x,ENTRY.y),guard:actor(options.tutorial?600:480,282),tutorial:Boolean(options.tutorial),turn:0,time:0,patrolIndex:0,dwell:0,policy:validatePolicy(policy,{habits:Boolean(options.habits)}),suspicion:0,decoys:rules.decoys,noise:null,hidden:false,hasRelic:false,status:'playing',message:'A/D to run, Space to jump, F throws a decoy ahead of you, H hides you in a wardrobe. The emerald is to the right.',history:[],inputs:[],events:[],decoysThrown:0,seen:0,lastJump:false,lastDecoy:false,lastHide:false};
 }
 function physics(a,dir,jump,drop=false,speed=2.15){
  a.vx=dir*speed;if(dir)a.facing=Math.sign(dir);
@@ -56,17 +60,20 @@ export function step(s,input={}){
  if(!s.hasRelic&&Math.abs(s.player.x-RELIC.x)<22&&Math.abs(s.player.y-RELIC.y)<34){s.hasRelic=true;s.events.push({type:'relic',turn:s.turn});s.message='Emerald acquired! Run LEFT to the green door.';}
  if(s.hasRelic&&s.player.x<68&&s.player.y>250){s.status='escaped';s.message='You escaped. The house remembers.';}
  if(!s.tutorial&&s.status==='playing'){
-  let visible=!s.hidden&&sight(s.guard,s.player),target;const H=s.policy.habits;
+  let visible=!s.hidden&&sight(s.guard,s.player,s.rules.vision),target;const H=s.policy.habits,R=s.rules;
   // A keeper who knows your wardrobe opens it when he walks past.
   if(!visible&&H&&H.wardrobe!=null&&s.hidden&&Math.abs(s.player.x-HIDING[H.wardrobe].x)<26&&Math.abs(s.guard.x-s.player.x)<30){s.hidden=false;visible=true;s.events.push({type:'found',turn:s.turn});}
-  if(visible){target=s.player;s.seen++;s.suspicion=Math.min(100,s.suspicion+.65);s.message='He sees you! Jump, hide, or take the upper floor.';}
+  // On the last night he will not be drawn away from the door.
+  if(visible&&R.door&&s.player.x>160){s.seen++;s.suspicion=Math.min(100,s.suspicion+.65);s.message='He sees you. He stays by the door.';target={x:s.patrolIndex%2?64:32};if(Math.abs(s.guard.x-target.x)<6)s.patrolIndex++;visible=false;}
+  else if(visible){target=s.player;s.seen++;s.suspicion=Math.min(100,s.suspicion+.65);s.message='He sees you! Jump, hide, or take the upper floor.';}
   else{s.suspicion=Math.max(0,s.suspicion-.35);
    if(s.noise&&(!s.policy.decoySkepticism||(s.policy.decoySkepticism===1&&Math.abs(s.guard.x-s.noise.x)<70)))target=s.noise;
+   else if(R.door){target={x:s.patrolIndex%2?64:32};if(Math.abs(s.guard.x-target.x)<6)s.patrolIndex++;}
    else if(H&&H.exit&&s.hasRelic)target={x:92};
    else if(s.policy.protectRelic&&!s.hasRelic)target={x:900};
-   else if(H&&(H.waitAt!=null||H.wardrobe!=null)){
+   else if(H&&(H.waitAt!=null||H.wardrobe!=null||H.door)){
     // Wait where this player was last time; check their wardrobe on the way. Two seconds at each stop.
-    const stops=[...(H.waitAt!=null?[H.waitAt*16]:[]),...(H.wardrobe!=null?[HIDING[H.wardrobe].x]:[])];
+    const stops=[...(H.waitAt!=null?[H.waitAt*16]:[]),...(H.wardrobe!=null?[HIDING[H.wardrobe].x]:[]),...(H.door?[80]:[])];
     target={x:stops[s.patrolIndex%stops.length]};
     if(Math.abs(s.guard.x-target.x)<6&&++s.dwell>=(stops.length>1?120:1e9)){s.dwell=0;s.patrolIndex++;}
    }
@@ -74,9 +81,9 @@ export function step(s,input={}){
   }
   const gd=Math.abs(target.x-s.guard.x)>4?Math.sign(target.x-s.guard.x):0;
   const obstacle=BLOCKS.some(o=>Math.abs((gd>0?o.x:o.x+o.w)-(gd>0?s.guard.x+s.guard.w:s.guard.x))<12&&s.guard.y+s.guard.h>o.y);
-  physics(s.guard,gd,obstacle&&s.guard.grounded,false,visible||(H&&H.exit&&s.hasRelic)?1.85:1.05);
+  physics(s.guard,gd,obstacle&&s.guard.grounded,false,(visible||(H&&H.exit&&s.hasRelic)?1.85:1.05)*R.speed);
   if(!s.hidden&&overlaps(s.player,s.guard)){s.status='caught';s.message='Caught. The keeper has your number.';}
-  if(s.time>=90){s.status='caught';s.message='Dawn. The house seals its doors.';}
+  if(s.time>=R.limit){s.status='caught';s.message='Dawn. The house seals its doors.';}
  }
  if(s.noise&&--s.noise.ttl<=0)s.noise=null;
  // Sample a trace at 10Hz, rather than writing every animation frame.
@@ -118,24 +125,29 @@ export function readHeist(s){
  const ground=way.filter(h=>h.player.y>250&&h.player.x>200&&h.player.x<880);
  // Where the player lingered on the ground floor, in 4-tile buckets.
  const counts={};for(const h of ground){const b=Math.floor(h.player.x/64);counts[b]=(counts[b]||0)+1;}
+ const sorted=Object.values(counts).sort((a,b)=>a-b),median=sorted[Math.floor(sorted.length/2)]||0;
  const best=Object.entries(counts).sort((a,b)=>b[1]-a[1])[0];
+ // Walking past is about 5 samples per bucket; lingering means 1.5 s or twice the usual.
+ const lingered=best&&best[1]>=15&&best[1]>=2*median;
  const hides=s.events.filter(e=>e.type==='hide').map(e=>e.spot);
- return {upper,linger:best&&ground.length>=10?Math.min(61,Math.max(2,Math.round((Number(best[0])*64+32)/16))):null,hide:hides.length?hides.at(-1):null,decoys:s.decoysThrown,stole:s.hasRelic,outcome:s.status};
+ return {upper,straight:!upper&&!lingered&&ground.length>=10,linger:lingered&&ground.length>=10?Math.min(61,Math.max(2,Math.round((Number(best[0])*64+32)/16))):null,hide:hides.length?hides.at(-1):null,decoys:s.decoysThrown,stole:s.hasRelic,outcome:s.status};
 }
 export function learnLocal(policy,s){
- const p=validatePolicy(policy,{habits:true}),h=p.habits||{waitAt:null,wardrobe:null,exit:false,known:[]},r=readHeist(s);
+ const p=validatePolicy(policy,{habits:true}),h=p.habits||{waitAt:null,wardrobe:null,exit:false,door:false,known:[]},r=readHeist(s);
  const note=(key,line)=>{h.known=[...h.known.filter(k=>k.key!==key),{key,line}];p.lesson=line;};
- const routeAt=r.upper?52:r.linger;
- // A new route lesson only when the player really changed where they go (not a few tiles over).
- const sameRoute=h.waitAt!=null&&(r.upper?(h.waitAt===52||h.waitAt===5):(h.waitAt!==52&&h.waitAt!==5&&PLACES(h.waitAt*16)===PLACES((routeAt??0)*16)));
+ // Lessons add up: route, wardrobe, decoys, exit and door are separate notes, so learning one never undoes another.
+ const routeAt=r.upper?52:r.linger??(r.straight?34:null);
+ const sameRoute=h.waitAt!=null&&(r.upper?h.waitAt===52:h.waitAt!==52&&PLACES(h.waitAt*16)===PLACES((routeAt??0)*16));
  if(routeAt!=null&&!sameRoute){
   const was=h.waitAt;h.waitAt=routeAt;
-  note('route',r.upper?(was==null?'You took the upper floor. It has to come down by the vault. So will I.':'Upstairs now? It still comes down by the vault. So will I.'):`You stayed on the ground floor and took your time ${PLACES(routeAt*16)}. I will be waiting there.`);}
+  note('route',r.upper?(was==null?'You took the upper floor. It comes down by the vault. I will wait at the bottom.':'Upstairs now? It still comes down by the vault. I will wait at the bottom.'):r.linger!=null?`You took your time ${PLACES(routeAt*16)}. I will be waiting there.`:'You ran straight along the ground floor. I will meet you halfway.');}
  else if(r.hide!=null&&h.wardrobe!==r.hide){h.wardrobe=r.hide;note('wardrobe',`You hid in ${WARDROBES[r.hide]}. I will be opening it.`);}
  else if(r.decoys&&p.decoySkepticism<2){p.decoySkepticism++;note('decoys',p.decoySkepticism===1?'You threw glass to move me. Now I only check it if it is close.':'Broken glass again? I am not coming.');}
  else if(r.stole&&!h.exit){h.exit=true;note('exit','Everyone leaves through the front door. The moment the emerald moves, so do I.');}
- else if(r.outcome==='escaped'&&h.exit&&h.waitAt!==5){h.waitAt=5;note('door','You got out the same way twice. Tonight I start at the door.');}
- else p.lesson=r.outcome==='escaped'?'You did nothing new and still got out. That will not happen twice.':'You did nothing new. Neither did I. Yet.';
+ else if(r.outcome==='escaped'&&h.exit&&!h.door){h.door=true;note('door','You got out through the front door again. From now on I check the door too.');}
+ else if(r.outcome==='escaped')p.lesson='Nothing new to learn from that. Tomorrow I am simply faster.';
+ else if(s.time>=s.rules.limit)p.lesson='Dawn caught you before I did. Next time, be quicker.';
+ else p.lesson=`I caught you ${PLACES(s.player.x)} at ${Math.round(s.time)} seconds. Same road, same ending. Maybe not the obvious way?`;
  p.habits=h;p.protectRelic=false;
  p.name=['A creature of habit','The note-taker','The note-taker','The student of you','The student of you','He knows you'][Math.min(5,h.known.length)];
  return validatePolicy(p,{habits:true});

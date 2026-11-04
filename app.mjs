@@ -1,14 +1,16 @@
-import {createGame,step,summarize,learnLocal,validatePolicy,DEFAULT_POLICY,floor,distance} from './engine.mjs';
+import {createGame,step,summarize,learnLocal,validatePolicy,DEFAULT_POLICY,NIGHTS,floor,distance} from './engine.mjs';
 import {draw,tileAt} from './render.mjs';
 import {opening,commentary,aftermath} from './narrator.mjs';
 import {VOICE_LINES} from './voice.mjs';
 const $=id=>document.getElementById(id), canvas=$('game');
-const KEY='blackthorn-platformer-v3';let saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch{}
+const KEY='blackthorn-platformer-v4',LAST=5;let saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch{}
 const H={habits:true};let policy;try{policy=validatePolicy(saved.policy||DEFAULT_POLICY,H)}catch{policy=validatePolicy(DEFAULT_POLICY,H)}
 let ghost=Array.isArray(saved.ghost)?saved.ghost.slice(0,400):null;
 let memories=Array.isArray(saved.memories)?saved.memories.slice(-12):[],night=Number.isInteger(saved.night)?Math.max(1,saved.night):1;
 let courtesyCompleted=Boolean(saved.courtesyCompleted??memories.some(m=>m.outcome==='escaped'));
-let state=createGame(policy,{tutorial:!courtesyCompleted,habits:true}),started=false,aiming=false,aim={x:9,y:7},replay=null,replayTimer=null,learning=false,epoch=0,runtime={configured:false},sound=false,audio,usedLines=new Set();
+const newGame=()=>createGame(policy,{tutorial:!courtesyCompleted,habits:true,night:Math.min(LAST,night)});
+const NEXT={2:'THE KEEPER WAKES UP · 55 SECONDS',3:'FASTER KEEPER · WIDER EYES · 2 DECOYS · 50 S',4:'FASTER STILL · WIDER EYES · 1 DECOY · 45 S',5:'FASTEST KEEPER · HE GUARDS THE DOOR · NO DECOYS · 40 S'};
+let state=newGame(),started=false,aiming=false,aim={x:9,y:7},replay=null,replayTimer=null,learning=false,epoch=0,runtime={configured:false},sound=false,audio,usedLines=new Set();
 function save(){try{localStorage.setItem(KEY,JSON.stringify({policy,memories,night,courtesyCompleted,ghost}))}catch{}}
 let clip=null;
 function speak(line){if(!('speechSynthesis' in window))return;speechSynthesis.cancel();const voice=new SpeechSynthesisUtterance(line);voice.lang='en-GB';voice.rate=.9;voice.pitch=.85;voice.voice=speechSynthesis.getVoices().find(v=>v.lang==='en-GB'&&v.localService)||null;speechSynthesis.speak(voice);}
@@ -18,8 +20,8 @@ function text(tag,content){const e=document.createElement(tag);e.textContent=con
 function tone(f=220,d=.07){if(!sound)return;try{audio||=new(window.AudioContext||window.webkitAudioContext)();audio.resume();const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.035,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+d);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+d)}catch{}}
 function showKnown(){const k=policy.habits?.known||[];$('known').replaceChildren(...(k.length?[text('li','WHAT HE KNOWS ABOUT YOU'),...k.map((n,i)=>{const li=text('li',n.line);if(i===k.length-1&&memories.at(-1)?.newKey===n.key)li.className='new';return li;})]:[]));}
 function refresh(){
- $('night').textContent=`NIGHT ${String(night).padStart(2,'0')}`;
- $('turns').textContent=`${Math.floor(state.time)}s / ${state.tutorial?'∞':'90s'}`;
+ $('night').textContent=`NIGHT ${Math.min(LAST,night)} / ${LAST}`;
+ $('turns').textContent=`${Math.floor(state.time)}s / ${state.tutorial?'∞':state.rules.limit+'s'}`;$('turns').style.color=!state.tutorial&&state.rules.limit-state.time<=10?'#e8604c':'';
  $('message').textContent=state.message;$('decoy-count').textContent=`PRESS F OR TAP · ${state.decoys} LEFT`;
  $('suspicion').style.width=`${state.suspicion}%`;$('suspicion-label').textContent=state.suspicion>=68?'ON YOUR HEELS':state.suspicion?'SUSPICIOUS':'UNAWARE';
  $('suspicion-label').style.color=state.suspicion?'#b95b45':'#36584b';
@@ -33,10 +35,10 @@ function refresh(){
  $('memory-count').textContent=String(memories.length).padStart(2,'0');
  if(memories.length){$('memories').replaceChildren(...memories.slice(-2).reverse().map(m=>{const d=document.createElement('div');d.className='memory';d.append(text('b',`NIGHT ${String(m.night).padStart(2,'0')} / ${m.outcome==='escaped'?'OUTWITTED':'ENCOUNTER'}`),text('p',m.lesson),text('small',m.mode==='trueforge'?'TRUEFORGE SESSION':'LOCAL MEMORY'));return d;}));}
  $('policy-view').textContent=`Behavior: ${policy.name}\nWhat he knows about you:\n${(policy.habits?.known||[]).map(k=>'· '+k.line).join('\n')||'· Nothing yet.'}\nCompleted heists remembered: ${memories.length}`;
- $('runtime-label').textContent=runtime.configured?'TrueForge bridge configured. Completed heists will request a candidate skill revision.':'Offline adaptation — not a TrueForge evaluation.';
+ $('runtime-label').textContent=runtime.configured?'TrueForge bridge configured. Completed heists will request a candidate skill revision.':'In this browser the keeper learns with game rules. The TrueForge agent learned to guard the door in run 04.';
 }
 const held=new Set();let accumulator=0,lastTime=0;
-function begin(){held.clear();accumulator=0;clearInterval(replayTimer);replay=null;aiming=false;usedLines=new Set();state=createGame(policy,{tutorial:!courtesyCompleted,habits:true});started=true;$('intro').classList.add('hidden');$('result').classList.add('hidden');refresh();narrate(opening(state.tutorial,night));canvas.focus();tone(330,.2);}
+function begin(){if(night>LAST)return startOver();held.clear();accumulator=0;clearInterval(replayTimer);replay=null;aiming=false;usedLines=new Set();state=newGame();started=true;$('intro').classList.add('hidden');$('result').classList.add('hidden');refresh();narrate(opening(state.tutorial,night));canvas.focus();tone(330,.2);}
 function tick(){if(!started||state.status!=='playing'||learning||document.querySelector('dialog[open]'))return;
  const a={left:held.has('a')||held.has('arrowleft'),right:held.has('d')||held.has('arrowright'),jump:held.has(' ')||held.has('w')||held.has('arrowup'),down:held.has('s')||held.has('arrowdown'),sprint:held.has('shift'),hide:held.has('h'),decoy:held.has('f')};
  const before={turn:state.turn,hasRelic:state.hasRelic,suspicion:state.suspicion};step(state,a);
@@ -48,8 +50,10 @@ async function finish(){
  if(state.status==='caught'){const e=epoch;await new Promise(r=>setTimeout(r,1400));if(e!==epoch)return;}
  aiming=false;learning=true;const thisEpoch=epoch,episode=summarize(state),prior=validatePolicy(policy,H);
  const ending=aftermath(episode,night,state.tutorial);
+ // The last night closes the game: the house keeps score.
+ if(night>=LAST){const wins=memories.filter(m=>!m.courtesy&&m.outcome==='escaped').length+(episode.outcome==='escaped'?1:0);Object.assign(ending,episode.outcome==='escaped'?{kicker:'NIGHT 5. YOU WON IT.',title:'Impossible.',copy:'You beat the last night. The house is rewriting its rules.',button:'START OVER →'}:{kicker:`${LAST} NIGHTS. YOU GOT OUT ${wins} TIMES.`,title:'The house wins.',copy:'Every night the keeper learned one more thing about you. On the last one, he knew enough.',button:'START OVER →'});}
  $('result-title').textContent=ending.title;$('result-kicker').textContent=ending.kicker;$('result-copy').textContent=ending.copy;$('challenge-line').textContent=ending.challenge;$('again').textContent=ending.button;narrate(ending.challenge);
- $('result-stats').replaceChildren(text('span',`${Math.round(state.time)} SECONDS`),text('span',`${state.decoysThrown} DECOYS`),text('span',state.hasRelic?'RELIC TAKEN':'RELIC UNTOUCHED'));
+ $('result-stats').replaceChildren(text('span',`${Math.round(state.time)} SECONDS`),text('span',`${state.decoysThrown} DECOYS`),text('span',state.hasRelic?'RELIC TAKEN':'RELIC UNTOUCHED'),...(NEXT[night+1]?[text('span',`NEXT · NIGHT ${night+1}: ${NEXT[night+1]}`)]:[]));
  $('lesson').textContent='“Let me think about what you just did…”';$('known').replaceChildren();$('learn-status').textContent=runtime.configured?'The keeper is consulting his TrueForge playbook.':'The keeper is updating his local memory.';
  $('again').disabled=true;$('replay').disabled=true;$('result').classList.remove('hidden');refresh();tone(state.status==='escaped'?440:120,.4);
  let next,mode='local',sessionId;
@@ -69,13 +73,15 @@ canvas.addEventListener('pointerdown',()=>canvas.focus());
 function bindHold(el,key){el.addEventListener('pointerdown',e=>{e.preventDefault();if(el.disabled)return;el.setPointerCapture(e.pointerId);held.add(key);});for(const name of ['pointerup','pointercancel','lostpointercapture'])el.addEventListener(name,()=>held.delete(key));}
 $('start').onclick=begin;$('again').onclick=begin;
 bindHold($('decoy'),'f');bindHold($('wait'),' ');bindHold($('hide'),'h');
-$('restart').onclick=()=>{held.clear();if(state.turn&&state.status==='playing'){state.status='abandoned';finish();}else begin();};
+// Restarting mid-heist teaches the keeper nothing and does not use up the night.
+$('restart').onclick=()=>{held.clear();epoch++;learning=false;begin();};
 document.querySelectorAll('[data-move]').forEach(b=>bindHold(b,b.dataset.move==='-1,0'?'a':b.dataset.move==='1,0'?'d':b.dataset.move==='0,1'?'s':' '));
 $('replay').onclick=()=>{clearInterval(replayTimer);$('result').classList.add('hidden');let i=0;replay=[];$('message').textContent='Your footsteps, retraced. The keeper was watching.';replayTimer=setInterval(()=>{if(i>=state.history.length){clearInterval(replayTimer);$('result').classList.remove('hidden');return;}replay.push(state.history[i++].player);},95);};
 for(const [b,d] of [['lab','notes-dialog'],['how','help-dialog'],['privacy','privacy-dialog']])$(b).onclick=()=>{refresh();held.clear();$(d).showModal();};
 document.querySelectorAll('.close-dialog').forEach(b=>b.onclick=()=>b.closest('dialog').close());
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}}));
-$('forget').onclick=()=>{epoch++;learning=false;memories=[];night=1;courtesyCompleted=false;ghost=null;policy=validatePolicy(DEFAULT_POLICY,H);save();$('notes-dialog').close();begin();$('memories').innerHTML='<div class="empty-memory"><span>“</span><p>Nothing to remember.<br>How fortunate for you.</p></div>';refresh();};
+function startOver(){epoch++;learning=false;memories=[];night=1;courtesyCompleted=false;ghost=null;policy=validatePolicy(DEFAULT_POLICY,H);save();$('memories').innerHTML='<div class="empty-memory"><span>“</span><p>Nothing to remember.<br>How fortunate for you.</p></div>';begin();refresh();}
+$('forget').onclick=()=>{$('notes-dialog').close();startOver();};
 $('download').onclick=()=>{const blob=new Blob([JSON.stringify({version:1,mode:memories.at(-1)?.mode||'local',policy,memories,episode:summarize(state),history:state.history},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='blackthorn-field-notes.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
 $('sound').onclick=()=>{sound=!sound;$('sound').textContent=sound?'♩ NARRATOR ON':'♩ SOUND OFF';$('sound').setAttribute('aria-pressed',String(sound));$('sound-hint').innerHTML=sound?'🔊 SOUND IS ON. THE HOUSE IS LISTENING TOO.':'🔊 BEST WITH SOUND ON. THE HOUSE TALKS. <u>TURN IT ON</u>';$('sound-hint').setAttribute('aria-pressed',String(sound));if(sound){tone(330,.15);narrate($('narrator').textContent);}else hush();};
 fetch('/api/status').then(r=>r.ok?r.json():{}).then(d=>{runtime=d;refresh();}).catch(()=>{});
