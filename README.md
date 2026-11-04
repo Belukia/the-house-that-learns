@@ -61,11 +61,19 @@ npm run run-evals                   # run 2: same tasks, same scorer
 Play it: **https://belukia.github.io/the-house-that-learns/**
 
 - **Task and score:** stop 8 fixed heists (4 of them holdout) by choosing a defense policy before seeing the thief; score = 100 × heists stopped / heists.
-- **Run 1 → run N:** run 03 (baseline, starting Skill) **50** → run 04 (agent-rewritten Skill) **62.5**. Same 8 heists, same scorer. Development 2/4 → 2/4, holdout 2/4 → **3/4**. Runs 01–02 did not load the Skill and do not count ([runs/NOTES.md](runs/NOTES.md)).
-- **The change that did it:** commit `82da2c6` "agent: learn from run 03", `Agent-Session: 01m6j5pyh9egfy5zex0cs1d7gq`. The keeper rewrote `agent/skills/warden/SKILL.md` itself.
-- **What the agent learned:** the thief is faster, so chasing fails; every escape has to pass the entrance, so camp that choke point and arrive first. The extra catch is a holdout heist (realtime-6) the agent never saw while learning.
-- **What still fails:** upper-floor thieves on realtime-2, 4 and 8 still slip past.
+- **Run 1 → run N:** run 03 (baseline, starting Skill) **50** → run 04 **62.5** → run 05 **100**. Same 8 heists, same scorer, each Skill written by the agent itself. Runs 01–02 did not load the Skill and do not count ([runs/NOTES.md](runs/NOTES.md)).
 
+  | Run | Skill | Development (4) | Holdout (4) | Score |
+  |---|---|---|---|---|
+  | 03 | starting Skill | 2/4 | 2/4 | 50 |
+  | 04 | `82da2c6` agent: learn from run 03 | 2/4 | 3/4 | 62.5 |
+  | 05 | `9dd5c2d` agent: learn from run 04 | 4/4 | 4/4 | 100 |
+  | 06 | same as 05, run again | 4/4 | 4/4 | 100 |
+
+- **The changes that did it:** two agent commits, each with its `Agent-Session` trailer. `82da2c6` (session `01m6j5pyh9egfy5zex0cs1d7gq`): the thief is faster, so stop chasing and camp the entrance. `9dd5c2d` (session `01m6m5qyphh2k5pgw7bv3tx0yw`): it measured why the camp still leaked ("waypoints are tiles, x*16 px") and moved the camp onto the exit tile itself.
+- **Holdout:** the agent never saw the 4 holdout heists while learning; they went 2/4 → 3/4 → 4/4.
+- **Repeat:** run 06 re-ran run 05's Skill unchanged and scored the same 100, so the last step is not one lucky run.
+- **What this does not prove:** the 8 fixed heists now saturate. Every one of them has to leave through the front door, and a keeper standing on it stops them all. After run 05 `improve` had nothing left to learn from. A harder set (thieves who wait him out, or a second exit) is the next step. The hosted game's keeper, who chases you on both floors, is browser game rules and is not what these runs score.
 
 ## Project structure
 
@@ -80,6 +88,6 @@ Built by Tamara Rienzi with AI-assisted coding. Original code-drawn artwork; no 
 ## Runtime and current proof status
 
 - **Runtime:** the official TrueForge 0.182.0 local runtime (`node scripts/start-trueforge.mjs`, bound to `127.0.0.1:8790`, database in ignored `.runtime/`) with a TrueFoundry-hosted model. Credentials live in an ignored `.env`, never in `dist/` or source control.
-- **Measured:** the baseline (run 03) and the agent-rewritten Skill (run 04) above, on the same frozen 8 heists and scorer. `scripts/rescore-runs.ts` re-scores every saved run with the current engine and still reports the same numbers.
-- **Not yet measured:** run-to-run variance. Each Skill was scored once, so the gain is one more heist stopped out of 8 (the holdout one).
+- **Measured:** the baseline (run 03) and the agent-rewritten Skills (runs 04 and 05, repeated as 06) above, on the same frozen 8 heists and scorer. `scripts/rescore-runs.ts` re-scores every saved run with the current engine and still reports the same numbers.
+- **Variance:** only the final Skill was repeated (run 06 = run 05). Runs 03 and 04 were scored once each.
 - **Hosted game vs evaluation:** the hosted game's five nights (a keeper who chases you on both floors, learns one habit per heist and says what he knows) are browser game rules. Evaluations never pass those options, so the frozen benchmark is unchanged.
