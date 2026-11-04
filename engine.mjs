@@ -31,7 +31,22 @@ const overlaps=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
 export function sight(a,b,radius=160){return Math.hypot(a.x-b.x,a.y-b.y)<radius&&Math.abs(a.y-b.y)<38&&!BLOCKS.some(o=>o.h>=30&&o.x>Math.min(a.x,b.x)&&o.x<Math.max(a.x,b.x)&&a.y+10>o.y);}
 // The hosted game's five nights. Evaluations never pass {night}, so they keep the frozen exam rules.
 export const EXAM_RULES=Object.freeze({limit:90,speed:1,vision:160,decoys:3,door:false});
-export const NIGHTS=Object.freeze({2:{limit:55,speed:1,vision:160,decoys:3,door:false},3:{limit:50,speed:1.15,vision:190,decoys:2,door:false},4:{limit:45,speed:1.3,vision:220,decoys:1,door:false},5:{limit:40,speed:1.45,vision:250,decoys:0,door:true}});
+// From night 2 he hunts: he chases what he sees, remembers where he last saw you, and takes the stairs.
+export const NIGHTS=Object.freeze({2:{limit:55,speed:1,vision:170,decoys:3,door:false,chase:true},3:{limit:50,speed:1.1,vision:200,decoys:2,door:false,chase:true},4:{limit:45,speed:1.2,vision:230,decoys:1,door:false,chase:true},5:{limit:40,speed:1.3,vision:260,decoys:0,door:false,chase:true}});
+export const upstairs=a=>a.y+a.h<=180, downstairs=a=>a.y+a.h>=300;
+// Seeing across floors is harder: the height difference counts against his range. Crates still block him on the ground.
+const huntSight=(g,p,r)=>Math.hypot(g.x-p.x,(g.y-p.y)*1.5)<r&&(upstairs(g)!==upstairs(p)||sight(g,p,r));
+// One-way ledges: he climbs the stairs at either end by jumping, and drops through the floor to come down.
+function route(g,t){
+ const up=t.up??(t.y!=null&&t.y+22<=180),toward=Math.abs(t.x-g.x)>4?Math.sign(t.x-g.x):0;
+ if(up&&!upstairs(g)){
+  const left=Math.abs(g.x-90)+Math.abs(t.x-240)<=Math.abs(g.x-950)+Math.abs(t.x-790);
+  // Walk to the foot of the stairs (stepping off any crate), then hop up step by step.
+  if(left)return g.x>(downstairs(g)?92:260)?{dir:-1}:{dir:1,jump:true};
+  return g.x<(downstairs(g)?950:770)?{dir:1}:{dir:-1,jump:true};
+ }
+ return {dir:toward,drop:!up&&!downstairs(g)};
+}
 export function createGame(policy=DEFAULT_POLICY,options={}){
  const rules=NIGHTS[options.night]||EXAM_RULES;
  return {rules,player:actor(ENTRY.x,ENTRY.y),guard:actor(options.tutorial?600:480,282),tutorial:Boolean(options.tutorial),turn:0,time:0,patrolIndex:0,dwell:0,policy:validatePolicy(policy,{habits:Boolean(options.habits)}),suspicion:0,decoys:rules.decoys,noise:null,hidden:false,hasRelic:false,status:'playing',message:'A/D to run, Space to jump, F throws a decoy ahead of you, H hides you in a wardrobe. The emerald is to the right.',history:[],inputs:[],events:[],decoysThrown:0,seen:0,lastJump:false,lastDecoy:false,lastHide:false};
@@ -60,14 +75,16 @@ export function step(s,input={}){
  if(!s.hasRelic&&Math.abs(s.player.x-RELIC.x)<22&&Math.abs(s.player.y-RELIC.y)<34){s.hasRelic=true;s.events.push({type:'relic',turn:s.turn});s.message='Emerald acquired! Run LEFT to the green door.';}
  if(s.hasRelic&&s.player.x<68&&s.player.y>250){s.status='escaped';s.message='You escaped. The house remembers.';}
  if(!s.tutorial&&s.status==='playing'){
-  let visible=!s.hidden&&sight(s.guard,s.player,s.rules.vision),target;const H=s.policy.habits,R=s.rules;
+  let visible=!s.hidden&&(s.rules.chase?huntSight(s.guard,s.player,s.rules.vision):sight(s.guard,s.player,s.rules.vision)),target;const H=s.policy.habits,R=s.rules;
   // A keeper who knows your wardrobe opens it when he walks past.
   if(!visible&&H&&H.wardrobe!=null&&s.hidden&&Math.abs(s.player.x-HIDING[H.wardrobe].x)<26&&Math.abs(s.guard.x-s.player.x)<30){s.hidden=false;visible=true;s.events.push({type:'found',turn:s.turn});}
   // On the last night he will not be drawn away from the door.
   if(visible&&R.door&&s.player.x>160){s.seen++;s.suspicion=Math.min(100,s.suspicion+.65);s.message='He sees you. He stays by the door.';target={x:s.patrolIndex%2?64:32};if(Math.abs(s.guard.x-target.x)<6)s.patrolIndex++;visible=false;}
-  else if(visible){target=s.player;s.seen++;s.suspicion=Math.min(100,s.suspicion+.65);s.message='He sees you! Jump, hide, or take the upper floor.';}
+  else if(visible){target=s.player;s.seen++;s.suspicion=Math.min(100,s.suspicion+.65);if(R.chase)s.lastSeen={x:s.player.x,y:s.player.y,h:s.player.h,ttl:360};s.message=R.chase?'He sees you! Run, hide, or lose him on the stairs. Shift sprints.':'He sees you! Jump, hide, or take the upper floor.';}
   else{s.suspicion=Math.max(0,s.suspicion-.35);
-   if(s.noise&&(!s.policy.decoySkepticism||(s.policy.decoySkepticism===1&&Math.abs(s.guard.x-s.noise.x)<70)))target=s.noise;
+   // A hunter goes to where he last saw you for six seconds before giving up.
+   if(R.chase&&s.lastSeen?.ttl>0){target=s.lastSeen;s.lastSeen.ttl--;if(Math.abs(s.guard.x-target.x)<8&&upstairs(s.guard)===upstairs(target))s.lastSeen.ttl=0;s.message='He lost you. He is looking.';}
+   else if(s.noise&&(!s.policy.decoySkepticism||(s.policy.decoySkepticism===1&&Math.abs(s.guard.x-s.noise.x)<70)))target=s.noise;
    else if(R.door){target={x:s.patrolIndex%2?64:32};if(Math.abs(s.guard.x-target.x)<6)s.patrolIndex++;}
    else if(H&&H.exit&&s.hasRelic)target={x:92};
    else if(s.policy.protectRelic&&!s.hasRelic)target={x:900};
@@ -77,11 +94,20 @@ export function step(s,input={}){
     target={x:stops[s.patrolIndex%stops.length]};
     if(Math.abs(s.guard.x-target.x)<6&&++s.dwell>=(stops.length>1?120:1e9)){s.dwell=0;s.patrolIndex++;}
    }
+   else if(R.chase){
+    // His rounds take in the upper floor too.
+    const stops=[...s.policy.patrol.map(p=>({x:p.x*16,up:false})),{x:512,up:true}];
+    target=stops[s.patrolIndex%stops.length];if(Math.abs(s.guard.x-target.x)<6&&upstairs(s.guard)===target.up)s.patrolIndex++;
+   }
    else {target={x:s.policy.patrol[s.patrolIndex%s.policy.patrol.length].x*16};if(Math.abs(s.guard.x-target.x)<6){s.patrolIndex++;target={x:s.policy.patrol[s.patrolIndex%s.policy.patrol.length].x*16};}}
   }
-  const gd=Math.abs(target.x-s.guard.x)>4?Math.sign(target.x-s.guard.x):0;
+  s.sees=visible;
+  const way=R.chase?route(s.guard,target):{dir:Math.abs(target.x-s.guard.x)>4?Math.sign(target.x-s.guard.x):0};
+  const gd=way.dir;
   const obstacle=BLOCKS.some(o=>Math.abs((gd>0?o.x:o.x+o.w)-(gd>0?s.guard.x+s.guard.w:s.guard.x))<12&&s.guard.y+s.guard.h>o.y);
-  physics(s.guard,gd,obstacle&&s.guard.grounded,false,(visible||(H&&H.exit&&s.hasRelic)?1.85:1.05)*R.speed);
+  const hunting=visible||(R.chase&&s.lastSeen?.ttl>0)||(H&&H.exit&&s.hasRelic);
+  // Stair hops are short and careful, so each one lands on the next step.
+  physics(s.guard,gd,(obstacle||way.jump)&&s.guard.grounded,Boolean(way.drop),way.jump?1:(hunting?1.85:R.chase?1.3:1.05)*R.speed);
   if(!s.hidden&&overlaps(s.player,s.guard)){s.status='caught';s.message='Caught. The keeper has your number.';}
   if(s.time>=R.limit){s.status='caught';s.message='Dawn. The house seals its doors.';}
  }
@@ -119,6 +145,8 @@ export function replayEpisode(policy,ep){
 // The in-browser keeper: after each heist he learns ONE new thing about this player, and says what.
 const PLACES=x=>x<400?'by the crates':x<700?'in the long hall':'by the vault';
 const WARDROBES=['the first wardrobe','the middle wardrobe','the wardrobe by the vault'];
+// Short labels for the briefing before each night.
+export function knownLabels(h,p){if(!h)return [];return [h.waitAt!=null&&(h.waitAt===52?'HE WAITS AT THE FOOT OF THE VAULT STAIRS':`HE WAITS ${PLACES(h.waitAt*16).toUpperCase()}`),h.wardrobe!=null&&`HE OPENS ${WARDROBES[h.wardrobe].toUpperCase()}`,p.decoySkepticism===1&&'HE ONLY CHECKS DECOYS NEARBY',p.decoySkepticism===2&&'HE IGNORES DECOYS',h.exit&&'HE RUNS FOR THE DOOR WHEN THE EMERALD MOVES',h.door&&'HE CHECKS THE DOOR'].filter(Boolean);}
 export function readHeist(s){
  const way=s.history.filter(h=>!h.hasRelic);
  const upper=way.some(h=>h.player.y<170&&h.player.x>260&&h.player.x<780);
@@ -147,7 +175,7 @@ export function learnLocal(policy,s){
  else if(r.outcome==='escaped'&&h.exit&&!h.door){h.door=true;note('door','You got out through the front door again. From now on I check the door too.');}
  else if(r.outcome==='escaped')p.lesson='Nothing new to learn from that. Tomorrow I am simply faster.';
  else if(s.time>=s.rules.limit)p.lesson='Dawn caught you before I did. Next time, be quicker.';
- else p.lesson=`I caught you ${PLACES(s.player.x)} at ${Math.round(s.time)} seconds. Same road, same ending. Maybe not the obvious way?`;
+ else p.lesson=`I caught you ${PLACES(s.player.x)}. Same road, same ending. Maybe not the obvious way?`;
  p.habits=h;p.protectRelic=false;
  p.name=['A creature of habit','The note-taker','The note-taker','The student of you','The student of you','He knows you'][Math.min(5,h.known.length)];
  return validatePolicy(p,{habits:true});
