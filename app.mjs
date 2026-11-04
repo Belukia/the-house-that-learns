@@ -75,9 +75,11 @@ document.querySelectorAll('.close-dialog').forEach(b=>b.onclick=()=>b.closest('d
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}}));
 $('forget').onclick=()=>{epoch++;learning=false;memories=[];night=1;courtesyCompleted=false;policy=validatePolicy(DEFAULT_POLICY);save();$('notes-dialog').close();begin();$('memories').innerHTML='<div class="empty-memory"><span>“</span><p>Nothing to remember.<br>How fortunate for you.</p></div>';refresh();};
 $('download').onclick=()=>{const blob=new Blob([JSON.stringify({version:1,mode:memories.at(-1)?.mode||'local',policy,memories,episode:summarize(state),history:state.history},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='blackthorn-field-notes.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
-$('sound').onclick=()=>{sound=!sound;$('sound').textContent=sound?'♩ NARRATOR ON':'♩ SOUND OFF';$('sound').setAttribute('aria-pressed',String(sound));if(sound){tone(330,.15);narrate($('narrator').textContent);}else hush();};
+$('sound').onclick=()=>{sound=!sound;$('sound').textContent=sound?'♩ NARRATOR ON':'♩ SOUND OFF';$('sound').setAttribute('aria-pressed',String(sound));$('sound-hint').innerHTML=sound?'🔊 SOUND IS ON. THE HOUSE IS LISTENING TOO.':'🔊 BEST WITH SOUND ON. THE HOUSE TALKS. <u>TURN IT ON</u>';$('sound-hint').setAttribute('aria-pressed',String(sound));if(sound){tone(330,.15);narrate($('narrator').textContent);}else hush();};
 fetch('/api/status').then(r=>r.ok?r.json():{}).then(d=>{runtime=d;refresh();}).catch(()=>{});
 refresh();
 function frame(time){if(!lastTime)lastTime=time;const dt=Math.min(.05,(time-lastTime)/1000);lastTime=time;
  if(!document.hidden&&document.hasFocus()){accumulator+=dt;while(accumulator>=1/60){tick();accumulator-=1/60;}}else{accumulator=0;held.clear();}
  draw(canvas,state,{time,started,replay});requestAnimationFrame(frame);}requestAnimationFrame(frame);
+
+$('sound-hint').onclick=()=>$('sound').click();
