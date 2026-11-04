@@ -1,0 +1,282 @@
+[
+  {
+    "task_id": "realtime-1",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Entrance choke keeper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 5,
+          "y": 18
+        },
+        {
+          "x": 11,
+          "y": 18
+        },
+        {
+          "x": 7,
+          "y": 18
+        },
+        {
+          "x": 12,
+          "y": 18
+        }
+      ],
+      "lesson": "The thief must leave by the door, so I wait at the choke point and ignore decoys."
+    },
+    "outcome": "caught",
+    "ticks": 126,
+    "relic_stolen": false,
+    "turn_id": "01m6j5rn2yqm7pr62vzdp36dz9",
+    "status": "done",
+    "reply": "I loaded the skill and chose to camp the entrance, which every escape has to pass through. The keeper patrols tightly around the entrance and the stair foot. It ignores decoys (skepticism 2) and doesn't guard the relic, because it would likely reach the vault after the thief.\n\n```json\n{\n  \"name\": \"Entrance choke keeper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 5, \"y\": 18 }, { \"x\": 11, \"y\": 18 }, { \"x\": 7, \"y\": 18 }, { \"x\": 12, \"y\": 18 }],\n  \"lesson\": \"The thief must leave by the door, so I wait at the choke point and ignore decoys.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-2",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Entrance choke keeper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 5,
+          "y": 18
+        },
+        {
+          "x": 9,
+          "y": 18
+        },
+        {
+          "x": 5,
+          "y": 18
+        },
+        {
+          "x": 8,
+          "y": 18
+        }
+      ],
+      "lesson": "I can't outrun the thief, so I wait where every escape must pass: the entrance. I ignore decoys."
+    },
+    "outcome": "escaped",
+    "ticks": 688,
+    "relic_stolen": true,
+    "turn_id": "01m6j5s24tr6kjr0p3dywjg186",
+    "status": "done",
+    "reply": "I'm camping the keeper at the entrance, which is the one choke point every escape must pass. The thief is much faster than the keeper, so chasing never works. The patrol stays tight around the entrance, and the keeper ignores decoys. I'm not guarding the vault, because the keeper would likely arrive after the thief.\n\n```json\n{\n  \"name\": \"Entrance choke keeper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 5, \"y\": 18 }, { \"x\": 9, \"y\": 18 }, { \"x\": 5, \"y\": 18 }, { \"x\": 8, \"y\": 18 }],\n  \"lesson\": \"I can't outrun the thief, so I wait where every escape must pass: the entrance. I ignore decoys.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-3",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Exit warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 5,
+          "y": 18
+        },
+        {
+          "x": 9,
+          "y": 18
+        }
+      ],
+      "lesson": "I stop chasing noise and hold the exit, where every thief carrying the emerald must pass."
+    },
+    "outcome": "caught",
+    "ticks": 126,
+    "relic_stolen": false,
+    "turn_id": "01m6j5sdywjhnxxb23ba8wf7w2",
+    "status": "done",
+    "reply": "I loaded the skill and chose to guard the exit. Every escape has to pass the entrance, and the keeper starts mid-map and walks slowly. Reaching the vault before a fast thief is therefore unlikely. I set skepticism to 2 so decoys can't pull the keeper off that spot. The patrol is a tight loop near the entrance, so the keeper stays close to the choke point.\n\n```json\n{\n  \"name\": \"Exit warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 5, \"y\": 18 }, { \"x\": 9, \"y\": 18 }],\n  \"lesson\": \"I stop chasing noise and hold the exit, where every thief carrying the emerald must pass.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-4",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Entrance chokepoint keeper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 5,
+          "y": 18
+        },
+        {
+          "x": 9,
+          "y": 18
+        },
+        {
+          "x": 6,
+          "y": 18
+        },
+        {
+          "x": 10,
+          "y": 18
+        }
+      ],
+      "lesson": "The thief must come back out the way they came in, so I'll wait by the door and ignore distractions."
+    },
+    "outcome": "escaped",
+    "ticks": 688,
+    "relic_stolen": true,
+    "turn_id": "01m6j5st1h3pq8and8cwvmmxcm",
+    "status": "done",
+    "reply": "Following the playbook, I'm camping the keeper at the entrance choke point. The thief has to leave through the entrance, and the keeper can walk there before the thief returns. I'm setting skepticism to 2 so decoys can't pull the keeper away. I'm leaving protectRelic off because the keeper would probably reach the vault after the thief does.\n\n```json\n{\n  \"name\": \"Entrance chokepoint keeper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 5, \"y\": 18 }, { \"x\": 9, \"y\": 18 }, { \"x\": 6, \"y\": 18 }, { \"x\": 10, \"y\": 18 }],\n  \"lesson\": \"The thief must come back out the way they came in, so I'll wait by the door and ignore distractions.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-5",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Entrance choke-point keeper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 6,
+          "y": 18
+        },
+        {
+          "x": 4,
+          "y": 18
+        },
+        {
+          "x": 8,
+          "y": 18
+        },
+        {
+          "x": 4,
+          "y": 18
+        }
+      ],
+      "lesson": "I stop chasing noise and hold the entrance, since every escape must pass it."
+    },
+    "outcome": "caught",
+    "ticks": 126,
+    "relic_stolen": false,
+    "turn_id": "01m6j5t5nzbpjzvq4xvpm26rss",
+    "status": "done",
+    "reply": "I loaded the skill and chose a defense that camps the entrance. The thief has to leave through it with the emerald, and the keeper can get there before the thief returns. The patrol stays tight around the stair foot. Skepticism is 2, so decoys can't pull the keeper away. I left protectRelic off because the keeper starts mid-map and walks slowly, so it may not reach the vault first.\n\n```json\n{\n  \"name\": \"Entrance choke-point keeper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 6, \"y\": 18 }, { \"x\": 4, \"y\": 18 }, { \"x\": 8, \"y\": 18 }, { \"x\": 4, \"y\": 18 }],\n  \"lesson\": \"I stop chasing noise and hold the entrance, since every escape must pass it.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-6",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Entrance choke keeper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 6,
+          "y": 18
+        },
+        {
+          "x": 9,
+          "y": 18
+        }
+      ],
+      "lesson": "The thief must return with the emerald, so I wait at the entrance and ignore decoys."
+    },
+    "outcome": "caught",
+    "ticks": 804,
+    "relic_stolen": true,
+    "turn_id": "01m6j5thmsyddzjp7822306zke",
+    "status": "done",
+    "reply": "I'm camping the keeper at the entrance, because every escape has to pass through it. The keeper starts mid-map and is slow, so it should reach the entrance before a thief who first has to fetch the emerald. Skepticism 2 stops decoys from pulling it away. I'm not guarding the relic, because the thief would probably reach the vault first.\n\n```json\n{\n  \"name\": \"Entrance choke keeper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 6, \"y\": 18 }, { \"x\": 9, \"y\": 18 }],\n  \"lesson\": \"The thief must return with the emerald, so I wait at the entrance and ignore decoys.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-7",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Entrance choke keeper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 4,
+          "y": 18
+        },
+        {
+          "x": 8,
+          "y": 18
+        },
+        {
+          "x": 5,
+          "y": 18
+        },
+        {
+          "x": 9,
+          "y": 18
+        }
+      ],
+      "lesson": "The thief must leave by the entrance, so I wait there and ignore distractions."
+    },
+    "outcome": "caught",
+    "ticks": 113,
+    "relic_stolen": false,
+    "turn_id": "01m6j5v06mw7p43pa7fh9atwh9",
+    "status": "done",
+    "reply": "I'm putting the keeper at the entrance, because the thief has to leave through it. The thief is much faster than the keeper, so chasing never works. Standing in the thief's path does. I'm setting skepticism to 2 so decoys can't pull the keeper off that spot, and `protectRelic` is off because the keeper would probably reach the vault after the thief does.\n\n```json\n{\n  \"name\": \"Entrance choke keeper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 4, \"y\": 18 }, { \"x\": 8, \"y\": 18 }, { \"x\": 5, \"y\": 18 }, { \"x\": 9, \"y\": 18 }],\n  \"lesson\": \"The thief must leave by the entrance, so I wait there and ignore distractions.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-8",
+    "holdout": true,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Entrance chokepoint camper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 4,
+          "y": 18
+        },
+        {
+          "x": 8,
+          "y": 18
+        },
+        {
+          "x": 5,
+          "y": 18
+        },
+        {
+          "x": 9,
+          "y": 18
+        }
+      ],
+      "lesson": "I walk to the exit and stay there. The thief has to come back this way, and decoys won't pull me off."
+    },
+    "outcome": "escaped",
+    "ticks": 735,
+    "relic_stolen": true,
+    "turn_id": "01m6j5vcfcte66cmrsqfq7x35z",
+    "status": "done",
+    "reply": "I loaded the skill and chose to camp the entrance. Every escape has to come back through it. The thief is much faster than the keeper, so chasing never works. The keeper starts mid-map, so guarding the vault could arrive too late. Skepticism 2 stops decoys from pulling the keeper off the choke point. I haven't seen any evaluation results for this policy.\n\n```json\n{\n  \"name\": \"Entrance chokepoint camper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 4, \"y\": 18 }, { \"x\": 8, \"y\": 18 }, { \"x\": 5, \"y\": 18 }, { \"x\": 9, \"y\": 18 }],\n  \"lesson\": \"I walk to the exit and stay there. The thief has to come back this way, and decoys won't pull me off.\"\n}\n```"
+  }
+]
