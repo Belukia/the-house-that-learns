@@ -1,6 +1,7 @@
 import {createGame,step,summarize,learnLocal,validatePolicy,DEFAULT_POLICY,floor,distance} from './engine.mjs';
 import {draw,tileAt} from './render.mjs';
 import {opening,commentary,aftermath} from './narrator.mjs';
+import {VOICE_LINES} from './voice.mjs';
 const $=id=>document.getElementById(id), canvas=$('game');
 const KEY='blackthorn-platformer-v2';let saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch{}
 let policy;try{policy=validatePolicy(saved.policy||DEFAULT_POLICY)}catch{policy=validatePolicy(DEFAULT_POLICY)}
@@ -8,7 +9,10 @@ let memories=Array.isArray(saved.memories)?saved.memories.slice(-12):[],night=Nu
 let courtesyCompleted=Boolean(saved.courtesyCompleted??memories.some(m=>m.outcome==='escaped'));
 let state=createGame(policy,{tutorial:!courtesyCompleted}),started=false,aiming=false,aim={x:9,y:7},replay=null,replayTimer=null,learning=false,epoch=0,runtime={configured:false},sound=false,audio,usedLines=new Set();
 function save(){try{localStorage.setItem(KEY,JSON.stringify({policy,memories,night,courtesyCompleted}))}catch{}}
-function narrate(line){$('narrator').textContent=line;if(sound&&'speechSynthesis' in window){speechSynthesis.cancel();const voice=new SpeechSynthesisUtterance(line);voice.lang='en-GB';voice.rate=.9;voice.pitch=.85;voice.voice=speechSynthesis.getVoices().find(v=>v.lang==='en-GB'&&v.localService)||null;speechSynthesis.speak(voice);}}
+let clip=null;
+function speak(line){if(!('speechSynthesis' in window))return;speechSynthesis.cancel();const voice=new SpeechSynthesisUtterance(line);voice.lang='en-GB';voice.rate=.9;voice.pitch=.85;voice.voice=speechSynthesis.getVoices().find(v=>v.lang==='en-GB'&&v.localService)||null;speechSynthesis.speak(voice);}
+function hush(){if(clip){clip.pause();clip=null;}if('speechSynthesis' in window)speechSynthesis.cancel();}
+function narrate(line){$('narrator').textContent=line;if(!sound)return;hush();const file=VOICE_LINES[line];if(!file)return speak(line);clip=new Audio('voice/'+file);clip.play().catch(()=>speak(line));}
 function text(tag,content){const e=document.createElement(tag);e.textContent=content;return e;}
 function tone(f=220,d=.07){if(!sound)return;try{audio||=new(window.AudioContext||window.webkitAudioContext)();audio.resume();const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.035,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+d);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+d)}catch{}}
 function refresh(){
@@ -71,7 +75,7 @@ document.querySelectorAll('.close-dialog').forEach(b=>b.onclick=()=>b.closest('d
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}}));
 $('forget').onclick=()=>{epoch++;learning=false;memories=[];night=1;courtesyCompleted=false;policy=validatePolicy(DEFAULT_POLICY);save();$('notes-dialog').close();begin();$('memories').innerHTML='<div class="empty-memory"><span>“</span><p>Nothing to remember.<br>How fortunate for you.</p></div>';refresh();};
 $('download').onclick=()=>{const blob=new Blob([JSON.stringify({version:1,mode:memories.at(-1)?.mode||'local',policy,memories,episode:summarize(state),history:state.history},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='blackthorn-field-notes.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
-$('sound').onclick=()=>{sound=!sound;$('sound').textContent=sound?'♩ NARRATOR ON':'♩ SOUND OFF';$('sound').setAttribute('aria-pressed',String(sound));if(sound){tone(330,.15);narrate($('narrator').textContent);}else if('speechSynthesis' in window)speechSynthesis.cancel();};
+$('sound').onclick=()=>{sound=!sound;$('sound').textContent=sound?'♩ NARRATOR ON':'♩ SOUND OFF';$('sound').setAttribute('aria-pressed',String(sound));if(sound){tone(330,.15);narrate($('narrator').textContent);}else hush();};
 fetch('/api/status').then(r=>r.ok?r.json():{}).then(d=>{runtime=d;refresh();}).catch(()=>{});
 refresh();
 function frame(time){if(!lastTime)lastTime=time;const dt=Math.min(.05,(time-lastTime)/1000);lastTime=time;
