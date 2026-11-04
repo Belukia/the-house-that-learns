@@ -38,6 +38,8 @@ function tick(){if(!started||state.status!=='playing'||learning||document.queryS
  if(state.turn%6===0||state.status!=='playing')refresh();if(state.status!=='playing')finish();
 }
 async function finish(){
+ // Hold the CAUGHT card on the board for a beat before the results cover it.
+ if(state.status==='caught'){const e=epoch;await new Promise(r=>setTimeout(r,1400));if(e!==epoch)return;}
  aiming=false;learning=true;const thisEpoch=epoch,episode=summarize(state),prior=validatePolicy(policy);
  const ending=aftermath(episode,night,state.tutorial);
  $('result-title').textContent=ending.title;$('result-kicker').textContent=ending.kicker;$('result-copy').textContent=ending.copy;$('challenge-line').textContent=ending.challenge;$('again').textContent=ending.button;narrate(ending.challenge);

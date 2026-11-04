@@ -36,11 +36,13 @@ export function draw(canvas,s,{time=0,started=false,replay=null}={}){
  const sprite=(a,guard=false)=>{
   const x=Math.round(a.x),y=Math.round(a.y),walk=Math.abs(a.vx)>.1&&a.grounded?Math.sin(time/65)*3:0;
   if(!guard&&s.hidden)return;
+  // The keeper carries a lantern: a soft warm halo keeps him readable against the dark wallpaper.
+  if(guard){rect(x-9,y-8,29,34,'rgba(238,125,88,.10)');rect(x-5,y-5,21,28,'rgba(238,125,88,.12)');}
   rect(x-2,y+21,15,2,'#0b101c');
-  rect(x+1,y+15,3,7+Math.round(walk),guard?'#292b40':'#242a40');rect(x+7,y+15,3,7-Math.round(walk),guard?'#292b40':'#242a40');
-  rect(x,y+7,11,10,guard?'#9a4d52':'#b9ae87');rect(x+2,y+7,6,9,guard?'#c57560':'#e0d1a0');
+  rect(x+1,y+15,3,7+Math.round(walk),guard?'#3b1f28':'#242a40');rect(x+7,y+15,3,7-Math.round(walk),guard?'#3b1f28':'#242a40');
+  rect(x,y+7,11,10,guard?'#c4473c':'#cfc196');rect(x+2,y+7,6,9,guard?'#ee7d58':'#f1e5bd');
   rect(x+1,y+1,8,7,'#d3a083');rect(x+(a.facing>0?8:1),y+3,2,2,'#191c2a');
-  rect(x-1,y,12,3,guard?'#343341':'#435269');rect(x+1,y-3,8,4,guard?'#343341':'#435269');
+  rect(x-1,y,12,3,guard?'#7b2630':'#5d7bab');rect(x+1,y-3,8,4,guard?'#7b2630':'#5d7bab');
   rect(x+(a.facing>0?10:-2),y+10,3,5,'#c48f79');
   if(!guard&&s.hasRelic)rect(x-4,y+9,4,5,'#65d7b2');
  };
@@ -48,9 +50,10 @@ export function draw(canvas,s,{time=0,started=false,replay=null}={}){
  if(replay?.length){for(const p of replay)rect(p.x+4,p.y+20,2,2,'#e8d4a0');}
  sprite(s.guard,true);sprite(s.player);
  const label=(str,x,y,color='#e3d6af')=>{c.font='7px monospace';c.fillStyle=color;c.fillText(str,Math.round(x-camera),y-48);};
- if(s.tutorial){label('zzz',s.guard.x,s.guard.y-10,'#a5a1b7');if(!s.hasRelic)label('EMERALD →',s.player.x+25,Math.max(245,s.player.y-20),'#8bddb5');else label('← EXIT',s.player.x-55,s.player.y-20,'#8bddb5');}
+ if(s.tutorial)label('zzz',s.guard.x,s.guard.y-10,'#a5a1b7');
  label('EXIT',30,253,'#8bddb5');label('HIDE',150,260,'#a9bbd8');label('VAULT',929,254,'#d9bd80');
  c.fillStyle='#101622';c.fillRect(0,0,480,16);c.font='7px monospace';c.fillStyle='#b1b9bd';c.fillText(s.tutorial?'COURTESY ROUND • SECURITY IS DECORATIVE':'A / D RUN   SPACE JUMP   H HIDE   F DECOY',10,11);
+ if(s.status==='caught'){c.fillStyle='rgba(10,8,14,.55)';c.fillRect(0,0,480,288);c.fillStyle='rgba(122,24,32,.92)';c.fillRect(0,112,480,50);c.textAlign='center';c.font='bold 30px Georgia,serif';c.fillStyle='#f4e7c8';c.fillText(s.time>=90?'DAWN. CAUGHT.':'CAUGHT.',240,146);c.font='7px monospace';c.fillStyle='#f0b9a6';c.fillText(s.time>=90?'THE HOUSE SEALED ITS DOORS':'THE KEEPER HAS YOUR NUMBER',240,158);c.textAlign='left';}
  const out=canvas.getContext('2d');out.imageSmoothingEnabled=false;out.clearRect(0,0,canvas.width,canvas.height);out.drawImage(buffer,0,0,canvas.width,canvas.height);
 }
 export function tileAt(canvas,e){const r=canvas.getBoundingClientRect();return {x:Math.floor(((e.clientX-r.left)/r.width*480+camera)/16),y:18};}
