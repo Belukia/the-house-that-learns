@@ -80,6 +80,11 @@ if (failed.length) {
 
 // 5. Save the run.
 const exp = await exportSession(tf, session.id);
+// If the sandbox could not install the Skill, the agent ran without it: that run measures nothing.
+if (JSON.stringify(exp).includes("Sandbox initialization failed")) {
+  writeJson(join(dir, "..", "private", `invalid-run-${nn}-${session.id}.json`), results);
+  die("The sandbox failed to initialize (the Skill was not loaded). Did you push HEAD? Not scored, not committed.");
+}
 const stats = sessionStats(exp);
 writeJson(join(dir, "results.json"), results);
 writeJson(join(dir, "score.json"), { run, session_id: session.id, agent_commit: agentCommit, ...total, ...stats, duration_s: durationS });
