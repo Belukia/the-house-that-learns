@@ -14,7 +14,7 @@ function tone(f=220,d=.07){if(!sound)return;try{audio||=new(window.AudioContext|
 function refresh(){
  $('night').textContent=`NIGHT ${String(night).padStart(2,'0')}`;
  $('turns').textContent=`${Math.floor(state.time)}s / ${state.tutorial?'∞':'90s'}`;
- $('message').textContent=state.message;$('decoy-count').textContent=`${state.decoys} LEFT · F`;
+ $('message').textContent=state.message;$('decoy-count').textContent=`PRESS F OR TAP · ${state.decoys} LEFT`;
  $('suspicion').style.width=`${state.suspicion}%`;$('suspicion-label').textContent=state.suspicion>=68?'ON YOUR HEELS':state.suspicion?'SUSPICIOUS':'UNAWARE';
  $('suspicion-label').style.color=state.suspicion?'#b95b45':'#36584b';
  $('keeper-name').textContent=memories.length?policy.name:'A creature of habit.';
