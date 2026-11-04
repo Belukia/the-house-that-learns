@@ -1,18 +1,19 @@
 {
   "id": "realtime-5",
-  "title": "Ground floor walk (holdout)",
+  "title": "Ground floor walk with a wardrobe wait",
   "holdout": true,
   "engine": "realtime-platformer-v2",
   "actions": [
     {
-      "frames": 132,
+      "frames": 138,
       "input": {
         "left": false,
         "right": true,
         "sprint": false,
         "jump": false,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
@@ -23,18 +24,56 @@
         "sprint": false,
         "jump": true,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
-      "frames": 148,
+      "frames": 85,
       "input": {
         "left": false,
         "right": true,
         "sprint": false,
         "jump": false,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": false,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": true
+      }
+    },
+    {
+      "frames": 149,
+      "input": {
+        "left": false,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 63,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
       }
     },
     {
@@ -45,29 +84,32 @@
         "sprint": false,
         "jump": true,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
-      "frames": 125,
+      "frames": 119,
       "input": {
         "left": false,
         "right": true,
         "sprint": false,
         "jump": false,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
-      "frames": 82,
+      "frames": 88,
       "input": {
         "left": true,
         "right": false,
         "sprint": false,
         "jump": false,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
@@ -78,51 +120,92 @@
         "sprint": false,
         "jump": true,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
-      "frames": 148,
+      "frames": 5,
       "input": {
         "left": true,
         "right": false,
         "sprint": false,
         "jump": false,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
-      "frames": 1,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": false,
-        "jump": true,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 154,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": false,
-        "jump": false,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 12,
+      "frames": 30,
       "input": {
         "left": true,
         "right": false,
         "sprint": false,
         "jump": false,
         "down": true,
-        "decoy": false
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 113,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 5,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 30,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": true,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 125,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
       }
     }
   ]

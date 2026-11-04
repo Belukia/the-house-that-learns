@@ -49,7 +49,7 @@ git show                            # review it; keep it, or drop it with git re
 npm run run-evals                   # run 2: same tasks, same scorer
 ```
 
-- **Tasks** (`evals/tasks/*.json`): eight fixed thief traces at 60 ticks per second. Tasks marked `"holdout": true` count in the score, but `improve` never shows them to the agent.
+- **Tasks** (`evals/tasks/*.json`): eight fixed thief traces at 60 ticks per second. Tasks marked `"holdout": true` count in the score, but `improve` never shows them to the agent. The four holdout heists (05–08) are different routes from the four development ones, built once by `scripts/make-holdout.mjs` and frozen before run 1.
 - **Scorer** (`evals/score.ts`): the agent's reply must end with a legal defense policy as JSON. Each trace is replayed against it in `dist/engine.mjs`, the same engine the game uses. Score = 100 × the share of heists stopped (caught by contact, or still inside at dawn). `npm run score -- --selftest` checks it.
 - **Skills and sandbox:** `agent/agent.json` uses `"skill_mode": "git"`, so the warden skill is a real TrueForge skill cloned into the sandbox from this public repo, pinned to the commit that runs. Push before each `run-evals`.
 - After run 1, `evals/` does not change again.

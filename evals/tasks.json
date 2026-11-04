@@ -1243,14 +1243,15 @@
     "engine": "realtime-platformer-v2",
     "actions": [
       {
-        "frames": 132,
+        "frames": 138,
         "input": {
           "left": false,
           "right": true,
           "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1261,18 +1262,56 @@
           "sprint": false,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
-        "frames": 148,
+        "frames": 85,
         "input": {
           "left": false,
           "right": true,
           "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false,
+          "hide": true
+        }
+      },
+      {
+        "frames": 149,
+        "input": {
+          "left": false,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false,
+          "hide": false
+        }
+      },
+      {
+        "frames": 63,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1283,29 +1322,32 @@
           "sprint": false,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
-        "frames": 125,
+        "frames": 119,
         "input": {
           "left": false,
           "right": true,
           "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
-        "frames": 82,
+        "frames": 88,
         "input": {
           "left": true,
           "right": false,
           "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1316,51 +1358,92 @@
           "sprint": false,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
-        "frames": 148,
+        "frames": 5,
         "input": {
           "left": true,
           "right": false,
           "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
-        "frames": 1,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": false,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 154,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": false,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 12,
+        "frames": 30,
         "input": {
           "left": true,
           "right": false,
           "sprint": false,
           "jump": false,
           "down": true,
-          "decoy": false
+          "decoy": false,
+          "hide": false
+        }
+      },
+      {
+        "frames": 113,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false,
+          "hide": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false,
+          "hide": false
+        }
+      },
+      {
+        "frames": 5,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false,
+          "hide": false
+        }
+      },
+      {
+        "frames": 30,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": true,
+          "decoy": false,
+          "hide": false
+        }
+      },
+      {
+        "frames": 125,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false,
+          "hide": false
         }
       }
     ]
@@ -1375,10 +1458,11 @@
         "input": {
           "left": false,
           "right": true,
-          "sprint": true,
+          "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1386,10 +1470,11 @@
         "input": {
           "left": false,
           "right": true,
-          "sprint": true,
+          "sprint": false,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1397,10 +1482,11 @@
         "input": {
           "left": false,
           "right": true,
-          "sprint": true,
+          "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1408,32 +1494,11 @@
         "input": {
           "left": false,
           "right": true,
-          "sprint": true,
+          "sprint": false,
           "jump": true,
           "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 24,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1441,10 +1506,11 @@
         "input": {
           "left": false,
           "right": true,
-          "sprint": true,
+          "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1452,142 +1518,23 @@
         "input": {
           "left": false,
           "right": true,
-          "sprint": true,
+          "sprint": false,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
-        "frames": 40,
+        "frames": 333,
         "input": {
           "left": false,
           "right": true,
-          "sprint": true,
+          "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 50,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 23,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 21,
-        "input": {
-          "left": false,
-          "right": false,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1595,10 +1542,11 @@
         "input": {
           "left": true,
           "right": false,
-          "sprint": true,
+          "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1606,10 +1554,11 @@
         "input": {
           "left": true,
           "right": false,
-          "sprint": true,
+          "sprint": false,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1617,10 +1566,11 @@
         "input": {
           "left": true,
           "right": false,
-          "sprint": true,
+          "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1628,21 +1578,23 @@
         "input": {
           "left": true,
           "right": false,
-          "sprint": true,
+          "sprint": false,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
-        "frames": 24,
+        "frames": 113,
         "input": {
           "left": true,
           "right": false,
-          "sprint": true,
+          "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1650,164 +1602,23 @@
         "input": {
           "left": true,
           "right": false,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
+          "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": true,
+          "hide": false
         }
       },
       {
-        "frames": 1,
+        "frames": 246,
         "input": {
           "left": true,
           "right": false,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
+          "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 52,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 7,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": false,
-          "down": true,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": true,
-          "down": true,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 2,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": false,
-          "down": true,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       }
     ]
@@ -1818,14 +1629,15 @@
     "engine": "realtime-platformer-v2",
     "actions": [
       {
-        "frames": 120,
+        "frames": 96,
         "input": {
           "left": false,
           "right": true,
-          "sprint": false,
+          "sprint": true,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1833,21 +1645,23 @@
         "input": {
           "left": false,
           "right": true,
-          "sprint": false,
+          "sprint": true,
           "jump": false,
           "down": false,
-          "decoy": true
+          "decoy": true,
+          "hide": false
         }
       },
       {
-        "frames": 10,
+        "frames": 15,
         "input": {
           "left": false,
           "right": true,
-          "sprint": false,
+          "sprint": true,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1855,21 +1669,23 @@
         "input": {
           "left": false,
           "right": true,
-          "sprint": false,
+          "sprint": true,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
-        "frames": 138,
+        "frames": 121,
         "input": {
           "left": false,
           "right": true,
-          "sprint": false,
+          "sprint": true,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1877,76 +1693,59 @@
         "input": {
           "left": false,
           "right": true,
-          "sprint": false,
-          "jump": false,
-          "down": false,
-          "decoy": true
-        }
-      },
-      {
-        "frames": 9,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": false,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": false,
+          "sprint": true,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
-        "frames": 126,
+        "frames": 13,
         "input": {
           "left": false,
           "right": true,
-          "sprint": false,
+          "sprint": true,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
-        "frames": 81,
+        "frames": 1,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": true,
+          "hide": false
+        }
+      },
+      {
+        "frames": 82,
+        "input": {
+          "left": false,
+          "right": true,
+          "sprint": true,
+          "jump": false,
+          "down": false,
+          "decoy": false,
+          "hide": false
+        }
+      },
+      {
+        "frames": 88,
         "input": {
           "left": true,
           "right": false,
           "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": false,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 148,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": false,
-          "jump": false,
-          "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -1957,29 +1756,92 @@
           "sprint": false,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
-        "frames": 155,
+        "frames": 5,
         "input": {
           "left": true,
           "right": false,
           "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
-        "frames": 12,
+        "frames": 30,
         "input": {
           "left": true,
           "right": false,
           "sprint": false,
           "jump": false,
           "down": true,
-          "decoy": false
+          "decoy": false,
+          "hide": false
+        }
+      },
+      {
+        "frames": 113,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false,
+          "hide": false
+        }
+      },
+      {
+        "frames": 1,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": true,
+          "down": false,
+          "decoy": false,
+          "hide": false
+        }
+      },
+      {
+        "frames": 5,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false,
+          "hide": false
+        }
+      },
+      {
+        "frames": 30,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": true,
+          "decoy": false,
+          "hide": false
+        }
+      },
+      {
+        "frames": 125,
+        "input": {
+          "left": true,
+          "right": false,
+          "sprint": false,
+          "jump": false,
+          "down": false,
+          "decoy": false,
+          "hide": false
         }
       }
     ]
@@ -1997,7 +1859,8 @@
           "sprint": true,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -2008,7 +1871,8 @@
           "sprint": true,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -2019,7 +1883,8 @@
           "sprint": true,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -2030,7 +1895,8 @@
           "sprint": true,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -2041,7 +1907,8 @@
           "sprint": true,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -2052,40 +1919,20 @@
           "sprint": true,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
-        "frames": 35,
+        "frames": 184,
         "input": {
           "left": false,
           "right": true,
           "sprint": true,
           "jump": false,
           "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 21,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -2096,161 +1943,20 @@
           "sprint": true,
           "jump": false,
           "down": false,
-          "decoy": true
+          "decoy": true,
+          "hide": false
         }
       },
       {
-        "frames": 18,
+        "frames": 85,
         "input": {
           "left": false,
           "right": true,
           "sprint": true,
           "jump": false,
           "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 7,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": true
-        }
-      },
-      {
-        "frames": 42,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 23,
-        "input": {
-          "left": false,
-          "right": true,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 21,
-        "input": {
-          "left": false,
-          "right": false,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -2258,10 +1964,11 @@
         "input": {
           "left": true,
           "right": false,
-          "sprint": true,
+          "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -2269,10 +1976,11 @@
         "input": {
           "left": true,
           "right": false,
-          "sprint": true,
+          "sprint": false,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -2280,10 +1988,11 @@
         "input": {
           "left": true,
           "right": false,
-          "sprint": true,
+          "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -2291,21 +2000,23 @@
         "input": {
           "left": true,
           "right": false,
-          "sprint": true,
+          "sprint": false,
           "jump": true,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
-        "frames": 24,
+        "frames": 209,
         "input": {
           "left": true,
           "right": false,
-          "sprint": true,
+          "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       },
       {
@@ -2313,164 +2024,23 @@
         "input": {
           "left": true,
           "right": false,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
+          "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
+          "decoy": true,
+          "hide": false
         }
       },
       {
-        "frames": 1,
+        "frames": 154,
         "input": {
           "left": true,
           "right": false,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
+          "sprint": false,
           "jump": false,
           "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 40,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": true,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 52,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": false,
-          "down": false,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 7,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": false,
-          "down": true,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 1,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": true,
-          "down": true,
-          "decoy": false
-        }
-      },
-      {
-        "frames": 2,
-        "input": {
-          "left": true,
-          "right": false,
-          "sprint": true,
-          "jump": false,
-          "down": true,
-          "decoy": false
+          "decoy": false,
+          "hide": false
         }
       }
     ]

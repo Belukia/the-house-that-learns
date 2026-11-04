@@ -1,6 +1,6 @@
 {
   "id": "realtime-8",
-  "title": "Upper floor sprint with a decoy (holdout)",
+  "title": "Upper floor sprint in, decoys in and out",
   "holdout": true,
   "engine": "realtime-platformer-v2",
   "actions": [
@@ -12,7 +12,8 @@
         "sprint": true,
         "jump": false,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
@@ -23,7 +24,8 @@
         "sprint": true,
         "jump": true,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
@@ -34,7 +36,8 @@
         "sprint": true,
         "jump": false,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
@@ -45,7 +48,8 @@
         "sprint": true,
         "jump": true,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
@@ -56,7 +60,8 @@
         "sprint": true,
         "jump": false,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
@@ -67,40 +72,20 @@
         "sprint": true,
         "jump": true,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
-      "frames": 35,
+      "frames": 184,
       "input": {
         "left": false,
         "right": true,
         "sprint": true,
         "jump": false,
         "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 1,
-      "input": {
-        "left": false,
-        "right": true,
-        "sprint": true,
-        "jump": true,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 21,
-      "input": {
-        "left": false,
-        "right": true,
-        "sprint": true,
-        "jump": false,
-        "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
@@ -111,161 +96,20 @@
         "sprint": true,
         "jump": false,
         "down": false,
-        "decoy": true
+        "decoy": true,
+        "hide": false
       }
     },
     {
-      "frames": 18,
+      "frames": 85,
       "input": {
         "left": false,
         "right": true,
         "sprint": true,
         "jump": false,
         "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 1,
-      "input": {
-        "left": false,
-        "right": true,
-        "sprint": true,
-        "jump": true,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 40,
-      "input": {
-        "left": false,
-        "right": true,
-        "sprint": true,
-        "jump": false,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 1,
-      "input": {
-        "left": false,
-        "right": true,
-        "sprint": true,
-        "jump": true,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 40,
-      "input": {
-        "left": false,
-        "right": true,
-        "sprint": true,
-        "jump": false,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 1,
-      "input": {
-        "left": false,
-        "right": true,
-        "sprint": true,
-        "jump": true,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 40,
-      "input": {
-        "left": false,
-        "right": true,
-        "sprint": true,
-        "jump": false,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 1,
-      "input": {
-        "left": false,
-        "right": true,
-        "sprint": true,
-        "jump": true,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 7,
-      "input": {
-        "left": false,
-        "right": true,
-        "sprint": true,
-        "jump": false,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 1,
-      "input": {
-        "left": false,
-        "right": true,
-        "sprint": true,
-        "jump": false,
-        "down": false,
-        "decoy": true
-      }
-    },
-    {
-      "frames": 42,
-      "input": {
-        "left": false,
-        "right": true,
-        "sprint": true,
-        "jump": false,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 1,
-      "input": {
-        "left": false,
-        "right": true,
-        "sprint": true,
-        "jump": true,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 23,
-      "input": {
-        "left": false,
-        "right": true,
-        "sprint": true,
-        "jump": false,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 21,
-      "input": {
-        "left": false,
-        "right": false,
-        "sprint": true,
-        "jump": false,
-        "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
@@ -273,10 +117,11 @@
       "input": {
         "left": true,
         "right": false,
-        "sprint": true,
+        "sprint": false,
         "jump": false,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
@@ -284,10 +129,11 @@
       "input": {
         "left": true,
         "right": false,
-        "sprint": true,
+        "sprint": false,
         "jump": true,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
@@ -295,10 +141,11 @@
       "input": {
         "left": true,
         "right": false,
-        "sprint": true,
+        "sprint": false,
         "jump": false,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
@@ -306,21 +153,23 @@
       "input": {
         "left": true,
         "right": false,
-        "sprint": true,
+        "sprint": false,
         "jump": true,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
-      "frames": 24,
+      "frames": 209,
       "input": {
         "left": true,
         "right": false,
-        "sprint": true,
+        "sprint": false,
         "jump": false,
         "down": false,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     },
     {
@@ -328,164 +177,23 @@
       "input": {
         "left": true,
         "right": false,
-        "sprint": true,
-        "jump": true,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 40,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": true,
+        "sprint": false,
         "jump": false,
         "down": false,
-        "decoy": false
+        "decoy": true,
+        "hide": false
       }
     },
     {
-      "frames": 1,
+      "frames": 154,
       "input": {
         "left": true,
         "right": false,
-        "sprint": true,
-        "jump": true,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 40,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": true,
+        "sprint": false,
         "jump": false,
         "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 1,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": true,
-        "jump": true,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 40,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": true,
-        "jump": false,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 1,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": true,
-        "jump": true,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 40,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": true,
-        "jump": false,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 1,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": true,
-        "jump": true,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 40,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": true,
-        "jump": false,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 1,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": true,
-        "jump": true,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 52,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": true,
-        "jump": false,
-        "down": false,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 7,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": true,
-        "jump": false,
-        "down": true,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 1,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": true,
-        "jump": true,
-        "down": true,
-        "decoy": false
-      }
-    },
-    {
-      "frames": 2,
-      "input": {
-        "left": true,
-        "right": false,
-        "sprint": true,
-        "jump": false,
-        "down": true,
-        "decoy": false
+        "decoy": false,
+        "hide": false
       }
     }
   ]
