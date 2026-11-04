@@ -1,7 +1,7 @@
 import {WIDTH,GROUND,PLATFORMS,BLOCKS,HIDING,RELIC} from './engine.mjs';
 const buffer=typeof document==='undefined'?null:document.createElement('canvas');if(buffer){buffer.width=480;buffer.height=288;}
 let camera=0;
-export function draw(canvas,s,{time=0,started=false,replay=null}={}){
+export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null}={}){
  const c=buffer.getContext('2d');c.imageSmoothingEnabled=false;
  camera=Math.max(0,Math.min(WIDTH-480,Math.round(s.player.x-180)));
  const rect=(x,y,w,h,col)=>{c.fillStyle=col;c.fillRect(Math.round(x-camera),Math.round(y-48),w,h);};
@@ -47,6 +47,8 @@ export function draw(canvas,s,{time=0,started=false,replay=null}={}){
   if(!guard&&s.hasRelic)rect(x-4,y+9,4,5,'#65d7b2');
  };
  if(!s.tutorial&&!s.hidden&&Math.abs(s.guard.x-s.player.x)<160){rect(s.guard.x-3,s.guard.y-13,15,1,'#d17a65');rect(s.guard.x+3,s.guard.y-21,3,6,'#f5ba81');rect(s.guard.x+3,s.guard.y-13,3,2,'#f5ba81');}
+ // Your last heist, as the keeper remembers it.
+ if(ghost?.length){for(const p of ghost)rect(p.x+3,p.y+10,3,3,'rgba(238,125,88,.75)');}
  if(replay?.length){for(const p of replay)rect(p.x+4,p.y+20,2,2,'#e8d4a0');}
  sprite(s.guard,true);sprite(s.player);
  const label=(str,x,y,color='#e3d6af')=>{c.font='7px monospace';c.fillStyle=color;c.fillText(str,Math.round(x-camera),y-48);};

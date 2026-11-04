@@ -19,7 +19,7 @@ Field Notes exports the actual heist trace and resets local memory. No account, 
 
 ## Two learning modes — keep the evidence separate
 
-- **Playable local adaptation:** explicit, deterministic game rules update the guard's policy after each heist. This is a working game mechanic, **not a TrueForge model-learning result**.
+- **Playable local adaptation:** after each heist the in-browser keeper reads what you did and learns **one** habit of yours (your route, your wardrobe, your decoys, your exit), says it in plain words, and acts on it next night. Your last heist is drawn on the board as he remembers it. These are explicit, deterministic game rules (`learnLocal` in `dist/engine.mjs`): a working game mechanic, **not a TrueForge model-learning result**. Habits are ignored by the scorer, so the TrueForge runs are unaffected (`runs/private/rescore.ts`-style checks re-score every saved run identically).
 - **TrueForge candidate learning:** the local bridge loads a registered git-backed warden skill with sandbox support, opens a real TrueForge session, and requests an agent-authored skill/policy rewrite. Candidate files and raw stream events are saved locally. A subsequent fixed evaluation establishes whether the candidate is actually better. Results: see "Run 1 vs run N" below.
 
 Install the official SDK and runtime for the second mode:
