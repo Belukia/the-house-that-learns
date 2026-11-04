@@ -75,7 +75,7 @@ The private Sites preview is separate from this public source repository. Deploy
 
 ## Credits
 
-Built by Tamara Rienzi with AI-assisted coding. Original code-drawn artwork; no downloaded image assets. Google Fonts serves DM Sans and Playfair Display, with system fallbacks. TrueForge SDK: TrueFoundry, under its upstream license. No real tester or user results are claimed.
+Built by Tamara Rienzi with AI-assisted coding. Original code-drawn artwork; no downloaded image assets. Google Fonts serves DM Sans and Playfair Display, with system fallbacks. TrueForge SDK: TrueFoundry, under its upstream license. THE HOUSE's voice (dist/voice/, 24 lines) was generated with ElevenLabs text-to-speech, voice "James - English Butler" from the ElevenLabs voice library, under ElevenLabs' terms; it plays only after SOUND ON, and subtitles stay on screen. No real tester or user results are claimed.
 
 ## Runtime and current proof status
 
