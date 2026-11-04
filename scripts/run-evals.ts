@@ -71,6 +71,13 @@ for (const task of tasks) {
 const durationS = Math.round((Date.now() - started) / 1000);
 const total = scoreRun(results);
 
+// A turn that failed (model error, timeout) never produced a decision: the run has no score.
+const failed = results.filter((r) => r.status !== "done");
+if (failed.length) {
+  writeJson(join(dir, "..", "private", `invalid-run-${nn}-${session.id}.json`), results);
+  die(`${failed.length}/${results.length} turns failed (first: ${failed[0].error ?? failed[0].status}). Not scored, not committed.`);
+}
+
 // 5. Save the run.
 const exp = await exportSession(tf, session.id);
 const stats = sessionStats(exp);
