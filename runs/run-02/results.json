@@ -1,0 +1,406 @@
+[
+  {
+    "task_id": "realtime-1",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, full-floor sweep",
+      "decoySkepticism": 1,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 55,
+          "y": 18
+        },
+        {
+          "x": 42,
+          "y": 18
+        },
+        {
+          "x": 28,
+          "y": 18
+        },
+        {
+          "x": 12,
+          "y": 18
+        },
+        {
+          "x": 5,
+          "y": 18
+        },
+        {
+          "x": 18,
+          "y": 18
+        },
+        {
+          "x": 34,
+          "y": 18
+        },
+        {
+          "x": 48,
+          "y": 18
+        }
+      ],
+      "lesson": "I guard the emerald, ignore far-off noise, and sweep the floor back to the entrance."
+    },
+    "outcome": "caught",
+    "ticks": 321,
+    "relic_stolen": false,
+    "turn_id": "01m6j0c6h0wee140cg7wh9yd1q",
+    "status": "done",
+    "reply": "I couldn't load the blackthorn-warden skill. The sandbox failed to start with a skill-downloader error, so this policy uses general defensive principles only.\n\n- **Relic guard:** I'm guarding the relic before the theft, since every route has to end at the emerald.\n- **Patrol:** The patrol sweeps the whole ground floor, including the entrance, which the thief has to come back through.\n- **Distractions:** The keeper investigates only nearby sounds, so far-off decoys can't pull it away.\n\n```json\n{\n  \"name\": \"Vault warden, full-floor sweep\",\n  \"decoySkepticism\": 1,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 55, \"y\": 18 },\n    { \"x\": 42, \"y\": 18 },\n    { \"x\": 28, \"y\": 18 },\n    { \"x\": 12, \"y\": 18 },\n    { \"x\": 5, \"y\": 18 },\n    { \"x\": 18, \"y\": 18 },\n    { \"x\": 34, \"y\": 18 },\n    { \"x\": 48, \"y\": 18 }\n  ],\n  \"lesson\": \"I guard the emerald, ignore far-off noise, and sweep the floor back to the entrance.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-2",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "The sweeping keeper",
+      "decoySkepticism": 1,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 8,
+          "y": 18
+        },
+        {
+          "x": 22,
+          "y": 18
+        },
+        {
+          "x": 38,
+          "y": 18
+        },
+        {
+          "x": 56,
+          "y": 18
+        },
+        {
+          "x": 38,
+          "y": 18
+        },
+        {
+          "x": 22,
+          "y": 18
+        }
+      ],
+      "lesson": "I'll sweep the whole floor and watch the entrance, and I won't chase distant noises."
+    },
+    "outcome": "escaped",
+    "ticks": 688,
+    "relic_stolen": true,
+    "turn_id": "01m6j0cmx2vmxpmzhdjnpkcnt0",
+    "status": "done",
+    "reply": "I couldn't load the blackthorn-warden skill. The sandbox failed to start with a skill-downloader error, and I retried once. This policy therefore uses general defensive reasoning and nothing from the skill.\n\n- **Sweep:** the patrol covers the whole ground floor, from near the entrance to near the emerald. The thief has to come back through the entrance, so I weighted that end.\n- **Skepticism 1:** the keeper only checks nearby sounds, so a decoy thrown far away can't pull it off its route.\n- **No relic hold:** with `protectRelic` false the keeper keeps moving. Standing guard at the vault would be a static, unfair defense.\n\n```json\n{\n  \"name\": \"The sweeping keeper\",\n  \"decoySkepticism\": 1,\n  \"protectRelic\": false,\n  \"patrol\": [\n    { \"x\": 8, \"y\": 18 },\n    { \"x\": 22, \"y\": 18 },\n    { \"x\": 38, \"y\": 18 },\n    { \"x\": 56, \"y\": 18 },\n    { \"x\": 38, \"y\": 18 },\n    { \"x\": 22, \"y\": 18 }\n  ],\n  \"lesson\": \"I'll sweep the whole floor and watch the entrance, and I won't chase distant noises.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-3",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Steadfast vault warden",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 56,
+          "y": 18
+        },
+        {
+          "x": 44,
+          "y": 18
+        },
+        {
+          "x": 30,
+          "y": 18
+        },
+        {
+          "x": 16,
+          "y": 18
+        },
+        {
+          "x": 5,
+          "y": 18
+        },
+        {
+          "x": 16,
+          "y": 18
+        },
+        {
+          "x": 30,
+          "y": 18
+        },
+        {
+          "x": 44,
+          "y": 18
+        }
+      ],
+      "lesson": "I stopped chasing noise. I guard the vault and sweep the whole floor to cut off the thief's retreat."
+    },
+    "outcome": "caught",
+    "ticks": 319,
+    "relic_stolen": false,
+    "turn_id": "01m6j0d5da2k3f66kefvf3xp8a",
+    "status": "done",
+    "reply": "I couldn't load the blackthorn-warden skill. The sandbox failed to start with a skill-downloader error, so this policy comes from general defensive principles. I haven't checked it against any trace or evaluation.\n\n- **Sound handling:** I'm ignoring distractions, because decoys are the cheapest way to pull the keeper off post.\n- **Vault guard:** The keeper holds near the vault before the theft, because every route has to end at the emerald.\n- **Patrol:** The patrol covers the whole ground floor, from the entrance to the vault. That lets the keeper intercept a thief running back after the theft, and it covers the vault approach.\n\n```json\n{\n  \"name\": \"Steadfast vault warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 56, \"y\": 18 },\n    { \"x\": 44, \"y\": 18 },\n    { \"x\": 30, \"y\": 18 },\n    { \"x\": 16, \"y\": 18 },\n    { \"x\": 5, \"y\": 18 },\n    { \"x\": 16, \"y\": 18 },\n    { \"x\": 30, \"y\": 18 },\n    { \"x\": 44, \"y\": 18 }\n  ],\n  \"lesson\": \"I stopped chasing noise. I guard the vault and sweep the whole floor to cut off the thief's retreat.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-4",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, full sweep",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 56,
+          "y": 18
+        },
+        {
+          "x": 44,
+          "y": 18
+        },
+        {
+          "x": 30,
+          "y": 18
+        },
+        {
+          "x": 16,
+          "y": 18
+        },
+        {
+          "x": 5,
+          "y": 18
+        },
+        {
+          "x": 16,
+          "y": 18
+        },
+        {
+          "x": 30,
+          "y": 18
+        },
+        {
+          "x": 44,
+          "y": 18
+        }
+      ],
+      "lesson": "I guard the vault, ignore noisy tricks, and sweep the whole floor to cut off the exit."
+    },
+    "outcome": "escaped",
+    "ticks": 688,
+    "relic_stolen": true,
+    "turn_id": "01m6j0dq6w42481yn7ea4wgb8w",
+    "status": "done",
+    "reply": "I couldn't load the blackthorn-warden skill. The sandbox failed to start with a Python error, and I retried once with the same result. This policy therefore comes from general defensive reasoning, not from the skill's tactics.\n\nThe thief has to cross the ground floor to reach the emerald and cross it again to escape. So I hold the keeper near the vault until the theft. After the theft, the patrol sweeps the full width of the floor toward the entrance. Skepticism 2 stops decoys from pulling the keeper off its post.\n\n```json\n{\n  \"name\": \"Vault warden, full sweep\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 56, \"y\": 18 },\n    { \"x\": 44, \"y\": 18 },\n    { \"x\": 30, \"y\": 18 },\n    { \"x\": 16, \"y\": 18 },\n    { \"x\": 5, \"y\": 18 },\n    { \"x\": 16, \"y\": 18 },\n    { \"x\": 30, \"y\": 18 },\n    { \"x\": 44, \"y\": 18 }\n  ],\n  \"lesson\": \"I guard the vault, ignore noisy tricks, and sweep the whole floor to cut off the exit.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-5",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, entrance sweep",
+      "decoySkepticism": 1,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 56,
+          "y": 18
+        },
+        {
+          "x": 42,
+          "y": 18
+        },
+        {
+          "x": 26,
+          "y": 18
+        },
+        {
+          "x": 12,
+          "y": 18
+        },
+        {
+          "x": 4,
+          "y": 18
+        },
+        {
+          "x": 20,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        }
+      ],
+      "lesson": "I guard the emerald, ignore far-off noise, and sweep the floor toward the entrance to cut off the escape."
+    },
+    "outcome": "caught",
+    "ticks": 509,
+    "relic_stolen": false,
+    "turn_id": "01m6j0e8ppe5k470k3tqkektnp",
+    "status": "done",
+    "reply": "I couldn't load the blackthorn-warden skill. The sandbox failed to start with a `skill_downloader.py` error, and I got the same error on a retry. This policy therefore uses only general defensive reasoning and no skill guidance.\n\n- **Guard the relic:** The thief has to reach the emerald, so holding near the vault before the theft covers the one spot they can't avoid.\n- **Skepticism 1:** The keeper ignores far-off decoy sounds, so a thrown decoy can't pull it away from the vault. It still reacts to nearby noise.\n- **Patrol:** After the theft, the keeper sweeps the whole floor and ends with a pass at the entrance, which is the thief's only way out.\n\n```json\n{\n  \"name\": \"Vault warden, entrance sweep\",\n  \"decoySkepticism\": 1,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 56, \"y\": 18 },\n    { \"x\": 42, \"y\": 18 },\n    { \"x\": 26, \"y\": 18 },\n    { \"x\": 12, \"y\": 18 },\n    { \"x\": 4, \"y\": 18 },\n    { \"x\": 20, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 }\n  ],\n  \"lesson\": \"I guard the emerald, ignore far-off noise, and sweep the floor toward the entrance to cut off the escape.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-6",
+    "holdout": true,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden with full-floor sweep",
+      "decoySkepticism": 1,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 56,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 6,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        }
+      ],
+      "lesson": "I guard the vault until the gem is touched, then sweep the whole floor and ignore distant noise."
+    },
+    "outcome": "escaped",
+    "ticks": 805,
+    "relic_stolen": true,
+    "turn_id": "01m6j0ete8asrew6xgwsfsq4dn",
+    "status": "done",
+    "reply": "I couldn't load the blackthorn-warden skill. The sandbox failed to start with a Python error, and it failed again on a retry. This policy therefore uses general defensive reasoning, not the skill's tactics.\n\nThe policy holds the relic first. Once the emerald is taken, the keeper sweeps the whole floor, so a thief running for the entrance has to pass it. Skepticism 1 means the keeper only answers nearby sounds, so far-off decoys can't pull it away from the vault or the exit.\n\n```json\n{\n  \"name\": \"Vault warden with full-floor sweep\",\n  \"decoySkepticism\": 1,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 56, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 6, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 }\n  ],\n  \"lesson\": \"I guard the vault until the gem is touched, then sweep the whole floor and ignore distant noise.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-7",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault-to-door sweeping keeper",
+      "decoySkepticism": 1,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 56,
+          "y": 18
+        },
+        {
+          "x": 44,
+          "y": 18
+        },
+        {
+          "x": 30,
+          "y": 18
+        },
+        {
+          "x": 16,
+          "y": 18
+        },
+        {
+          "x": 6,
+          "y": 18
+        },
+        {
+          "x": 18,
+          "y": 18
+        },
+        {
+          "x": 32,
+          "y": 18
+        },
+        {
+          "x": 46,
+          "y": 18
+        }
+      ],
+      "lesson": "I guard the emerald first, then sweep the whole floor to the door. I'll only chase sounds close by."
+    },
+    "outcome": "caught",
+    "ticks": 205,
+    "relic_stolen": false,
+    "turn_id": "01m6j0faskap39423k6xqsrn6c",
+    "status": "done",
+    "reply": "I couldn't load the blackthorn-warden skill. The sandbox failed to start with a skill-downloader error, so this policy comes from general defensive principles and not from the skill's guidance.\n\n- **Vault guard:** The keeper holds near the emerald before the theft, because every thief has to come to that spot.\n- **Full-floor sweep:** After the theft, the patrol sweeps the whole floor between the vault and the entrance. The thief must pass back along that route, and the ground floor is the only way out.\n- **Skepticism 1:** The keeper investigates only nearby sounds, so a far-off decoy can't pull it away from the vault or the exit.\n\n```json\n{\n  \"name\": \"Vault-to-door sweeping keeper\",\n  \"decoySkepticism\": 1,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 56, \"y\": 18 },\n    { \"x\": 44, \"y\": 18 },\n    { \"x\": 30, \"y\": 18 },\n    { \"x\": 16, \"y\": 18 },\n    { \"x\": 6, \"y\": 18 },\n    { \"x\": 18, \"y\": 18 },\n    { \"x\": 32, \"y\": 18 },\n    { \"x\": 46, \"y\": 18 }\n  ],\n  \"lesson\": \"I guard the emerald first, then sweep the whole floor to the door. I'll only chase sounds close by.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-8",
+    "holdout": true,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, entrance sweep",
+      "decoySkepticism": 1,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 52,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        },
+        {
+          "x": 26,
+          "y": 18
+        },
+        {
+          "x": 12,
+          "y": 18
+        },
+        {
+          "x": 5,
+          "y": 18
+        },
+        {
+          "x": 18,
+          "y": 18
+        },
+        {
+          "x": 33,
+          "y": 18
+        },
+        {
+          "x": 47,
+          "y": 18
+        }
+      ],
+      "lesson": "I guard the vault first, ignore far-off noise, then sweep the whole floor to cut off the escape."
+    },
+    "outcome": "escaped",
+    "ticks": 735,
+    "relic_stolen": true,
+    "turn_id": "01m6j0fz3vy1a3f00vj88mhzq7",
+    "status": "done",
+    "reply": "I couldn't load the blackthorn-warden skill. The sandbox failed to start with a `TypeError` in its skill downloader. This policy comes from the brief alone, not from the skill's tactics.\n\n- **Relic guard:** `protectRelic` is on, so I hold near the vault until the emerald is taken. The thief has to come to me.\n- **Patrol after the theft:** the route sweeps from the entrance to the middle of the map and back, so I can cover the escape.\n- **Distractions:** skepticism 1 means I only investigate nearby sounds, so far-off decoys won't pull me away from the vault or the exit.\n\n```json\n{\n  \"name\": \"Vault warden, entrance sweep\",\n  \"decoySkepticism\": 1,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 52, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 },\n    { \"x\": 26, \"y\": 18 },\n    { \"x\": 12, \"y\": 18 },\n    { \"x\": 5, \"y\": 18 },\n    { \"x\": 18, \"y\": 18 },\n    { \"x\": 33, \"y\": 18 },\n    { \"x\": 47, \"y\": 18 }\n  ],\n  \"lesson\": \"I guard the vault first, ignore far-off noise, then sweep the whole floor to cut off the escape.\"\n}\n```"
+  }
+]
