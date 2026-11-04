@@ -33,7 +33,7 @@ export function sight(a,b,radius=160){return Math.hypot(a.x-b.x,a.y-b.y)<radius&
 export const EXAM_RULES=Object.freeze({limit:90,speed:1,vision:160,decoys:3,door:false});
 // From night 2 he hunts: he chases what he sees, remembers where he last saw you, and takes the stairs.
 export const NIGHTS=Object.freeze({2:{limit:55,speed:1,vision:170,decoys:3,door:false,chase:true},3:{limit:50,speed:1.1,vision:200,decoys:2,door:false,chase:true},4:{limit:45,speed:1.2,vision:230,decoys:1,door:false,chase:true},5:{limit:40,speed:1.3,vision:260,decoys:0,door:false,chase:true}});
-export const upstairs=a=>a.y+a.h<=180, downstairs=a=>a.y+a.h>=300;
+export const upstairs=a=>a.y+a.h<=180, UPPER_AMBUSH=704, downstairs=a=>a.y+a.h>=300;
 // Seeing across floors is harder: the height difference counts against his range. Crates still block him on the ground.
 const huntSight=(g,p,r)=>Math.hypot(g.x-p.x,(g.y-p.y)*1.5)<r&&(upstairs(g)!==upstairs(p)||sight(g,p,r));
 // One-way ledges: he climbs the stairs at either end by jumping, and drops through the floor to come down.
@@ -90,9 +90,10 @@ export function step(s,input={}){
    else if(s.policy.protectRelic&&!s.hasRelic)target={x:900};
    else if(H&&(H.waitAt!=null||H.wardrobe!=null||H.door)){
     // Wait where this player was last time; check their wardrobe on the way. Two seconds at each stop.
-    const stops=[...(H.waitAt!=null?[H.waitAt*16]:[]),...(H.wardrobe!=null?[HIDING[H.wardrobe].x]:[]),...(H.door?[80]:[])];
-    target={x:stops[s.patrolIndex%stops.length]};
-    if(Math.abs(s.guard.x-target.x)<6&&++s.dwell>=(stops.length>1?120:1e9)){s.dwell=0;s.patrolIndex++;}
+    // A hunter who saw you take the upper floor waits for you up there.
+    const stops=[...(H.waitAt!=null?[R.chase&&H.waitAt===52?{x:UPPER_AMBUSH,up:true}:{x:H.waitAt*16,up:false}]:[]),...(H.wardrobe!=null?[{x:HIDING[H.wardrobe].x,up:false}]:[]),...(H.door?[{x:80,up:false}]:[])];
+    target=stops[s.patrolIndex%stops.length];
+    if(Math.abs(s.guard.x-target.x)<6&&(!R.chase||upstairs(s.guard)===target.up)&&++s.dwell>=(stops.length>1?120:1e9)){s.dwell=0;s.patrolIndex++;}
    }
    else if(R.chase){
     // His rounds take in the upper floor too.
@@ -146,7 +147,7 @@ export function replayEpisode(policy,ep){
 const PLACES=x=>x<400?'by the crates':x<700?'in the long hall':'by the vault';
 const WARDROBES=['the first wardrobe','the middle wardrobe','the wardrobe by the vault'];
 // Short labels for the briefing before each night.
-export function knownLabels(h,p){if(!h)return [];return [h.waitAt!=null&&(h.waitAt===52?'HE WAITS AT THE FOOT OF THE VAULT STAIRS':`HE WAITS ${PLACES(h.waitAt*16).toUpperCase()}`),h.wardrobe!=null&&`HE OPENS ${WARDROBES[h.wardrobe].toUpperCase()}`,p.decoySkepticism===1&&'HE ONLY CHECKS DECOYS NEARBY',p.decoySkepticism===2&&'HE IGNORES DECOYS',h.exit&&'HE RUNS FOR THE DOOR WHEN THE EMERALD MOVES',h.door&&'HE CHECKS THE DOOR'].filter(Boolean);}
+export function knownLabels(h,p){if(!h)return [];return [h.waitAt!=null&&(h.waitAt===52?'HE WAITS FOR YOU UPSTAIRS':`HE WAITS ${PLACES(h.waitAt*16).toUpperCase()}`),h.wardrobe!=null&&`HE OPENS ${WARDROBES[h.wardrobe].toUpperCase()}`,p.decoySkepticism===1&&'HE ONLY CHECKS DECOYS NEARBY',p.decoySkepticism===2&&'HE IGNORES DECOYS',h.exit&&'HE RUNS FOR THE DOOR WHEN THE EMERALD MOVES',h.door&&'HE CHECKS THE DOOR'].filter(Boolean);}
 export function readHeist(s){
  const way=s.history.filter(h=>!h.hasRelic);
  const upper=way.some(h=>h.player.y<170&&h.player.x>260&&h.player.x<780);
@@ -168,7 +169,7 @@ export function learnLocal(policy,s){
  const sameRoute=h.waitAt!=null&&(r.upper?h.waitAt===52:h.waitAt!==52&&PLACES(h.waitAt*16)===PLACES((routeAt??0)*16));
  if(routeAt!=null&&!sameRoute){
   const was=h.waitAt;h.waitAt=routeAt;
-  note('route',r.upper?(was==null?'You took the upper floor. It comes down by the vault. I will wait at the bottom.':'Upstairs now? It still comes down by the vault. I will wait at the bottom.'):r.linger!=null?`You took your time ${PLACES(routeAt*16)}. I will be waiting there.`:'You ran straight along the ground floor. I will meet you halfway.');}
+  note('route',r.upper?(was==null?'You took the upper floor. Tonight I will be waiting up there.':'Upstairs again? I will be waiting up there.'):r.linger!=null?`You took your time ${PLACES(routeAt*16)}. I will be waiting there.`:'You ran straight along the ground floor. I will meet you halfway.');}
  else if(r.hide!=null&&h.wardrobe!==r.hide){h.wardrobe=r.hide;note('wardrobe',`You hid in ${WARDROBES[r.hide]}. I will be opening it.`);}
  else if(r.decoys&&p.decoySkepticism<2){p.decoySkepticism++;note('decoys',p.decoySkepticism===1?'You threw glass to move me. Now I only check it if it is close.':'Broken glass again? I am not coming.');}
  else if(r.stole&&!h.exit){h.exit=true;note('exit','Everyone leaves through the front door. The moment the emerald moves, so do I.');}

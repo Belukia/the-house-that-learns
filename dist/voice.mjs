@@ -32,6 +32,8 @@ export const VOICE_LINES={
  'Hiding while he watches. Bold. Let us see if it works.':'30-hide-hunted.mp3',
  'Close enough to smell his lantern.':'31-close.mp3',
  'Last night. He remembers everything you taught him.':'32-open-night5.mp3',
+ 'You took the upper floor. Tonight I will be waiting up there.':'51-learn-upper-wait-up.mp3',
+ 'Upstairs again? I will be waiting up there.':'52-learn-upper-again-up.mp3',
  'You took the upper floor. It comes down by the vault. I will wait at the bottom.':'33-learn-upper.mp3',
  'Upstairs now? It still comes down by the vault. I will wait at the bottom.':'34-learn-upper-again.mp3',
  'You took your time by the crates. I will be waiting there.':'35-learn-linger-crates.mp3',
