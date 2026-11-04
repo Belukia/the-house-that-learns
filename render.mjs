@@ -51,7 +51,8 @@ export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null,brief
  const H=s.policy.habits;
  if(!s.tutorial&&H){
   const mark=(x,str)=>{rect(x-4,296,9,2,'#e8604c');rect(x-1,289,3,9,'#e8604c');c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.textAlign='center';c.fillText(str,Math.round(x-camera),229);c.textAlign='left';};
-  if(H.waitAt!=null)mark(H.waitAt*16+5,'HE WAITS HERE');
+  if(H.waitAt===52&&s.rules.chase){const x=704;rect(x-4,168,9,2,'#e8604c');rect(x-1,161,3,9,'#e8604c');c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.textAlign='center';c.fillText('HE WAITS UP HERE',Math.round(x-camera),104);c.textAlign='left';}
+  else if(H.waitAt!=null)mark(H.waitAt*16+5,'HE WAITS HERE');
   if(H.wardrobe!=null){const w=HIDING[H.wardrobe];rect(w.x-9,w.y-37,27,2,'#e8604c');c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.fillText('HE OPENS IT',Math.round(w.x-14-camera),w.y-108);}
   if(H.door||s.rules.door){c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.fillText('HE GUARDS',Math.round(24-camera),184);c.fillText('THE DOOR',Math.round(26-camera),193);}
  }
