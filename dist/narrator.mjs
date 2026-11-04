@@ -1,12 +1,26 @@
+import {upstairs} from './engine.mjs';
 // Original reactive dialogue. No model calls or borrowed game dialogue.
-export function opening(courtesy,night){
+export function opening(courtesy,night,lesson){
  if(courtesy)return 'The emerald is glowing. Security is decorative. I believe in you. Within reason.';
+ // From night 2 the house opens with what the keeper learned last time.
+ if(lesson)return lesson;
+ if(night>=5)return 'Last night. He remembers everything you taught him.';
  return ['Same house. Same rules. One of us did the homework.','Back again? Wonderful. I was beginning to miss your questionable judgment.','You have mistaken persistence for a plan. A popular mistake.'][Math.min(2,Math.max(0,night-2))];
 }
 export function commentary({state,before,action,night,used}){
  const once=(key,line)=>{if(used.has(key))return null;used.add(key);return line;};
  const sharp=night>=3;
  if(state.hasRelic&&!before.hasRelic)return once('relic',state.tutorial?'You found the enormous glowing object. A triumph for the education system.':sharp?'Keep it moving. The emerald is not a personality.':'Lovely. You have the emerald. Now comes the small matter of leaving.');
+ // Reactions to the chase: what you choose, and what he does about it.
+ if(state.rules?.chase&&!state.tutorial){
+  const near=Math.abs(state.guard.x-state.player.x)<34&&Math.abs(state.guard.y-state.player.y)<30;
+  if(action.sprint&&state.sees)return once('sprint','Running indoors. In this house. Unbelievable.');
+  if(state.sees&&before.playerUp===false&&upstairs(state.player))return once('climb','The stairs. Yes. He has legs as well.');
+  if(state.sees&&!before.guardUp&&upstairs(state.guard))return once('follow','He is coming up. Cardio was never in his contract.');
+  if(before.sees&&!state.sees&&!state.hidden)return once('lost','You lost him. He has not lost interest.');
+  if(state.hidden&&!before.hidden&&state.lastSeen?.ttl>0)return once('hide-hunted','Hiding while he watches. Bold. Let us see if it works.');
+  if(near&&!state.hidden)return once('close','Close enough to smell his lantern.');
+ }
  if(state.suspicion>before.suspicion&&before.suspicion===0)return once('seen',sharp?'He can see you. I appreciate that this complicates your invisibility strategy.':'A bold interpretation of the word stealth.');
  if(action.decoy&&state.turn>before.turn)return once('decoy-'+state.decoys,state.policy.decoySkepticism?'Broken glass. Again. Shall I notify the keeper, or has he already made his feelings clear?':'A distraction. How delightfully analog of you.');
  if(action.hide&&state.hidden)return once('hide',sharp?'Excellent. Become furniture. It has been your most convincing role so far.':'A wardrobe. At last, a strategy with doors.');

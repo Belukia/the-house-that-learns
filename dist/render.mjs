@@ -1,7 +1,7 @@
 import {WIDTH,GROUND,PLATFORMS,BLOCKS,HIDING,RELIC} from './engine.mjs';
 const buffer=typeof document==='undefined'?null:document.createElement('canvas');if(buffer){buffer.width=480;buffer.height=288;}
 let camera=0;
-export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null}={}){
+export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null,briefing=null}={}){
  const c=buffer.getContext('2d');c.imageSmoothingEnabled=false;
  camera=Math.max(0,Math.min(WIDTH-480,Math.round(s.player.x-180)));
  const rect=(x,y,w,h,col)=>{c.fillStyle=col;c.fillRect(Math.round(x-camera),Math.round(y-48),w,h);};
@@ -64,6 +64,9 @@ export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null}={}){
  label('EXIT',30,253,'#8bddb5');label('HIDE',150,260,'#a9bbd8');label('VAULT',929,254,'#d9bd80');
  c.fillStyle='#101622';c.fillRect(0,0,480,16);c.font='7px monospace';c.fillStyle='#b1b9bd';c.fillText(s.tutorial?'THE KEEPER IS ASLEEP. TAKE THE EMERALD.':'A / D RUN   SPACE JUMP   H HIDE   F DECOY',10,11);
  if(s.status==='caught'){c.fillStyle='rgba(10,8,14,.55)';c.fillRect(0,0,480,288);c.fillStyle='rgba(122,24,32,.92)';c.fillRect(0,112,480,50);c.textAlign='center';c.font='bold 30px Georgia,serif';c.fillStyle='#f4e7c8';c.fillText(s.time>=s.rules.limit?'DAWN. CAUGHT.':'CAUGHT.',240,146);c.font='7px monospace';c.fillStyle='#f0b9a6';c.fillText(s.time>=s.rules.limit?'THE HOUSE SEALED ITS DOORS':'THE KEEPER HAS YOUR NUMBER',240,158);c.textAlign='left';}
+ if(briefing){c.fillStyle='rgba(10,8,14,.78)';c.fillRect(0,16,480,272);c.textAlign='center';c.font='bold 22px Georgia,serif';c.fillStyle='#f4e7c8';c.fillText(`NIGHT ${briefing.night}`,240,70);
+  c.font='7px monospace';c.fillStyle='#d9bd80';c.fillText('TONIGHT HE KNOWS',240,92);c.fillStyle='#ff8a70';c.font='bold 8px monospace';briefing.lines.forEach((l,i)=>c.fillText(l,240,116+i*16));
+  c.font='7px monospace';c.fillStyle='#b1b9bd';c.fillText('GET READY…',240,248);c.textAlign='left';}
  const out=canvas.getContext('2d');out.imageSmoothingEnabled=false;out.clearRect(0,0,canvas.width,canvas.height);out.drawImage(buffer,0,0,canvas.width,canvas.height);
 }
 export function tileAt(canvas,e){const r=canvas.getBoundingClientRect();return {x:Math.floor(((e.clientX-r.left)/r.width*480+camera)/16),y:18};}

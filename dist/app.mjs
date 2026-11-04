@@ -1,4 +1,4 @@
-import {createGame,step,summarize,learnLocal,validatePolicy,DEFAULT_POLICY,NIGHTS,floor,distance} from './engine.mjs';
+import {createGame,step,summarize,learnLocal,validatePolicy,DEFAULT_POLICY,NIGHTS,floor,distance,upstairs,knownLabels} from './engine.mjs';
 import {draw,tileAt} from './render.mjs';
 import {opening,commentary,aftermath} from './narrator.mjs';
 import {VOICE_LINES} from './voice.mjs';
@@ -9,13 +9,14 @@ let ghost=Array.isArray(saved.ghost)?saved.ghost.slice(0,400):null;
 let memories=Array.isArray(saved.memories)?saved.memories.slice(-12):[],night=Number.isInteger(saved.night)?Math.max(1,saved.night):1;
 let courtesyCompleted=Boolean(saved.courtesyCompleted??memories.some(m=>m.outcome==='escaped'));
 const newGame=()=>createGame(policy,{tutorial:!courtesyCompleted,habits:true,night:Math.min(LAST,night)});
-const NEXT={2:'THE KEEPER WAKES UP · 55 SECONDS',3:'FASTER KEEPER · WIDER EYES · 2 DECOYS · 50 S',4:'FASTER STILL · WIDER EYES · 1 DECOY · 45 S',5:'FASTEST KEEPER · HE GUARDS THE DOOR · NO DECOYS · 40 S'};
-let state=newGame(),started=false,aiming=false,aim={x:9,y:7},replay=null,replayTimer=null,learning=false,epoch=0,runtime={configured:false},sound=false,audio,usedLines=new Set();
+const NEXT={2:'HE WAKES UP AND HUNTS YOU · 55 SECONDS',3:'FASTER · SEES FARTHER · 2 DECOYS · 50 S',4:'FASTER STILL · 1 DECOY · 45 S',5:'FASTEST HUNTER · NO DECOYS · 40 S'};
+let state=newGame(),started=false,aiming=false,aim={x:9,y:7},replay=null,replayTimer=null,learning=false,epoch=0,runtime={configured:false},sound=false,audio,usedLines=new Set(),briefUntil=0;
 function save(){try{localStorage.setItem(KEY,JSON.stringify({policy,memories,night,courtesyCompleted,ghost}))}catch{}}
 let clip=null;
 function speak(line){if(!('speechSynthesis' in window))return;speechSynthesis.cancel();const voice=new SpeechSynthesisUtterance(line);voice.lang='en-GB';voice.rate=.9;voice.pitch=.85;voice.voice=speechSynthesis.getVoices().find(v=>v.lang==='en-GB'&&v.localService)||null;speechSynthesis.speak(voice);}
 function hush(){if(clip){clip.pause();clip=null;}if('speechSynthesis' in window)speechSynthesis.cancel();}
-function narrate(line){$('narrator').textContent=line;if(!sound)return;hush();const file=VOICE_LINES[line];if(!file)return speak(line);clip=new Audio('voice/'+file);clip.play().catch(()=>speak(line));}
+function narrate(line){$('narrator').textContent=line;if(!sound)return;hush();// Lines not recorded yet stay on screen only: a robot voice would break the butler.
+ const file=VOICE_LINES[line];if(!file)return;clip=new Audio('voice/'+file);clip.play().catch(()=>speak(line));}
 function text(tag,content){const e=document.createElement(tag);e.textContent=content;return e;}
 function tone(f=220,d=.07){if(!sound)return;try{audio||=new(window.AudioContext||window.webkitAudioContext)();audio.resume();const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.035,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+d);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+d)}catch{}}
 function showKnown(){const k=policy.habits?.known||[];$('known').replaceChildren(...(k.length?[text('li','WHAT HE KNOWS ABOUT YOU'),...k.map((n,i)=>{const li=text('li',n.line);if(i===k.length-1&&memories.at(-1)?.newKey===n.key)li.className='new';return li;})]:[]));}
@@ -38,10 +39,13 @@ function refresh(){
  $('runtime-label').textContent=runtime.configured?'TrueForge bridge configured. Completed heists will request a candidate skill revision.':'In this browser the keeper learns with game rules. The TrueForge agent learned to guard the door in run 04.';
 }
 const held=new Set();let accumulator=0,lastTime=0;
-function begin(){if(night>LAST)return startOver();held.clear();accumulator=0;clearInterval(replayTimer);replay=null;aiming=false;usedLines=new Set();state=newGame();started=true;$('intro').classList.add('hidden');$('result').classList.add('hidden');refresh();narrate(opening(state.tutorial,night));canvas.focus();tone(330,.2);}
-function tick(){if(!started||state.status!=='playing'||learning||document.querySelector('dialog[open]'))return;
+function begin(){if(night>LAST)return startOver();held.clear();accumulator=0;clearInterval(replayTimer);replay=null;aiming=false;usedLines=new Set();state=newGame();started=true;$('intro').classList.add('hidden');$('result').classList.add('hidden');refresh();
+ // Before nights 2–5 the board holds for three seconds to show what he knows about you.
+ briefUntil=!state.tutorial&&knownLabels(policy.habits,policy).length?performance.now()+3200:0;
+ narrate(opening(state.tutorial,night,!state.tutorial&&policy.habits?.known?.length?policy.lesson:null));canvas.focus();tone(330,.2);}
+function tick(){if(!started||state.status!=='playing'||learning||document.querySelector('dialog[open]')||performance.now()<briefUntil)return;
  const a={left:held.has('a')||held.has('arrowleft'),right:held.has('d')||held.has('arrowright'),jump:held.has(' ')||held.has('w')||held.has('arrowup'),down:held.has('s')||held.has('arrowdown'),sprint:held.has('shift'),hide:held.has('h'),decoy:held.has('f')};
- const before={turn:state.turn,hasRelic:state.hasRelic,suspicion:state.suspicion};step(state,a);
+ const before={turn:state.turn,hasRelic:state.hasRelic,suspicion:state.suspicion,hidden:state.hidden,sees:state.sees,playerUp:upstairs(state.player),guardUp:upstairs(state.guard)};step(state,a);
  const line=commentary({state,before,action:a,night,used:usedLines});if(line)narrate(line);
  if(state.turn%6===0||state.status!=='playing')refresh();if(state.status!=='playing')finish();
 }
@@ -88,6 +92,6 @@ fetch('/api/status').then(r=>r.ok?r.json():{}).then(d=>{runtime=d;refresh();}).c
 refresh();
 function frame(time){if(!lastTime)lastTime=time;const dt=Math.min(.05,(time-lastTime)/1000);lastTime=time;
  if(!document.hidden&&document.hasFocus()){accumulator+=dt;while(accumulator>=1/60){tick();accumulator-=1/60;}}else{accumulator=0;held.clear();}
- draw(canvas,state,{time,started,replay,ghost:started&&!state.tutorial?ghost:null});requestAnimationFrame(frame);}requestAnimationFrame(frame);
+ draw(canvas,state,{time,started,replay,ghost:started&&!state.tutorial?ghost:null,briefing:started&&performance.now()<briefUntil?{night:Math.min(LAST,night),lines:knownLabels(policy.habits,policy)}:null});requestAnimationFrame(frame);}requestAnimationFrame(frame);
 
 $('sound-hint').onclick=()=>$('sound').click();
