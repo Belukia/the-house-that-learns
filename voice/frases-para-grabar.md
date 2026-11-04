@@ -88,3 +88,5 @@ Mientras no estén grabadas, el juego las muestra como texto y no usa la voz del
 | `48-learn-caught-crates.mp3` | I caught you by the crates. Same road, same ending. Maybe not the obvious way? |
 | `49-learn-caught-hall.mp3` | I caught you in the long hall. Same road, same ending. Maybe not the obvious way? |
 | `50-learn-caught-vault.mp3` | I caught you by the vault. Same road, same ending. Maybe not the obvious way? |
+| `51-learn-upper-wait-up.mp3` | You took the upper floor. Tonight I will be waiting up there. |
+| `52-learn-upper-again-up.mp3` | Upstairs again? I will be waiting up there. |
