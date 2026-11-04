@@ -20,7 +20,7 @@ Field Notes exports the actual heist trace and resets local memory. No account, 
 ## Two learning modes — keep the evidence separate
 
 - **Playable local adaptation:** explicit, deterministic game rules update the guard's policy after each heist. This is a working game mechanic, **not a TrueForge model-learning result**.
-- **TrueForge candidate learning:** the local bridge loads a registered git-backed warden skill with sandbox support, opens a real TrueForge session, and requests an agent-authored skill/policy rewrite. Candidate files and raw stream events are saved locally. A subsequent fixed evaluation establishes whether the candidate is actually better. No real TrueForge run or qualifying improvement has been established yet.
+- **TrueForge candidate learning:** the local bridge loads a registered git-backed warden skill with sandbox support, opens a real TrueForge session, and requests an agent-authored skill/policy rewrite. Candidate files and raw stream events are saved locally. A subsequent fixed evaluation establishes whether the candidate is actually better. Results: see "Run 1 vs run N" below.
 
 Install the official SDK and runtime for the second mode:
 
@@ -58,13 +58,13 @@ npm run run-evals                   # run 2: same tasks, same scorer
 
 ## Run 1 vs run N
 
-> Filled in after the runs. Five lines max.
+Play it: **https://belukia.github.io/the-house-that-learns/**
 
 - **Task and score:** stop 8 fixed heists (4 of them holdout) by choosing a defense policy before seeing the thief; score = 100 × heists stopped / heists.
-- **Run 1 → run N:** _not run yet._
-- **The change that did it:** _not yet: a commit with `Agent-Session:`._
-- **What the agent learned:** _not yet._
-- **What still fails:** _not yet._
+- **Run 1 → run N:** run 03 (baseline, starting Skill) **50** → run 04 (agent-rewritten Skill) **62.5**. Same 8 heists, same scorer. Development 2/4 → 2/4, holdout 2/4 → **3/4**. Runs 01–02 did not load the Skill and do not count ([runs/NOTES.md](runs/NOTES.md)).
+- **The change that did it:** commit `82da2c6` "agent: learn from run 03", `Agent-Session: 01m6j5pyh9egfy5zex0cs1d7gq`. The keeper rewrote `agent/skills/warden/SKILL.md` itself.
+- **What the agent learned:** the thief is faster, so chasing fails; every escape has to pass the entrance, so camp that choke point and arrive first. The extra catch is a holdout heist (realtime-6) the agent never saw while learning.
+- **What still fails:** upper-floor thieves on realtime-2, 4 and 8 still slip past.
 
 
 ## Project structure
