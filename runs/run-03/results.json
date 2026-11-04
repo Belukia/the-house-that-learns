@@ -1,0 +1,362 @@
+[
+  {
+    "task_id": "realtime-1",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, wide sweep",
+      "decoySkepticism": 1,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 54,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 10,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        }
+      ],
+      "lesson": "Guard the emerald, ignore far-off noise, and sweep the long route back to the entrance."
+    },
+    "outcome": "caught",
+    "ticks": 321,
+    "relic_stolen": false,
+    "turn_id": "01m6j5ke56vx7cymt9qn5ybr7v",
+    "status": "done",
+    "reply": "I loaded the skill. Its rules are general: pursue the thief when visible, and don't let noise pull me away from the objective. I chose a defense that guards the vault and still sweeps the route back to the entrance. Only nearby sounds will draw me off, so decoys can't pull me far from my post.\n\n```json\n{\n  \"name\": \"Vault warden, wide sweep\",\n  \"decoySkepticism\": 1,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 54, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 10, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 }\n  ],\n  \"lesson\": \"Guard the emerald, ignore far-off noise, and sweep the long route back to the entrance.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-2",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, sweeping return",
+      "decoySkepticism": 1,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 56,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        },
+        {
+          "x": 22,
+          "y": 18
+        },
+        {
+          "x": 8,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 42,
+          "y": 18
+        }
+      ],
+      "lesson": "Guard the emerald first and ignore distant noise. Once it is gone, sweep back to the entrance."
+    },
+    "outcome": "escaped",
+    "ticks": 688,
+    "relic_stolen": true,
+    "turn_id": "01m6j5kvz0khnw9hv3h5t2b5bm",
+    "status": "done",
+    "reply": "I loaded the skill and chose a defense. It holds near the vault until the emerald is taken. After that it sweeps the floor back toward the entrance. It only investigates nearby sounds, so far-off decoys can't pull it away from the vault.\n\n```json\n{\n  \"name\": \"Vault warden, sweeping return\",\n  \"decoySkepticism\": 1,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 56, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 },\n    { \"x\": 22, \"y\": 18 },\n    { \"x\": 8, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 42, \"y\": 18 }\n  ],\n  \"lesson\": \"Guard the emerald first and ignore distant noise. Once it is gone, sweep back to the entrance.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-3",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden with wide sweep",
+      "decoySkepticism": 1,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 56,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 8,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        }
+      ],
+      "lesson": "I'll guard the emerald first, ignore far-off noise, and sweep the full floor so the exit stays covered."
+    },
+    "outcome": "caught",
+    "ticks": 319,
+    "relic_stolen": false,
+    "turn_id": "01m6j5m8qtv3sabz4ch0vp5r4m",
+    "status": "done",
+    "reply": "I chose a defense that guards the emerald before the theft and sweeps the whole floor after it. Decoys that are far away get ignored, and nearby sounds still get checked. I haven't evaluated it, so I can't say how it will do.\n\n```json\n{\n  \"name\": \"Vault warden with wide sweep\",\n  \"decoySkepticism\": 1,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 56, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 8, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 }\n  ],\n  \"lesson\": \"I'll guard the emerald first, ignore far-off noise, and sweep the full floor so the exit stays covered.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-4",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, entrance sweep",
+      "decoySkepticism": 1,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 56,
+          "y": 18
+        },
+        {
+          "x": 42,
+          "y": 18
+        },
+        {
+          "x": 26,
+          "y": 18
+        },
+        {
+          "x": 8,
+          "y": 18
+        },
+        {
+          "x": 26,
+          "y": 18
+        },
+        {
+          "x": 42,
+          "y": 18
+        }
+      ],
+      "lesson": "I guard the emerald, ignore far-off noise, and sweep back toward the entrance to cut off the escape."
+    },
+    "outcome": "escaped",
+    "ticks": 688,
+    "relic_stolen": true,
+    "turn_id": "01m6j5mpa5828f36z0agdy5nqe",
+    "status": "done",
+    "reply": "I loaded the skill. I'm using a defense that guards the vault before the theft, then sweeps the whole floor toward the entrance. It only investigates nearby noise, so a decoy thrown far away can't pull me off the objective.\n\n```json\n{\n  \"name\": \"Vault warden, entrance sweep\",\n  \"decoySkepticism\": 1,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 56, \"y\": 18 },\n    { \"x\": 42, \"y\": 18 },\n    { \"x\": 26, \"y\": 18 },\n    { \"x\": 8, \"y\": 18 },\n    { \"x\": 26, \"y\": 18 },\n    { \"x\": 42, \"y\": 18 }\n  ],\n  \"lesson\": \"I guard the emerald, ignore far-off noise, and sweep back toward the entrance to cut off the escape.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-5",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault guard, entrance sweep",
+      "decoySkepticism": 1,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 52,
+          "y": 18
+        },
+        {
+          "x": 38,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 10,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 38,
+          "y": 18
+        }
+      ],
+      "lesson": "I hold the vault, only heed close noises, and sweep the long road back to the door."
+    },
+    "outcome": "caught",
+    "ticks": 509,
+    "relic_stolen": false,
+    "turn_id": "01m6j5n44f9vcverwgrep17k77",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Vault guard, entrance sweep\",\n  \"decoySkepticism\": 1,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 52, \"y\": 18 },\n    { \"x\": 38, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 10, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 38, \"y\": 18 }\n  ],\n  \"lesson\": \"I hold the vault, only heed close noises, and sweep the long road back to the door.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-6",
+    "holdout": true,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Vault-first sweeping keeper",
+      "decoySkepticism": 1,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 56,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 8,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        }
+      ],
+      "lesson": "I guard the vault first, ignore distant noise, then sweep back to hold the door."
+    },
+    "outcome": "escaped",
+    "ticks": 805,
+    "relic_stolen": true,
+    "turn_id": "01m6j5ngztw49455g8s0npfbxt",
+    "status": "done",
+    "reply": "I loaded the skill. Its rules are to pursue a visible thief over a distraction, to avoid leaving the objective unattended while chasing noise, and to use general tactics rather than memorized routes. I haven't run this policy, so I can't say how it will do.\n\nMy choices:\n- **Skepticism 1:** I only investigate nearby sounds, so far-off decoys can't pull me away from the emerald or the exit.\n- **Relic protection on:** I hold near the vault until the theft. After the theft, the patrol sweeps back toward the entrance, the thief's only way out.\n- **Patrol:** The waypoints span the whole ground floor and pass the vault, the middle and the entrance. A thief on the upper platform has to come down to the ground to leave.\n\n```json\n{\n  \"name\": \"Vault-first sweeping keeper\",\n  \"decoySkepticism\": 1,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 56, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 8, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 }\n  ],\n  \"lesson\": \"I guard the vault first, ignore distant noise, then sweep back to hold the door.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-7",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, wide sweep",
+      "decoySkepticism": 1,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 56,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 8,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        }
+      ],
+      "lesson": "I guard the vault first, ignore far-off noise, and sweep the full floor to the entrance."
+    },
+    "outcome": "caught",
+    "ticks": 205,
+    "relic_stolen": false,
+    "turn_id": "01m6j5nyg14vcqt881gwfmtxyc",
+    "status": "done",
+    "reply": "I loaded the skill and chose a defense that guards the vault and sweeps the whole floor afterward. It also ignores far-off distractions, so a thrown decoy can't pull me away from the emerald.\n\n```json\n{\n  \"name\": \"Vault warden, wide sweep\",\n  \"decoySkepticism\": 1,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 56, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 8, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 }\n  ],\n  \"lesson\": \"I guard the vault first, ignore far-off noise, and sweep the full floor to the entrance.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-8",
+    "holdout": true,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Vault-first warden",
+      "decoySkepticism": 1,
+      "protectRelic": true,
+      "patrol": [
+        {
+          "x": 55,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 8,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 40,
+          "y": 18
+        }
+      ],
+      "lesson": "I guard the emerald, ignore far-off noise, and sweep the long floor so the exit stays covered."
+    },
+    "outcome": "escaped",
+    "ticks": 735,
+    "relic_stolen": true,
+    "turn_id": "01m6j5par2a9n30xn743n1t6cv",
+    "status": "done",
+    "reply": "I loaded the skill. Its rules are to chase visible thieves, not distractions, and to avoid leaving the objective unattended. My policy follows those rules:\n\n- **Relic:** The keeper holds near the vault before the theft.\n- **Sounds:** Skepticism 1 means only nearby sounds get investigated, so distant decoys can't pull the keeper off its post.\n- **Patrol:** The route sweeps from the vault back toward the entrance. That covers the thief's escape path after the theft.\n\n```json\n{\n  \"name\": \"Vault-first warden\",\n  \"decoySkepticism\": 1,\n  \"protectRelic\": true,\n  \"patrol\": [\n    { \"x\": 55, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 8, \"y\": 18 },\n    { \"x\": 24, \"y\": 18 },\n    { \"x\": 40, \"y\": 18 }\n  ],\n  \"lesson\": \"I guard the emerald, ignore far-off noise, and sweep the long floor so the exit stays covered.\"\n}\n```"
+  }
+]
