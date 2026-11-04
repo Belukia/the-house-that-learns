@@ -75,10 +75,11 @@ The private Sites preview is separate from this public source repository. Deploy
 
 ## Credits
 
-Built by Tamara Rienzi with AI-assisted coding. Original code-drawn artwork; no downloaded image assets. Google Fonts serves DM Sans and Playfair Display, with system fallbacks. TrueForge SDK: TrueFoundry, under its upstream license. THE HOUSE's voice (dist/voice/, 24 lines) was generated with ElevenLabs text-to-speech, voice "James - English Butler" from the ElevenLabs voice library, under ElevenLabs' terms; it plays only after SOUND ON, and subtitles stay on screen. No real tester or user results are claimed.
+Built by Tamara Rienzi with AI-assisted coding. Original code-drawn artwork; no downloaded image assets. Google Fonts serves DM Sans and Playfair Display, with system fallbacks. TrueForge SDK: TrueFoundry, under its upstream license. THE HOUSE's voice (dist/voice/, 49 lines) was generated with ElevenLabs text-to-speech, voice "James - English Butler" from the ElevenLabs voice library, under ElevenLabs' terms; it plays only after SOUND ON, and subtitles stay on screen. No real tester or user results are claimed.
 
 ## Runtime and current proof status
 
-The official TrueForge 0.182.0 local runtime can be started with `node scripts/start-trueforge.mjs`. It binds `127.0.0.1:8790` and stores its database in ignored `.runtime/`. Its capabilities endpoint was checked successfully: Skills and Sandbox are enabled. The configured model list was empty at that check. This verifies infrastructure, not an agent run or improvement. Configure a provider in Settings → Models before attempting inference. Never put provider credentials in frontend files or source control.
-
-The real-time engine replaces the original grid prototype. Its new fixed timelines have not been used for a real TrueForge baseline. Earlier turn-based results are obsolete and cannot be compared to these tasks. The current automated checks cover running, jumping, solid collisions, platform drop-through, all courtesy routes, contact capture, hiding and memory behavior. The evaluation set still needs a deliberate benchmark-quality review and freeze before the first measured agent run.
+- **Runtime:** the official TrueForge 0.182.0 local runtime (`node scripts/start-trueforge.mjs`, bound to `127.0.0.1:8790`, database in ignored `.runtime/`) with a TrueFoundry-hosted model. Credentials live in an ignored `.env`, never in `dist/` or source control.
+- **Measured:** the baseline (run 03) and the agent-rewritten Skill (run 04) above, on the same frozen 8 heists and scorer. `scripts/rescore-runs.ts` re-scores every saved run with the current engine and still reports the same numbers.
+- **Not yet measured:** run-to-run variance. Each Skill was scored once, so the gain is one more heist stopped out of 8 (the holdout one).
+- **Hosted game vs evaluation:** the hosted game's five nights (a keeper who chases you on both floors, learns one habit per heist and says what he knows) are browser game rules. Evaluations never pass those options, so the frozen benchmark is unchanged.
