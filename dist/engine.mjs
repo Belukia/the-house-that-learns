@@ -20,7 +20,7 @@ const actor=(x,y)=>({x,y,vx:0,vy:0,w:10,h:22,grounded:false,facing:1});
 const overlaps=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
 export function sight(a,b,radius=160){return Math.hypot(a.x-b.x,a.y-b.y)<radius&&Math.abs(a.y-b.y)<38&&!BLOCKS.some(o=>o.h>=30&&o.x>Math.min(a.x,b.x)&&o.x<Math.max(a.x,b.x)&&a.y+10>o.y);}
 export function createGame(policy=DEFAULT_POLICY,options={}){
- return {player:actor(ENTRY.x,ENTRY.y),guard:actor(options.tutorial?600:480,282),tutorial:Boolean(options.tutorial),turn:0,time:0,patrolIndex:0,policy:validatePolicy(policy),suspicion:0,decoys:3,noise:null,hidden:false,hasRelic:false,status:'playing',message:'Hold A/D to run. Space to jump. The emerald is to the right.',history:[],inputs:[],events:[],decoysThrown:0,seen:0,lastJump:false,lastDecoy:false,lastHide:false};
+ return {player:actor(ENTRY.x,ENTRY.y),guard:actor(options.tutorial?600:480,282),tutorial:Boolean(options.tutorial),turn:0,time:0,patrolIndex:0,policy:validatePolicy(policy),suspicion:0,decoys:3,noise:null,hidden:false,hasRelic:false,status:'playing',message:'A/D to run, Space to jump, F throws a decoy ahead of you, H hides you in a wardrobe. The emerald is to the right.',history:[],inputs:[],events:[],decoysThrown:0,seen:0,lastJump:false,lastDecoy:false,lastHide:false};
 }
 function physics(a,dir,jump,drop=false,speed=2.15){
  a.vx=dir*speed;if(dir)a.facing=Math.sign(dir);
