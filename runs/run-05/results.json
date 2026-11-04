@@ -1,0 +1,298 @@
+[
+  {
+    "task_id": "realtime-1",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Door warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 5,
+          "y": 18
+        },
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 2,
+          "y": 18
+        }
+      ],
+      "lesson": "I hold the door the thief must use, ignore distractions, and wait where the escape must pass."
+    },
+    "outcome": "caught",
+    "ticks": 126,
+    "relic_stolen": false,
+    "turn_id": "01m6m5v9p22b06w4bqj6xprkg7",
+    "status": "done",
+    "reply": "I'm camping the keeper at the entrance, because the thief has to come back through it with the emerald. The patrol is tight around the door. Skepticism is 2, so decoys can't pull the keeper away from that spot. protectRelic is off, because the keeper starts mid-map and walks slowly, so it would likely reach the vault after the thief.\n\n```json\n{\n  \"name\": \"Door warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 5, \"y\": 18 }, { \"x\": 3, \"y\": 18 }, { \"x\": 2, \"y\": 18 }],\n  \"lesson\": \"I hold the door the thief must use, ignore distractions, and wait where the escape must pass.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-2",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Exit camper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 2,
+          "y": 18
+        },
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 4,
+          "y": 18
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stop chasing noise and wait at the door. The thief has to leave with the emerald, so I stand where they must pass."
+    },
+    "outcome": "caught",
+    "ticks": 685,
+    "relic_stolen": true,
+    "turn_id": "01m6m5vpvtap1qf6hehzghcf5x",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Exit camper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 2, \"y\": 18 }, { \"x\": 3, \"y\": 18 }, { \"x\": 4, \"y\": 18 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stop chasing noise and wait at the door. The thief has to leave with the emerald, so I stand where they must pass.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-3",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Exit camper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 2,
+          "y": 18
+        },
+        {
+          "x": 4,
+          "y": 18
+        },
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 2,
+          "y": 18
+        }
+      ],
+      "lesson": "I stop chasing noise and stand where the thief must return: the door and the stair foot."
+    },
+    "outcome": "caught",
+    "ticks": 126,
+    "relic_stolen": false,
+    "turn_id": "01m6m5w1z27t3z0w32mnbe0vmm",
+    "status": "done",
+    "reply": "Following the playbook, I'm camping the keeper on the entrance, the one exit every escape has to use. I'm ignoring decoys and not guarding the relic, because the keeper would probably arrive after the thief.\n\n```json\n{\n  \"name\": \"Exit camper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 2, \"y\": 18 }, { \"x\": 4, \"y\": 18 }, { \"x\": 3, \"y\": 18 }, { \"x\": 2, \"y\": 18 }],\n  \"lesson\": \"I stop chasing noise and stand where the thief must return: the door and the stair foot.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-4",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Door warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 2,
+          "y": 18
+        },
+        {
+          "x": 4,
+          "y": 18
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stand on the only way out and ignore distractions."
+    },
+    "outcome": "caught",
+    "ticks": 685,
+    "relic_stolen": true,
+    "turn_id": "01m6m5wdnzm8dsqxwa0xxbm4b4",
+    "status": "done",
+    "reply": "I'm camping the keeper at the entrance, because the thief has to leave through it. I'm setting skepticism to 2 so decoys can't pull the keeper away, and protectRelic to false because the keeper would probably reach the vault after the thief.\n\n```json\n{\n  \"name\": \"Door warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 2, \"y\": 18 }, { \"x\": 4, \"y\": 18 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stand on the only way out and ignore distractions.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-5",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Exit camper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 2,
+          "y": 18
+        },
+        {
+          "x": 4,
+          "y": 18
+        },
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 5,
+          "y": 18
+        }
+      ],
+      "lesson": "The thief must leave by the door, so I wait there and ignore distractions."
+    },
+    "outcome": "caught",
+    "ticks": 126,
+    "relic_stolen": false,
+    "turn_id": "01m6m5wszxjatm5p4xg1k5c5q4",
+    "status": "done",
+    "reply": "I loaded the skill. Its main advice is to camp tightly on the entrance, because every escape has to pass through it. The keeper is slow, so I'm not guarding the vault. I'm also ignoring decoys.\n\n```json\n{\n  \"name\": \"Exit camper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 2, \"y\": 18 }, { \"x\": 4, \"y\": 18 }, { \"x\": 3, \"y\": 18 }, { \"x\": 5, \"y\": 18 }],\n  \"lesson\": \"The thief must leave by the door, so I wait there and ignore distractions.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-6",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Exit camper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 2,
+          "y": 18
+        },
+        {
+          "x": 4,
+          "y": 18
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I can't outrun the thief, so I wait on the exit tile. Whoever steals the emerald has to walk past me, and decoys won't draw me off."
+    },
+    "outcome": "caught",
+    "ticks": 804,
+    "relic_stolen": true,
+    "turn_id": "01m6m5x53ej6cxbgtvn7wbf81g",
+    "status": "done",
+    "reply": "I loaded the skill and chose a defense that camps on the exit. The thief has to leave with the emerald, and every escape ends at the entrance, so I'm covering that spot instead of chasing.\n\n- **Patrol:** the waypoints sit tightly around the entrance door and the stair foot.\n- **Skepticism 2:** the keeper ignores decoys.\n- **No relic guard:** the keeper starts mid-map and walks slowly, so it would probably reach the vault after the thief does.\n\n```json\n{\n  \"name\": \"Exit camper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 2, \"y\": 18 }, { \"x\": 4, \"y\": 18 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I can't outrun the thief, so I wait on the exit tile. Whoever steals the emerald has to walk past me, and decoys won't draw me off.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-7",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Exit camper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 2,
+          "y": 18
+        },
+        {
+          "x": 4,
+          "y": 18
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stop chasing noise and stand on the door the thief must use to leave."
+    },
+    "outcome": "caught",
+    "ticks": 113,
+    "relic_stolen": false,
+    "turn_id": "01m6m5xhfsjmb7a55sv43yshfr",
+    "status": "done",
+    "reply": "I loaded the skill and went with its main tactic: camp the exit, which every escape has to pass through.\n\n- **Patrol:** The entrance is at x=48px, which is tile 3. I put the waypoints at tiles 2, 3 and 4, so the keeper stays tight around the door and the stair landing.\n- **Skepticism 2:** The keeper ignores decoys, since they would only pull it off the exit.\n- **protectRelic false:** The keeper starts mid-map and walks slowly, so it may reach the vault after the thief does. The skill says this setting only helps if the keeper arrives first.\n\n```json\n{\n  \"name\": \"Exit camper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 2, \"y\": 18 }, { \"x\": 4, \"y\": 18 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stop chasing noise and stand on the door the thief must use to leave.\"\n}\n```"
+  },
+  {
+    "task_id": "realtime-8",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Door warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "patrol": [
+        {
+          "x": 2,
+          "y": 18
+        },
+        {
+          "x": 4,
+          "y": 18
+        },
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 2,
+          "y": 18
+        }
+      ],
+      "lesson": "I stop chasing noise and stand at the door, because the thief has to come back out through it."
+    },
+    "outcome": "caught",
+    "ticks": 733,
+    "relic_stolen": true,
+    "turn_id": "01m6m5xy8p0mxex55t9aee8ct2",
+    "status": "done",
+    "reply": "The skill says to camp the entrance, which every escape has to pass through. I'm using tight waypoints around the door and ignoring decoys.\n\n```json\n{\n  \"name\": \"Door warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"patrol\": [{ \"x\": 2, \"y\": 18 }, { \"x\": 4, \"y\": 18 }, { \"x\": 3, \"y\": 18 }, { \"x\": 2, \"y\": 18 }],\n  \"lesson\": \"I stop chasing noise and stand at the door, because the thief has to come back out through it.\"\n}\n```"
+  }
+]
