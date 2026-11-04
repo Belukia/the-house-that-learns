@@ -75,6 +75,16 @@ Play it: **https://belukia.github.io/the-house-that-learns/**
 - **Repeat:** run 06 re-ran run 05's Skill unchanged and scored the same 100, so the last step is not one lucky run.
 - **What this does not prove:** the 8 fixed heists now saturate. Every one of them has to leave through the front door, and a keeper standing on it stops them all. After run 05 `improve` had nothing left to learn from. A harder set (thieves who wait him out, or a second exit) is the next step. The hosted game's keeper, who chases you on both floors, is browser game rules and is not what these runs score.
 
+## What this could be used for
+
+ROB ME AGAIN is a game, not a security tool. It is a small, playable picture of a loop that matters outside games: **watch how you were beaten, rewrite your own rules, test again on attacks you have not seen.** For example, the same loop could help:
+
+- **adaptive defenses** that update their rules after each intrusion attempt, as attackers (increasingly, other AIs) change tactics;
+- **fraud or abuse filters** that learn from the cases they missed, checked against held-out cases before a new rule ships;
+- **red-team / blue-team practice**, where one agent attacks and the other rewrites its playbook between rounds.
+
+None of these is built here. What is shown is the loop itself, with a scorer, a holdout set and the agent's own commits.
+
 ## Project structure
 
 `dist/`: playable game, canvas renderer and shared engine. `agent/`: the keeper's agent definition (`agent.json`), instructions, warden skill and seed policy. `evals/`: fixed heists (`tasks/`) and scorer. `scripts/`: the starter loop (`setup`, `run-evals`, `improve`, `export-session`) plus the game's TrueForge bridge. `runs/`: one folder per counted run and `summary.csv`; `runs/private/` stays ignored.
