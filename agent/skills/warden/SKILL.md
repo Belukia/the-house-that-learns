@@ -7,18 +7,21 @@ description: Learn general mansion defense tactics from completed heists without
 
 - Learn only from completed episodes and development evaluation feedback. Never alter the scorer, fixtures or map.
 - Prefer a concise general rule to memorizing a route. Fix the position, not the details.
-- The thief is much faster than the keeper (keeper about 60 px/s), so a chase never works. Win by already standing where the thief must pass.
-- The thief must leave with the relic, so every exit is a choke point. Guard the exits, not the route.
+- The thief is much faster than the keeper (about 60 px/s), so a chase never works. Win by already standing where the thief must pass.
+- The thief must leave with the relic, so every exit is a choke point. Guard the exits and the relic, not the route.
 - Waypoint x is in tiles (pixels = x*16). Contact catches happen only on the same floor, and sight is horizontal, about 160 px, per floor.
-- The thief chooses the exit the keeper is not guarding. A keeper camped on one floor leaves the other exit free, and a thief seen at the top floor will simply take the other way down.
-- A single-floor camp loses to a thief using the other exit. Camping upstairs left the front door open, so the thief walked out after being unseen on the stairs.
-- Stairs are long ramps. A thief on the ramp is neither on the keeper's upper floor nor on the ground, so the ramp ends are where contact can happen.
-- Cover both exits by alternating floors: one ground post at the door and one upper post at the window, joined by the stairs between them.
-- Put the first waypoint at the post the keeper can reach before the thief returns, normally the door, since it is on the way to the stairs. Do not detour first.
-- Estimate arrival: distance to the post divided by 60 px/s, plus any climb, must be less than the thief's round trip (about 10–15 s).
-- Camp ON the exit, not near it. Use short dwell (1–2 s) at each of the two posts so the keeper cycles between exits and neither is left empty for long.
-- Long dwell at one post is worth it only when the other exit is physically covered by that post. It rarely is across floors.
-- Do not add waypoints in the far middle of the house. Sweeping patrols pass under or over the thief and rarely see them.
-- Use skepticism 2 when the keeper is working the exits, because decoys only drag him away. Use 1 if the patrol is long and loose.
-- protectRelic stays false when the vault is far from the exits, since the thief takes the emerald before the keeper arrives and the keeper is then pulled from the exits.
-- After each loss, ask which exit was used, which floor the keeper was on at the escape moment, and how far he was from that exit. Then cover that exit without abandoning the other.
+- The thief picks the exit the keeper is not guarding, and turns back down or up when it sees the keeper on its floor.
+- The upper floor is the thief's fast lane: a thief running the upper floor can reach the relic and return to the window in about 10 s. The door route is slower, about 12–15 s.
+- The keeper walks from the middle of the house to the far door in about 7 s. A patrol that visits the door first arrives at the window too late, after the thief has already left.
+- Check arrival times against the thief's clock. Distance to a post divided by 60 px/s, plus stairs, must be less than the thief's round trip to that exit. If it isn't, the post is useless.
+- Put the window post first in the patrol, because it is the exit the thief reaches soonest. Put the door second.
+- Camp ON an exit, not near it. For the window use upper x 19 or 20 (pixel 312 is tile 19.5).
+- Use a long dwell (3–4 s) at the first post so the keeper is still standing there when the returning thief arrives. A short dwell walks him away just in time to miss it.
+- A keeper on the upper floor cannot see the ground, and a keeper on the ground cannot see the upper floor. The left stairs join both exits, so a thief who flees the window usually has to pass the stair ends.
+- A thief who sees the keeper upstairs can drop down the stairs and run for the door. Contact happens at the ramp ends, so stay near the stair top and do not wander deep into the upper floor.
+- Do not add waypoints in the middle of the house. Sweeping patrols pass under or over the thief and rarely see them.
+- Use skepticism 2 when the keeper is working posts. Decoys only drag him away from the exit.
+- protectRelic holds the keeper at the vault until the relic is gone. A thief who cannot take the relic cannot escape, and dawn catches him.
+- Every patrol run so far lost with protectRelic false, so try protectRelic true next. The thief's grab is close to the keeper's arrival time, so check the result.
+- When protectRelic is true, keep a patrol anyway for after the theft. Start it at the window, then the door, with short legs.
+- After each loss, note which exit was used, which floor the keeper was on at the escape moment, and how far he was from that exit. Then cover that exit without abandoning the other.
