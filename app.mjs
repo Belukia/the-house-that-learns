@@ -9,7 +9,7 @@ let ghost=Array.isArray(saved.ghost)?saved.ghost.slice(0,400):null;
 let memories=Array.isArray(saved.memories)?saved.memories.slice(-12):[],night=Number.isInteger(saved.night)?Math.max(1,saved.night):1;
 let courtesyCompleted=Boolean(saved.courtesyCompleted??memories.some(m=>m.outcome==='escaped'));
 const newGame=()=>createGame(policy,{tutorial:!courtesyCompleted,habits:true,night:Math.min(LAST,night)});
-const NEXT={2:'HE WAKES UP AND HUNTS YOU · 55 SECONDS',3:'FASTER · SEES FARTHER · 2 DECOYS · 50 S',4:'FASTER STILL · 1 DECOY · 45 S',5:'FASTEST HUNTER · NO DECOYS · 40 S'};
+const NEXT={2:'HE WAKES UP AND HUNTS YOU · 55 SECONDS',3:'A WINDOW OPENS UPSTAIRS · FASTER · 2 DECOYS · 50 S',4:'FASTER STILL · 1 DECOY · 45 S',5:'FASTEST HUNTER · NO DECOYS · 40 S'};
 let state=newGame(),started=false,aiming=false,aim={x:9,y:7},replay=null,replayTimer=null,learning=false,epoch=0,runtime={configured:false},sound=false,audio,usedLines=new Set(),briefUntil=0;
 function save(){try{localStorage.setItem(KEY,JSON.stringify({policy,memories,night,courtesyCompleted,ghost}))}catch{}}
 let clip=null;
@@ -36,10 +36,10 @@ function refresh(){
  $('memory-count').textContent=String(memories.length).padStart(2,'0');
  if(memories.length){$('memories').replaceChildren(...memories.slice(-2).reverse().map(m=>{const d=document.createElement('div');d.className='memory';d.append(text('b',`NIGHT ${String(m.night).padStart(2,'0')} / ${m.outcome==='escaped'?'OUTWITTED':'ENCOUNTER'}`),text('p',m.lesson),text('small',m.mode==='trueforge'?'TRUEFORGE SESSION':'LOCAL MEMORY'));return d;}));}
  $('policy-view').textContent=`Behavior: ${policy.name}\nWhat he knows about you:\n${(policy.habits?.known||[]).map(k=>'· '+k.line).join('\n')||'· Nothing yet.'}\nCompleted heists remembered: ${memories.length}`;
- $('runtime-label').textContent=runtime.configured?'TrueForge bridge configured. Completed heists will request a candidate skill revision.':'In this browser the keeper learns with game rules. The TrueForge agent learned to guard the door in run 04.';
+ $('runtime-label').textContent=runtime.configured?'TrueForge bridge configured. Completed heists will request a candidate skill revision.':'In this browser the keeper learns with game rules. The TrueForge agent learned to guard the door (exam v1), and is now learning the window (exam v2).';
 }
 const held=new Set();let accumulator=0,lastTime=0;
-function begin(){if(night>LAST)return startOver();held.clear();accumulator=0;clearInterval(replayTimer);replay=null;aiming=false;usedLines=new Set();state=newGame();started=true;$('intro').classList.add('hidden');$('result').classList.add('hidden');refresh();
+function begin(){if(night>LAST)return startOver();held.clear();accumulator=0;clearInterval(replayTimer);replay=null;aiming=false;usedLines=new Set();state=newGame();if(!state.tutorial&&state.rules.exits?.includes('window'))state.message='A window is open upstairs, above the door. Stand at it with the emerald and press H to climb out.';started=true;$('intro').classList.add('hidden');$('result').classList.add('hidden');refresh();
  // Before nights 2–5 the board holds for three seconds to show what he knows about you.
  briefUntil=!state.tutorial&&knownLabels(policy.habits,policy).length?performance.now()+3200:0;
  narrate(opening(state.tutorial,night,!state.tutorial&&policy.habits?.known?.length?policy.lesson:null));canvas.focus();tone(330,.2);}

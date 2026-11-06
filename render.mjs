@@ -1,10 +1,11 @@
-import {WIDTH,GROUND,PLATFORMS,BLOCKS,HIDING,RELIC} from './engine.mjs';
+import {WIDTH,GROUND,PLATFORMS,BLOCKS,HIDING,RELIC,WINDOW} from './engine.mjs';
 const buffer=typeof document==='undefined'?null:document.createElement('canvas');if(buffer){buffer.width=480;buffer.height=288;}
 let camera=0;
 export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null,briefing=null}={}){
  const c=buffer.getContext('2d');c.imageSmoothingEnabled=false;
  camera=Math.max(0,Math.min(WIDTH-480,Math.round(s.player.x-180)));
  const rect=(x,y,w,h,col)=>{c.fillStyle=col;c.fillRect(Math.round(x-camera),Math.round(y-48),w,h);};
+ const windowOpen=Boolean(s.rules.exits?.includes('window'));
  c.fillStyle='#131827';c.fillRect(0,0,480,288);
  // Wallpaper, stone foundation and repeating original architectural details.
  for(let x=0;x<WIDTH;x+=16){rect(x,48,1,256,'#2e2838');for(let y=64;y<290;y+=32)rect(x+7,y,2,3,'#383040');}
@@ -22,12 +23,16 @@ export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null,brief
  // Upper floor, climbable one-way ledges and furniture.
  for(const p of PLATFORMS){rect(p.x,p.y,p.w,5,'#a57d61');rect(p.x,p.y+5,p.w,5,'#4b3440');for(let x=p.x+4;x<p.x+p.w;x+=16)rect(x,p.y+1,1,3,'#d0a47a');}
  for(let x=245;x<790;x+=40){rect(x,151,2,25,'#715262');rect(x-7,151,16,2,'#92717a');}
- for(let x=275;x<770;x+=150){rect(x,117,37,40,'#ab855a');rect(x+3,120,31,34,'#343447');rect(x+13,126,10,12,'#8c766d');rect(x+9,138,18,16,'#514553');}
+ for(let x=275;x<770;x+=150){if(windowOpen&&x===275)continue;rect(x,117,37,40,'#ab855a');rect(x+3,120,31,34,'#343447');rect(x+13,126,10,12,'#8c766d');rect(x+9,138,18,16,'#514553');}
  for(const o of BLOCKS){rect(o.x,o.y,o.w,o.h,'#805b47');rect(o.x+2,o.y+2,o.w-4,3,'#bc8b5a');rect(o.x+3,o.y+6,2,o.h-8,'#4f3c38');rect(o.x+o.w-5,o.y+6,2,o.h-8,'#4f3c38');}
  for(const h of HIDING){rect(h.x-9,h.y-35,27,35,'#283344');rect(h.x-7,h.y-33,23,31,'#435473');rect(h.x+4,h.y-32,1,31,'#26374b');rect(h.x+1,h.y-19,2,3,'#d5b87b');rect(h.x+7,h.y-19,2,3,'#d5b87b');}
  // Bookshelves on both floors.
  for(const [x,y] of [[304,303],[576,303],[440,175],[656,175]]){rect(x,y-36,35,36,'#543c38');for(let row=0;row<2;row++)for(let b=0;b<7;b++)rect(x+3+b*4,y-31+row*17,3,12,['#836052','#6f7d6d','#9d8557','#69586e'][b%4]);rect(x,y-18,35,2,'#a37f59');}
  for(let x=120;x<WIDTH;x+=192){const flicker=Math.sin(time/140+x)>.1;rect(x,249,3,12,'#b69966');rect(x-1,245,5,5,flicker?'#f2c76d':'#d9894c');rect(x+1,243,2,4,'#fff1b6');}
+ // From night 3: a window left open upstairs, above the door. Moonlight spills onto the upper floor.
+ if(windowOpen){const wx=WINDOW.x;rect(wx-14,120,28,52,'#6b5a4a');rect(wx-11,123,22,46,'#0d1a2e');rect(wx-11,123,22,46,'rgba(170,200,230,.18)');rect(wx-1,123,2,46,'#6b5a4a');rect(wx-11,145,22,2,'#6b5a4a');rect(wx-6,128,6,6,'#d9dcc0');rect(wx-18,172,36,4,'rgba(200,220,240,.22)');
+  // The sash is up: the bottom pane is open.
+  rect(wx-11,158,22,11,'#04070d');}
  // Entrance and vault dais.
  rect(31,261,27,43,'#1c4e49');rect(34,264,21,40,'#326d5e');rect(48,283,3,3,'#d4c38b');
  rect(932,293,33,11,'#7d7180');rect(938,288,21,5,'#b1a19c');
@@ -54,6 +59,7 @@ export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null,brief
   if(H.waitAt===52&&s.rules.chase){const x=704;rect(x-4,168,9,2,'#e8604c');rect(x-1,161,3,9,'#e8604c');c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.textAlign='center';c.fillText('HE WAITS UP HERE',Math.round(x-camera),104);c.textAlign='left';}
   else if(H.waitAt!=null)mark(H.waitAt*16+5,'HE WAITS HERE');
   if(H.wardrobe!=null){const w=HIDING[H.wardrobe];rect(w.x-9,w.y-37,27,2,'#e8604c');c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.fillText('HE OPENS IT',Math.round(w.x-14-camera),w.y-108);}
+  if(H.window&&windowOpen&&!briefing){c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.textAlign='center';c.fillText('HE WAITS AT THE WINDOW',Math.round(WINDOW.x-camera),66);c.textAlign='left';}
   if(H.door||s.rules.door){c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.fillText('HE GUARDS',Math.round(24-camera),184);c.fillText('THE DOOR',Math.round(26-camera),193);}
  }
  // Your last heist, as the keeper remembers it.
@@ -62,8 +68,8 @@ export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null,brief
  sprite(s.guard,true);sprite(s.player);
  const label=(str,x,y,color='#e3d6af')=>{c.font='7px monospace';c.fillStyle=color;c.fillText(str,Math.round(x-camera),y-48);};
  if(s.tutorial)label('zzz',s.guard.x,s.guard.y-10,'#a5a1b7');
- label('EXIT',30,253,'#8bddb5');label('HIDE',150,260,'#a9bbd8');label('VAULT',929,254,'#d9bd80');
- c.fillStyle='#101622';c.fillRect(0,0,480,16);c.font='7px monospace';c.fillStyle='#b1b9bd';c.fillText(s.tutorial?'THE KEEPER IS ASLEEP. TAKE THE EMERALD.':'A / D RUN   SPACE JUMP   H HIDE   F DECOY',10,11);
+ label('EXIT',30,253,'#8bddb5');if(windowOpen&&!(H?.window&&!s.tutorial))label('WINDOW · H',WINDOW.x-20,114,'#8bddb5');label('HIDE',150,260,'#a9bbd8');label('VAULT',929,254,'#d9bd80');
+ c.fillStyle='#101622';c.fillRect(0,0,480,16);c.font='7px monospace';c.fillStyle='#b1b9bd';c.fillText(s.tutorial?'THE KEEPER IS ASLEEP. TAKE THE EMERALD.':(windowOpen?'A / D RUN   SPACE JUMP   H HIDE · WINDOW   F DECOY':'A / D RUN   SPACE JUMP   H HIDE   F DECOY'),10,11);
  if(s.status==='caught'){c.fillStyle='rgba(10,8,14,.55)';c.fillRect(0,0,480,288);c.fillStyle='rgba(122,24,32,.92)';c.fillRect(0,112,480,50);c.textAlign='center';c.font='bold 30px Georgia,serif';c.fillStyle='#f4e7c8';c.fillText(s.time>=s.rules.limit?'DAWN. CAUGHT.':'CAUGHT.',240,146);c.font='7px monospace';c.fillStyle='#f0b9a6';c.fillText(s.time>=s.rules.limit?'THE HOUSE SEALED ITS DOORS':'THE KEEPER HAS YOUR NUMBER',240,158);c.textAlign='left';}
  if(briefing){c.fillStyle='rgba(10,8,14,.78)';c.fillRect(0,16,480,272);c.textAlign='center';c.font='bold 22px Georgia,serif';c.fillStyle='#f4e7c8';c.fillText(`NIGHT ${briefing.night}`,240,70);
   c.font='7px monospace';c.fillStyle='#d9bd80';c.fillText('TONIGHT HE KNOWS',240,92);c.fillStyle='#ff8a70';c.font='bold 8px monospace';briefing.lines.forEach((l,i)=>c.fillText(l,240,116+i*16));
