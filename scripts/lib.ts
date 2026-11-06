@@ -8,12 +8,27 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { TrueForge, TrueForgeApi } from "@truefoundry/trueforge-sdk";
-import { ENTRY, MAP, RELIC } from "../dist/engine.mjs";
+import { ENTRY, MAP, RELIC, WINDOW } from "../dist/engine.mjs";
 
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 export const AGENT_DIR = join(ROOT, "agent");
-export const TASKS_DIR = join(ROOT, "evals", "tasks");
-export const RUNS_DIR = join(ROOT, "runs");
+
+/**
+ * Exam v2: `--round 2` runs the harder round-2 exam (a second exit: the upper window).
+ * Without --round everything is exam v1, exactly as before: evals/tasks, runs/run-NN, runs/summary.csv.
+ * Each round keeps its own frozen tasks (evals/v2/R<n>) and its own runs (runs/v2/R<n>/run-NN).
+ */
+const roundArg = (() => {
+  const i = process.argv.indexOf("--round");
+  return i >= 0 ? Number(process.argv[i + 1]) : 0;
+})();
+if (roundArg && ![2].includes(roundArg)) {
+  console.error(`\n✗ Unknown round ${process.argv[process.argv.indexOf("--round") + 1]}. Exam v2 has round 2.\n`);
+  process.exit(1);
+}
+export const ROUND: number = roundArg;
+export const TASKS_DIR = ROUND ? join(ROOT, "evals", "v2", `R${ROUND}`) : join(ROOT, "evals", "tasks");
+export const RUNS_DIR = ROUND ? join(ROOT, "runs", "v2", `R${ROUND}`) : join(ROOT, "runs");
 export const SUMMARY_CSV = join(RUNS_DIR, "summary.csv");
 
 // ---------- config ----------
@@ -206,12 +221,41 @@ export function loadTasks(): Task[] {
  * the keeper defends before the heist, so it never sees the thief's route, the task id or the split.
  */
 export function taskPrompt(_t: Task): string {
+  if (ROUND) return taskPromptV2();
   return [
     "EVALUATE_POLICY. Load your blackthorn-warden skill and choose your defense policy for tonight's heist.",
     `Every thief starts at pixel ${JSON.stringify(ENTRY)}, steals the emerald at ${JSON.stringify(RELIC)}, then must escape through the entrance.`,
     "The keeper starts at pixel (480,282). This is a 60 Hz real-time platformer with 16 px tiles.",
     "Patrol waypoints must have x an integer 2–61 and y = 18. The upper floor spans pixel x 224–800 at y 176; the thief can jump and sprint.",
     "You do not know this thief's route.",
+    "",
+    "Map (# wall, . floor):",
+    "```",
+    MAP.join("\n"),
+    "```",
+  ].join("\n");
+}
+
+/** The rules of an exam v2 round, as the agent reads them. States the world, never a tactic. */
+export function roundRules(): string[] {
+  return [
+    `EXAM V2 · ROUND ${ROUND}: the house has changed. These rules replace any older rule about exits and waypoints.`,
+    `Every thief starts at pixel ${JSON.stringify(ENTRY)} and steals the emerald at ${JSON.stringify(RELIC)}.`,
+    `There are now TWO exits. The front door on the ground floor (pixel x 48), and a window on the upper floor at pixel x ${WINDOW.x}, directly above the door area.`,
+    "Climbing out of the window is deliberate: the thief must stand at it with the emerald and use the action key. Walking past it is not an escape.",
+    "The keeper starts at pixel (480,282), walks (no teleport), uses the stairs at both ends to change floors, and catches by contact. He sees only along his own floor, about 160 px; a thief hidden in a wardrobe cannot be seen or caught. protectRelic sends him to the vault (ground, x 900) until the emerald is gone. Dawn comes at 60 s: a thief still inside is caught.",
+    "Legal patrol waypoints: ground floor {x integer 2–61, y 18} OR upper floor {x integer 14–49, y 10}. Mixing floors is allowed. 2–12 waypoints.",
+    "New field `dwell`: whole seconds (0–4) the keeper waits at each waypoint before walking to the next. Default 0.",
+    "Thieves may throw glass (decoys) to make noise anywhere. You do not know this thief's route or which exit they will use.",
+  ];
+}
+
+function taskPromptV2(): string {
+  return [
+    "EVALUATE_POLICY. Load your blackthorn-warden skill and choose your defense policy for tonight's heist.",
+    ...roundRules(),
+    "",
+    "Your policy JSON for this round: name, decoySkepticism (0–2), protectRelic (boolean), dwell (0–4), patrol (2–12 legal waypoints on either floor), lesson.",
     "",
     "Map (# wall, . floor):",
     "```",

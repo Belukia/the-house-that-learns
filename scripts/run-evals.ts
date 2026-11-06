@@ -1,4 +1,6 @@
-// npm run run-evals [-- --no-commit] [-- --allow-dirty]
+// npm run run-evals [-- --no-commit] [-- --allow-dirty] [-- --round 2]
+//
+// --round 2: exam v2, round 2 (evals/v2/R2, scored by evals/v2/score.ts, saved in runs/v2/R2/).
 //
 // One run = one TrueForge session. Each task in evals/tasks/ is one root turn in that session
 // (so tasks don't see each other). Then:
@@ -10,7 +12,6 @@
 
 import { appendFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { scoreRun, scoreTask } from "../evals/score.ts";
 import {
   client,
   die,
@@ -28,7 +29,10 @@ import {
   syncAgent,
   taskPrompt,
   writeJson,
+  ROUND,
 } from "./lib.ts";
+
+const { scoreRun, scoreTask } = ROUND ? await import("../evals/v2/score.ts") : await import("../evals/score.ts");
 
 const HEADER = "run,session_id,agent_commit,score,date_utc,tasks_passed,tasks_total,tokens,tool_calls,duration_s";
 
@@ -54,9 +58,9 @@ console.log(`Run ${nn}: agent "${agent.name}" at ${agentCommit.slice(0, 7)}, ${t
 const started = Date.now();
 const { data: session } = await tf.sessions.create({
   agent: { name: readAgent().agent.name },
-  metadata: { purpose: "eval", run: nn, agent_commit: agentCommit },
+  metadata: { purpose: "eval", run: nn, agent_commit: agentCommit, ...(ROUND ? { exam: "v2", round: String(ROUND) } : {}) },
 });
-await tf.sessions.update(session.id, { title: `eval run ${nn} @ ${agentCommit.slice(0, 7)}` });
+await tf.sessions.update(session.id, { title: `${ROUND ? `exam v2 R${ROUND} ` : ""}eval run ${nn} @ ${agentCommit.slice(0, 7)}` });
 console.log(`  session ${session.id}`);
 
 // 4. Each task is one root turn; score the reply.
@@ -64,7 +68,7 @@ const results = [];
 for (const task of tasks) {
   process.stdout.write(`  ${task.id.padEnd(24)} `);
   const turn = await runTurn(tf, session.id, taskPrompt(task));
-  const scored = scoreTask(task, turn.text);
+  const scored = scoreTask(task as any, turn.text);
   results.push({ ...scored, turn_id: turn.turnId, status: turn.status, error: turn.error, reply: turn.text });
   console.log(`${turn.status === "done" ? "" : `[${turn.status}${turn.error ? `: ${turn.error}` : ""}] `}${scored.score.toFixed(2)}${scored.passed ? "  pass" : ""}`);
 }
@@ -101,6 +105,6 @@ console.log(`\nRun ${nn} score: ${total.score} (${total.tasks_passed}/${total.ta
 // 6. Commit the run, so git history reads: run 1 → agent change → run N.
 if (!flag("no-commit")) {
   git("add", "runs");
-  git("commit", "-q", "-m", `run ${nn}: score ${total.score}`, "-m", `TrueForge session: ${session.id}\nagent_commit: ${agentCommit}`);
-  console.log(`✓ Committed ${dir.replace(/.*\/runs\//, "runs/")}. Next: npm run improve`);
+  git("commit", "-q", "-m", `${ROUND ? `exam v2 R${ROUND} ` : ""}run ${nn}: score ${total.score}`, "-m", `TrueForge session: ${session.id}\nagent_commit: ${agentCommit}`);
+  console.log(`✓ Committed ${dir.replace(/.*\/runs\//, "runs/")}. Next: npm run improve${ROUND ? ` -- --round ${ROUND}` : ""}`);
 }

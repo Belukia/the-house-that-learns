@@ -28,6 +28,8 @@ import {
   SUMMARY_CSV,
   writeJson,
   type Task,
+  ROUND,
+  roundRules,
 } from "./lib.ts";
 import { createGame, step } from "../dist/engine.mjs";
 
@@ -62,7 +64,7 @@ const currentFiles = [
 function heistReport(t: Task, r: Result): string[] {
   if (!r.policy) return [`Your reply had no legal policy (${r.invalid ?? "unknown reason"}), so the thief walked out.`];
   // dist/engine.mjs is plain JS; its inferred types do not describe a game in progress.
-  const s: any = createGame(r.policy as any);
+  const s: any = ROUND ? createGame(r.policy as any, { round: ROUND }) : createGame(r.policy as any);
   const lines: string[] = [];
   outer: for (const a of t.actions) {
     for (let n = 0; n < a.frames; n++) {
@@ -75,8 +77,11 @@ function heistReport(t: Task, r: Result): string[] {
       if (s.status !== "playing") break outer;
     }
   }
+  // Exam v2 traces that run out are padded with stillness until dawn, exactly as the scorer does.
+  if (ROUND) while (s.status === "playing") step(s, {});
+  const how = s.status === "escaped" ? (String(s.message).includes("window") ? " through the upper window" : " through the front door") : "";
   return [
-    `Outcome: ${s.status} at ${(s.turn / 60).toFixed(1)}s. The keeper saw the thief for ${(s.seen / 60).toFixed(1)}s; decoys thrown: ${s.decoysThrown}.`,
+    `Outcome: ${s.status}${how} at ${(s.turn / 60).toFixed(1)}s. The keeper saw the thief for ${(s.seen / 60).toFixed(1)}s; decoys thrown: ${s.decoysThrown}.`,
     "Positions in pixels (x right, y down; ground y 282, upper floor y 154):",
     ...lines,
   ];
@@ -95,6 +100,10 @@ const feedback = failed
     ].join("\n");
   })
   .join("\n\n");
+
+const roundSection = ROUND
+  ? `\n## The exam you are improving for\n\n${roundRules().join("\n")}\nYour policy JSON must include dwell (0–4). Your playbook must cover both exits.\n`
+  : "";
 
 const prompt = `This message is not an EVALUATE_POLICY turn. Ignore the Output section of your instructions for this reply.
 
@@ -118,6 +127,7 @@ Reply with each changed file in full, in this format, and nothing else:
 (one sentence: what you learned)
 >>>
 
+${roundSection}
 ## Your current files
 
 ${currentFiles.map((f) => `<<<FILE ${f.path}\n${f.text.trim()}\n>>>`).join("\n\n")}
@@ -136,9 +146,9 @@ const { data: session } = await tf.sessions.create({
   agent: coach
     ? { spec: { model: agent.model, instructions: "You coach the keeper of a mansion heist game: you rewrite its instruction files from the heists it lost.", config: { askUserQuestions: { enabled: false }, generativeUi: { enabled: false } } } }
     : { name: agent.name },
-  metadata: { purpose: "improve", learned_from_run: nn },
+  metadata: { purpose: "improve", learned_from_run: nn, ...(ROUND ? { exam: "v2", round: String(ROUND) } : {}) },
 });
-await tf.sessions.update(session.id, { title: `improve from run ${nn}` });
+await tf.sessions.update(session.id, { title: `${ROUND ? `exam v2 R${ROUND} ` : ""}improve from run ${nn}` });
 console.log(`Asking ${coach ? "the coach" : `"${agent.name}"`} to rewrite its playbook from ${failed.length} failed tasks (session ${session.id})…`);
 
 const turn = await runTurn(tf, session.id, prompt, false);
@@ -192,7 +202,7 @@ if (isClean("agent")) {
 }
 console.log(git("diff", "--stat", "--", "agent"));
 
-const message = `agent: learn from run ${nn}\n\n${learned || "(no summary given)"}\n\nAgent-Session: ${session.id}`;
+const message = `agent: learn from ${ROUND ? `exam v2 R${ROUND} ` : ""}run ${nn}\n\n${learned || "(no summary given)"}\n\nAgent-Session: ${session.id}`;
 if (flag("no-commit")) {
   console.log(`\nFiles written, not committed. To commit:\n  git add agent runs && git commit -F- <<'EOF'\n${message}\nEOF`);
 } else {
