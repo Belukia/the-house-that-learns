@@ -77,3 +77,24 @@ test('round 2 replays are deterministic', () => {
   const a = tasks.map(t => runRound(p, t.actions, 2).turn), b = tasks.map(t => runRound(p, t.actions, 2).turn);
   assert.deepEqual(a, b);
 });
+
+// Round 2b: round 2 after its holdout was used up (runs 01-03).
+const dirB = new URL('../evals/v2/R2b/', import.meta.url);
+const tasksB = readdirSync(dirB).filter(f => f.endsWith('.json')).sort().map(f => JSON.parse(readFileSync(new URL(f, dirB), 'utf8')));
+const exitAsleep = t => { const s = createGame({...DEFAULT_POLICY, dwell: 0}, {round: 2, tutorial: true}); for (const a of t.actions) for (let i = 0; i < a.frames && s.status === 'playing'; i++) step(s, a.input); return s.status === 'escaped' ? (s.message.includes('window') ? 'window' : 'door') : s.status; };
+
+test('round 2b: frozen hashes; the 10 round-2 heists are development, 4 fresh ones are holdout', () => {
+  const sums = readFileSync(new URL('SHA256SUMS.txt', dirB), 'utf8').trim().split('\n').map(l => l.split(/\s+/));
+  assert.equal(sums.length, 14);
+  for (const [hash, file] of sums) assert.equal(createHash('sha256').update(readFileSync(new URL(file.replace('R2b/', ''), dirB))).digest('hex'), hash, file);
+  const dev = tasksB.filter(t => !t.holdout), hold = tasksB.filter(t => t.holdout);
+  assert.equal(dev.length, 10); assert.equal(hold.length, 4);
+  assert.deepEqual(dev.map(t => JSON.stringify(t.actions)), tasks.map(t => JSON.stringify(t.actions)));
+  const seen = new Set(dev.map(t => JSON.stringify(t.actions)));
+  for (const t of hold) assert.ok(!seen.has(JSON.stringify(t.actions)), `${t.id} repeats a development heist`);
+});
+
+test('round 2b: every title names the exit its trace really uses; holdout is 2 door + 2 window', () => {
+  for (const t of tasksB) assert.ok(t.title.includes(`exits by the ${exitAsleep(t)}`), `${t.id}: ${t.title} vs ${exitAsleep(t)}`);
+  assert.deepEqual(tasksB.filter(t => t.holdout).map(exitAsleep).sort(), ['door', 'door', 'window', 'window']);
+});
