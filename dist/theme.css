@@ -1,0 +1,70 @@
+/* ROB ME AGAIN · noir skin (Nov 2026). Loaded after style.css; remove this file's <link> to get the old cream look back. */
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+:root{--bg:#0d0e13;--ink:#efe6d2;--muted:#8d8879;--line:#262731;--green:#3ddc97;--coral:#ff5a3c;--night:#14151c;--cream:#efe6d2;--paper:#17181f;--gold:#d8b46a;--display:'Anton',Impact,'Arial Narrow',sans-serif}
+body{background:radial-gradient(1200px 520px at 50% -120px,#1d2a26 0,transparent 70%),var(--bg);color:var(--ink)}
+body:before{content:'';position:fixed;inset:0;pointer-events:none;opacity:.07;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px);mix-blend-mode:overlay;z-index:0}
+.site-shell{position:relative;z-index:1}
+header{border-bottom-color:var(--line)}
+.wordmark{color:var(--ink)}.house-icon{color:var(--green)}
+nav button{color:var(--ink)}
+/* The title: Rob me AGAIN */
+.heading{align-items:flex-end;margin-bottom:30px}
+h1{font:400 clamp(40px,4vw,64px)/1 var(--serif);font-style:italic;letter-spacing:-1.5px;margin:16px 0 14px;display:flex;align-items:baseline;gap:.22em;flex-wrap:wrap}
+h1 em{font:400 clamp(64px,7.2vw,124px)/.86 var(--display);font-style:normal;letter-spacing:1px;color:var(--ink);text-transform:uppercase;position:relative;text-shadow:3px 3px 0 var(--coral),-2px -1px 0 #3ddc9766}
+h1 em:after{content:'';position:absolute;left:2px;right:-4px;bottom:.08em;height:.11em;background:var(--green);transform:skew(-12deg);opacity:.9;z-index:-1}
+.subtitle{color:#a7a194}.subtitle span{color:var(--coral);font-weight:600}
+.eyebrow{color:var(--gold)}.live-dot{background:var(--coral);box-shadow:0 0 0 4px #ff5a3c22;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px #ff5a3c00}}
+.night-label{color:var(--muted)}.night-label b{color:var(--ink)}.moon{color:var(--gold);text-shadow:0 0 22px #d8b46a66}
+/* Rails */
+.case-no,.keeper-heading p,.keeper-heading>div>span,.suspicion-block p,.twist i,.memory small,.inventory>span{color:var(--muted)}
+.left-rail>p{color:#a7a194}.mission-list>div>span{color:var(--gold)}
+.twist>span{color:var(--coral)}.twist p{color:var(--ink)}
+.text-button{color:var(--ink)}
+.keeper-portrait{background:#1f2029;border-color:#3a3b47}
+.meter{background:#2a2b35}
+.empty-memory>span{color:#4a4a55}.empty-memory p{color:#8d8879}
+.memory p{color:var(--ink)}
+.inventory>div>span{color:#6f6b5f}.inventory p{color:#a7a194}.inventory.acquired>div>span,.inventory.acquired p{color:var(--green)}
+.house-quote{color:var(--gold)}
+/* The board */
+.board-frame{border-color:#2d2e39;box-shadow:0 0 0 1px #000,0 30px 80px #000a,0 0 120px #3ddc9712}
+.narrator-strip{background:#191b22}
+.control-bar button{color:var(--ink)}.control-bar button small{color:var(--muted)}.control-bar button.active{background:#262833}
+.control-symbol{color:var(--gold)}
+kbd{border-color:#3a3b47;color:#a7a194;background:#16171e}
+.legend{color:var(--muted)}.legend button{color:#a7a194}.wardrobe-dot{background:repeating-linear-gradient(90deg,#6d7292 0 1px,#2b2c36 1px 3px)}
+.primary{background:var(--green);border-color:var(--green);color:#07130e}.primary:hover{background:#7af0bd}
+.intro h2 em{color:var(--green)}
+.touch-pad button{background:#1c1d25!important;border-color:#3a3b47!important;color:var(--ink)}
+.control-bar button:active,.touch-pad button:active{background:#2c2e3a!important}
+/* Dialogs */
+dialog{background:var(--paper);color:var(--ink);border-color:#33343f}
+dialog p{color:#b8b2a3}dialog .close-dialog{color:#8d8879}
+#policy-view{background:#0f1015;color:#cfc8b6}
+footer{color:var(--muted)}footer button{color:#a7a194}
+/* The guest book */
+.guestbook{margin:56px 0 10px;border-top:1px solid var(--line);padding-top:38px}
+.guestbook-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:26px}
+.guestbook-head h2{font:400 clamp(34px,3.4vw,52px)/1 var(--display);letter-spacing:.5px;text-transform:uppercase;margin:10px 0 0}
+.guestbook-head h2 span{color:var(--coral)}
+.guestbook-head p{max-width:360px;font-size:12px;line-height:1.7;color:#a7a194;margin:0}
+.rating-summary{display:flex;align-items:center;gap:14px;font-size:10px;letter-spacing:1px;color:var(--muted)}
+.rating-summary b{font:400 44px/1 var(--display);color:var(--ink);letter-spacing:0}
+.stars{color:var(--gold);letter-spacing:2px;font-size:13px}.stars i{color:#3a3b47;font-style:normal}
+.reviews{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}@media(max-width:1100px){.reviews{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:650px){.reviews{grid-template-columns:1fr}}
+.review{background:linear-gradient(180deg,#17181f,#121319);border:1px solid #262731;padding:20px 20px 18px;position:relative;transition:transform .2s,border-color .2s}
+.review:hover{transform:translateY(-3px);border-color:#3a3b47}
+.review blockquote{margin:12px 0 16px;font:italic 16px/1.55 var(--serif);color:var(--ink)}
+.review .who{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:10px;line-height:1.5}
+.review .who b{display:block;font-size:12px;font-weight:600;color:var(--ink);letter-spacing:.2px}
+.review .who span{color:var(--muted)}
+.review .verdict{font-size:8px;letter-spacing:1.4px;font-weight:700;padding:3px 6px;border:1px solid currentColor;white-space:nowrap;align-self:flex-start}
+.verdict.caught{color:var(--coral)}.verdict.dawn{color:var(--gold)}.verdict.escaped{color:var(--green)}
+.review .reply{margin-top:14px;padding-top:12px;border-top:1px dashed #2c2d38;font-size:11px;line-height:1.6;color:#a7a194}
+.review .reply b{color:var(--gold);font-size:8px;letter-spacing:1.4px;margin-right:6px}
+.review.featured{grid-column:span 2;background:linear-gradient(135deg,#1b2a24,#14151c 60%);border-color:#2e4a3e}
+.review.featured blockquote{font-size:22px}
+.guestbook-note{font-size:9px;letter-spacing:1px;color:var(--muted);margin:18px 0 0}
+@media(max-width:650px){h1{font-size:30px}h1 em{font-size:68px}.review.featured{grid-column:auto}.review.featured blockquote{font-size:17px}.guestbook{margin-top:36px;padding-top:28px}.guestbook-head h2{font-size:32px}}
+@media(prefers-reduced-motion:reduce){.live-dot{animation:none}.review{transition:none}}
