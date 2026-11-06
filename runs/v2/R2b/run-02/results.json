@@ -1,0 +1,436 @@
+[
+  {
+    "task_id": "r2b-01",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Twin-exit warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 2,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 19,
+          "y": 10
+        }
+      ],
+      "lesson": "I stand on both exits, door and window, and cycle between them. Noise will not pull me away."
+    },
+    "outcome": "caught",
+    "ticks": 129,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rkgsw5rd165vp1a8t66jd1",
+    "status": "done",
+    "reply": "Following the skill, I'm guarding both exits. The keeper alternates between a ground post at the door and an upper post at the window, with a short dwell at each. He ignores decoys and doesn't guard the vault.\n\n```json\n{\n  \"name\": \"Twin-exit warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 2,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 19, \"y\": 10 }],\n  \"lesson\": \"I stand on both exits, door and window, and cycle between them. Noise will not pull me away.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-02",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Door and window warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 2,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 20,
+          "y": 10
+        }
+      ],
+      "lesson": "Both exits matter: I hold the door, then the window, and ignore the noise."
+    },
+    "outcome": "caught",
+    "ticks": 126,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rkh7tn8hyfjp30w6rqyfj9",
+    "status": "done",
+    "reply": "I loaded the skill and applied its playbook. The patrol alternates between the front door (x=3 tiles, 48 px) and the window (x=19.5 tiles, 312 px). That covers both exits, and the stairs link the two posts. Dwell is 2 s so neither post is empty for long. Skepticism is 2 so decoys can't pull the keeper off the exits. protectRelic is off because the vault is far from both exits.\n\n```json\n{\n  \"name\": \"Door and window warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 2,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 20, \"y\": 10 }],\n  \"lesson\": \"Both exits matter: I hold the door, then the window, and ignore the noise.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-03",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Twin-exit warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 2,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 20,
+          "y": 10
+        }
+      ],
+      "lesson": "I'll stop chasing noise and cycle between the front door and the window, so neither exit stays unguarded for long."
+    },
+    "outcome": "caught",
+    "ticks": 130,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rkhm6n5csv7pk33eg22f7j",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Twin-exit warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 2,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 20, \"y\": 10 }],\n  \"lesson\": \"I'll stop chasing noise and cycle between the front door and the window, so neither exit stays unguarded for long.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-04",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Twin-exit warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 2,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 20,
+          "y": 10
+        }
+      ],
+      "lesson": "I'll stand at the door, then at the window, and ignore the glass. The thief has to pass one of them."
+    },
+    "outcome": "escaped",
+    "ticks": 601,
+    "relic_stolen": true,
+    "exit": "window",
+    "turn_id": "01m6rkj165ms4x794wrvmck7r1",
+    "status": "done",
+    "reply": "I loaded the skill and followed its playbook. The policy alternates between a post on the front door and a post at the window, and the stairs join the two. The window is at pixel 312, which is tile 19.5, so I put the upper post at tile 20.\n\n```json\n{\n  \"name\": \"Twin-exit warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 2,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 20, \"y\": 10 }],\n  \"lesson\": \"I'll stand at the door, then at the window, and ignore the glass. The thief has to pass one of them.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-05",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Door and window warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 2,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 20,
+          "y": 10
+        }
+      ],
+      "lesson": "I'll guard both exits, the front door and the upstairs window. I'll pause at each one and ignore decoys."
+    },
+    "outcome": "escaped",
+    "ticks": 623,
+    "relic_stolen": true,
+    "exit": "window",
+    "turn_id": "01m6rkje2mhax840q19aqcmw7v",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Door and window warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 2,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 20, \"y\": 10 }],\n  \"lesson\": \"I'll guard both exits, the front door and the upstairs window. I'll pause at each one and ignore decoys.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-06",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Twin-exit warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 2,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 20,
+          "y": 10
+        }
+      ],
+      "lesson": "I stopped chasing noise. I now cycle between the front door and the upper window, so neither exit stays unguarded for long."
+    },
+    "outcome": "escaped",
+    "ticks": 740,
+    "relic_stolen": true,
+    "exit": "door",
+    "turn_id": "01m6rkjspjv0kvzpsehtk6yf0v",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Twin-exit warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 2,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 20, \"y\": 10 }],\n  \"lesson\": \"I stopped chasing noise. I now cycle between the front door and the upper window, so neither exit stays unguarded for long.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-07",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Twin-Exit Warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 2,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 19,
+          "y": 10
+        }
+      ],
+      "lesson": "I stop chasing noise and guard both exits. I stand at the door, then at the window, and pause at each so neither stays empty for long."
+    },
+    "outcome": "caught",
+    "ticks": 113,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rkk5mr0cq1tpdpyr9949qa",
+    "status": "done",
+    "reply": "I loaded the skill and followed its playbook. The keeper alternates between the front door and the window, with a short dwell at each post. He ignores distractions and doesn't guard the vault.\n\n```json\n{\n  \"name\": \"Twin-Exit Warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 2,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 19, \"y\": 10 }],\n  \"lesson\": \"I stop chasing noise and guard both exits. I stand at the door, then at the window, and pause at each so neither stays empty for long.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-08",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Two-exit sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 2,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 19,
+          "y": 10
+        }
+      ],
+      "lesson": "I stopped chasing the thief's route and now stand on the exits. I alternate between the front door and the window, and I ignore decoys."
+    },
+    "outcome": "escaped",
+    "ticks": 911,
+    "relic_stolen": true,
+    "exit": "door",
+    "turn_id": "01m6rkkjbp4zfjdwswnj4gkb1k",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Two-exit sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 2,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 19, \"y\": 10 }],\n  \"lesson\": \"I stopped chasing the thief's route and now stand on the exits. I alternate between the front door and the window, and I ignore decoys.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-09",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Door and Window Warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 2,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 20,
+          "y": 10
+        }
+      ],
+      "lesson": "I stand on both exits in turn, door then window, and ignore the glass."
+    },
+    "outcome": "caught",
+    "ticks": 692,
+    "relic_stolen": true,
+    "exit": null,
+    "turn_id": "01m6rkkxn4s46e34cb71k6gscg",
+    "status": "done",
+    "reply": "Following my skill's playbook, I'm guarding both exits. The patrol alternates between a ground post at the door and an upper post at the window, with a short dwell at each. Decoys are ignored and the keeper doesn't guard the vault.\n\n```json\n{\n  \"name\": \"Door and Window Warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 2,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 20, \"y\": 10 }],\n  \"lesson\": \"I stand on both exits in turn, door then window, and ignore the glass.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-10",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Twin-exit warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 2,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 19,
+          "y": 10
+        }
+      ],
+      "lesson": "I stopped chasing noise and now cycle between the front door and the window. Whichever exit the thief picks, I'm never far from it."
+    },
+    "outcome": "caught",
+    "ticks": 690,
+    "relic_stolen": true,
+    "exit": null,
+    "turn_id": "01m6rkmabmrp6mwzcdancmymks",
+    "status": "done",
+    "reply": "Policy for this round. I read the playbook and followed it: guard both exits and alternate between them. The keeper holds a post at the front door on the ground floor and another at the window on the upper floor. He uses short dwells, ignores distractions, and doesn't guard the relic.\n\n```json\n{\n  \"name\": \"Twin-exit warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 2,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 19, \"y\": 10 }],\n  \"lesson\": \"I stopped chasing noise and now cycle between the front door and the window. Whichever exit the thief picks, I'm never far from it.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-11",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Twin-exit warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 2,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 19,
+          "y": 10
+        }
+      ],
+      "lesson": "I stand on both exits, door and window, and cycle between them. Decoys will not pull me away."
+    },
+    "outcome": "caught",
+    "ticks": 218,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rkmq5fz3mxazt48pfn73x0",
+    "status": "done",
+    "reply": "Both exits are covered: the keeper alternates between the front door (tile 3) and the window (tile 19, about 304 px). He waits 2 s at each post and ignores decoys.\n\n```json\n{\n  \"name\": \"Twin-exit warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 2,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 19, \"y\": 10 }],\n  \"lesson\": \"I stand on both exits, door and window, and cycle between them. Decoys will not pull me away.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-12",
+    "holdout": true,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Door and window warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 2,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 20,
+          "y": 10
+        }
+      ],
+      "lesson": "I'll stand on the door and the window in turn and ignore the glass. The thief has to pass one of them to leave with the emerald."
+    },
+    "outcome": "escaped",
+    "ticks": 653,
+    "relic_stolen": true,
+    "exit": "window",
+    "turn_id": "01m6rkn35q0s9pfv49d29drw89",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Door and window warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 2,\n  \"patrol\": [\n    { \"x\": 3, \"y\": 18 },\n    { \"x\": 20, \"y\": 10 }\n  ],\n  \"lesson\": \"I'll stand on the door and the window in turn and ignore the glass. The thief has to pass one of them to leave with the emerald.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-13",
+    "holdout": true,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Twin-door warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 2,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 19,
+          "y": 10
+        }
+      ],
+      "lesson": "I stopped chasing noise and now cycle between the front door and the window, so neither exit stays empty for long."
+    },
+    "outcome": "escaped",
+    "ticks": 617,
+    "relic_stolen": true,
+    "exit": "window",
+    "turn_id": "01m6rknen838e6vf0be6fcbbnz",
+    "status": "done",
+    "reply": "I loaded the skill and followed its guidance. The two exits are the choke points, so the keeper alternates between a post at the front door and a post at the window, and waits briefly at each. protectRelic stays off because the vault is far from both exits. Skepticism is 2 so decoys can't pull him away from the exits.\n\n```json\n{\n  \"name\": \"Twin-door warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 2,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 19, \"y\": 10 }],\n  \"lesson\": \"I stopped chasing noise and now cycle between the front door and the window, so neither exit stays empty for long.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-14",
+    "holdout": true,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Warden of both exits",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 2,
+      "patrol": [
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 19,
+          "y": 10
+        }
+      ],
+      "lesson": "I hold the door and the window in turn and ignore thrown glass. The thief must leave by one of them."
+    },
+    "outcome": "escaped",
+    "ticks": 751,
+    "relic_stolen": true,
+    "exit": "door",
+    "turn_id": "01m6rknvrgsmr92sdkn370s0f8",
+    "status": "done",
+    "reply": "I loaded the skill and applied its rules. The plan is to guard both exits and cycle between them. Waypoint x values are in tiles, so the door at pixel 48 is tile 3 and the window at pixel 312 is about tile 19.\n\n- **Patrol:** one post on the door and one on the window, joined by the stairs. This covers both exits and puts the door first, since it is on the way to the stairs.\n- **Dwell:** 2 seconds at each post, so neither exit stays empty for long.\n- **Skepticism:** 2, so decoys can't pull the keeper off the exits.\n- **protectRelic:** false. The vault is far from both exits, so guarding it would pull the keeper away from them.\n\n```json\n{\n  \"name\": \"Warden of both exits\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 2,\n  \"patrol\": [{ \"x\": 3, \"y\": 18 }, { \"x\": 19, \"y\": 10 }],\n  \"lesson\": \"I hold the door and the window in turn and ignore thrown glass. The thief must leave by one of them.\"\n}\n```"
+  }
+]
