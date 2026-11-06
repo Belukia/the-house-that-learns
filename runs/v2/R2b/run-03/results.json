@@ -1,0 +1,448 @@
+[
+  {
+    "task_id": "r2b-01",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, window then door",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "dwell": 3,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I hold the vault until the emerald is gone. After that I hold the window, then the door. I ignore distractions and don't chase noise."
+    },
+    "outcome": "caught",
+    "ticks": 332,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rktgnc1wprydxdy6tvjtfn",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Vault warden, window then door\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"dwell\": 3,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I hold the vault until the emerald is gone. After that I hold the window, then the door. I ignore distractions and don't chase noise.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-02",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, window then door",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "dwell": 3,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I hold the vault until the gem is gone. After that I cover the window first and the door second, and I ignore the glass."
+    },
+    "outcome": "caught",
+    "ticks": 246,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rktw85b64m9mkfqdrk84ep",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Vault warden, window then door\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"dwell\": 3,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I hold the vault until the gem is gone. After that I cover the window first and the door second, and I ignore the glass.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-03",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, window then door",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "dwell": 3,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I hold the vault until the emerald moves, then I take the window and the door in turn. I ignore decoys and wait at each post."
+    },
+    "outcome": "caught",
+    "ticks": 334,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rkv8qspydjy1yg4nhexw30",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Vault warden, window then door\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"dwell\": 3,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I hold the vault until the emerald moves, then I take the window and the door in turn. I ignore decoys and wait at each post.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-04",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, window then door",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "dwell": 3,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I'll hold the vault until the emerald is taken. After that I'll hold the window, then the door, and ignore any noise meant to pull me away."
+    },
+    "outcome": "escaped",
+    "ticks": 601,
+    "relic_stolen": true,
+    "exit": "window",
+    "turn_id": "01m6rkvn272f8q30azkw2qae7t",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Vault warden, window then door\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"dwell\": 3,\n  \"patrol\": [\n    { \"x\": 19, \"y\": 10 },\n    { \"x\": 3, \"y\": 18 }\n  ],\n  \"lesson\": \"I'll hold the vault until the emerald is taken. After that I'll hold the window, then the door, and ignore any noise meant to pull me away.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-05",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, window then door",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I hold the vault until the gem is gone, then post at the window and the door and ignore noise."
+    },
+    "outcome": "caught",
+    "ticks": 331,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rkw02854d60f13z4a464j0",
+    "status": "done",
+    "reply": "Policy below. It follows the skill's advice: guard the relic first, then cover the window and the door, with a long dwell. I haven't seen any results for it.\n\n```json\n{\n  \"name\": \"Vault warden, window then door\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I hold the vault until the gem is gone, then post at the window and the door and ignore noise.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-06",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, window then door",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "dwell": 3,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I hold the vault until the emerald moves, then I cover the window and the door and ignore decoys."
+    },
+    "outcome": "caught",
+    "ticks": 342,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rkwcj7zyrg499gxjbscteg",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Vault warden, window then door\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"dwell\": 3,\n  \"patrol\": [\n    { \"x\": 19, \"y\": 10 },\n    { \"x\": 3, \"y\": 18 }\n  ],\n  \"lesson\": \"I hold the vault until the emerald moves, then I cover the window and the door and ignore decoys.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-07",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, window then door",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I hold the vault first, then guard the window and the door, and I won't be lured by noise."
+    },
+    "outcome": "caught",
+    "ticks": 205,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rkwyzqn9p75whtzjkh3dmq",
+    "status": "done",
+    "reply": "I followed the skill's playbook. The keeper holds the vault until the emerald is gone. After that he goes to the window post, then the door. He waits 4 s at each post and ignores decoys.\n\n```json\n{\n  \"name\": \"Vault warden, window then door\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"dwell\": 4,\n  \"patrol\": [\n    { \"x\": 19, \"y\": 10 },\n    { \"x\": 3, \"y\": 18 }\n  ],\n  \"lesson\": \"I hold the vault first, then guard the window and the door, and I won't be lured by noise.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-08",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, window then door",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I hold the vault until the emerald moves. After that I post at the window, then the door, and ignore the noise."
+    },
+    "outcome": "caught",
+    "ticks": 474,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rkxdhf7tpwfgxx1cqn0syg",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Vault warden, window then door\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"dwell\": 4,\n  \"patrol\": [\n    { \"x\": 19, \"y\": 10 },\n    { \"x\": 3, \"y\": 18 }\n  ],\n  \"lesson\": \"I hold the vault until the emerald moves. After that I post at the window, then the door, and ignore the noise.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-09",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault, then window and door",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "dwell": 3,
+      "patrol": [
+        {
+          "x": 20,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I hold the vault until the gem moves, then guard the window and the door. I ignore glass and wait at each post."
+    },
+    "outcome": "caught",
+    "ticks": 369,
+    "relic_stolen": true,
+    "exit": null,
+    "turn_id": "01m6rkxv1vaxgx5fegg1kj2dt8",
+    "status": "done",
+    "reply": "I loaded the skill. Its advice is to hold the vault with `protectRelic`, then post the keeper at the window and then the door. I also set skepticism to 2 and a long dwell. I haven't seen any evaluation result for this setup.\n\n```json\n{\n  \"name\": \"Vault, then window and door\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"dwell\": 3,\n  \"patrol\": [{ \"x\": 20, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I hold the vault until the gem moves, then guard the window and the door. I ignore glass and wait at each post.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-10",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, window then door",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "dwell": 3,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I hold the vault until the emerald moves, then I take the window and the door in turn and ignore decoys."
+    },
+    "outcome": "escaped",
+    "ticks": 769,
+    "relic_stolen": true,
+    "exit": "door",
+    "turn_id": "01m6rkyc31ghv32h6t118t4qyr",
+    "status": "done",
+    "reply": "I loaded the skill and followed its tactics. The keeper holds the vault first, because the thief has to come to the emerald. After the theft he patrols the window first, then the door, with a long dwell at each post and no mid-house waypoints. Skepticism is 2, so decoys can't pull him off the exits.\n\n```json\n{\n  \"name\": \"Vault warden, window then door\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"dwell\": 3,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I hold the vault until the emerald moves, then I take the window and the door in turn and ignore decoys.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-11",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, window then door",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "dwell": 3,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I hold the vault until the emerald moves, then post at the window and the door. I ignore decoys and wait at each exit."
+    },
+    "outcome": "caught",
+    "ticks": 501,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rkyw9re2j1rt0c9zathea3",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Vault warden, window then door\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"dwell\": 3,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I hold the vault until the emerald moves, then post at the window and the door. I ignore decoys and wait at each exit.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-12",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, then window and door",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "dwell": 3,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 20,
+          "y": 10
+        },
+        {
+          "x": 4,
+          "y": 18
+        }
+      ],
+      "lesson": "I hold the vault until the emerald is taken. After that I guard the window first and the door second, and I ignore glass."
+    },
+    "outcome": "caught",
+    "ticks": 363,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rkz98hfvtkvecp7rsgrxya",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Vault warden, then window and door\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"dwell\": 3,\n  \"patrol\": [\n    { \"x\": 19, \"y\": 10 },\n    { \"x\": 3, \"y\": 18 },\n    { \"x\": 20, \"y\": 10 },\n    { \"x\": 4, \"y\": 18 }\n  ],\n  \"lesson\": \"I hold the vault until the emerald is taken. After that I guard the window first and the door second, and I ignore glass.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-13",
+    "holdout": true,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Vault then window then door",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "dwell": 3,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I guard the vault until the theft, then hold the window and door posts. I ignore decoys and wait at each post."
+    },
+    "outcome": "escaped",
+    "ticks": 617,
+    "relic_stolen": true,
+    "exit": "window",
+    "turn_id": "01m6rkzmyy2qvxanwyfb0gfd3w",
+    "status": "done",
+    "reply": "I loaded the skill and followed its guidance. The keeper holds the vault until the theft, then moves to the window and the door. I set skepticism to 2 so decoys can't pull him away from the exits. The 3-second dwell lets him stand at each exit when a thief returns. I haven't seen any result for this policy.\n\n```json\n{\n  \"name\": \"Vault then window then door\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"dwell\": 3,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I guard the vault until the theft, then hold the window and door posts. I ignore decoys and wait at each post.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-14",
+    "holdout": true,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Vault warden, window then door",
+      "decoySkepticism": 2,
+      "protectRelic": true,
+      "dwell": 3,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        },
+        {
+          "x": 19,
+          "y": 10
+        }
+      ],
+      "lesson": "I hold the vault until the emerald is gone. After that I go to the window, then the door, and ignore noise."
+    },
+    "outcome": "escaped",
+    "ticks": 751,
+    "relic_stolen": true,
+    "exit": "door",
+    "turn_id": "01m6rm01f2a9jfpqxdp3enz30z",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Vault warden, window then door\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": true,\n  \"dwell\": 3,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }, { \"x\": 19, \"y\": 10 }],\n  \"lesson\": \"I hold the vault until the emerald is gone. After that I go to the window, then the door, and ignore noise.\"\n}\n```"
+  }
+]
