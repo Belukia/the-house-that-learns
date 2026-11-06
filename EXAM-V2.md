@@ -62,6 +62,10 @@ Once the agent's runs had shown the round-2 holdout, it could no longer serve as
 - In round 2b, three learning cycles tried three different strategies. The score went 71 → 50 → 71 → 71, so there was **no net gain on this round**. The repeated run confirms 71.43.
 - The simulation predicted this round would be hard: very few simple patrols stop both exits. A higher score probably needs a richer patrol, more learning cycles or a different policy language. I don't claim it.
 
+Each run folder holds `results.json` (every reply and policy, which is what the scorer re-scores) and `score.json`. `summary.csv` lists each run's TrueForge session id.
+
+**Correction:** the commit message of `0372b64` (2b run 05) names the wrong TrueForge session. The right one is `01m6rm9qa8skksa0gerhy3qdx0`, as `summary.csv` and `score.json` show.
+
 ## Cost
 
 The 12 TrueForge sessions (8 evals, 4 improves) cost US$ 3.05 on the model gateway (`totalCostInUsd` in each `session.json`). Exam v1 cost about US$ 1.30.
