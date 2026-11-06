@@ -66,9 +66,40 @@ Each run folder holds `results.json` (every reply and policy, which is what the 
 
 **Correction:** the commit message of `0372b64` (2b run 05) names the wrong TrueForge session. The right one is `01m6rm9qa8skksa0gerhy3qdx0`, as `summary.csv` and `score.json` show.
 
+### Round 2b, continued: a richer lesson after each loss
+
+After run 05, `improve` was changed once (`c9607a8`), before any new run. The rounds, tasks, scorer and holdout stayed frozen. For exam v2 rounds only, the agent's lesson now includes two new parts:
+
+- **Key moments of each lost heist**, measured on a replay of the agent's own policy: when the thief took the emerald, when the keeper first saw the thief, the closest the keeper came, and where the keeper was when the thief left, with his distance to that exit.
+- **The training heists it stopped**, with the policy that stopped each one. The rule: a fix that would let one of these through is not progress.
+
+It still gets no tactic, no task id and no holdout heist. `npx tsx scripts/improve.ts --round 2b --run 5 --print-prompt` prints the exact prompt without opening a session.
+
+| Run | Skill (agent commit) | Score | Development | Holdout | What the agent learned |
+|---|---|---|---|---|---|
+| 2b run 05 | `16f6ef4` | 71.43 | 7/10 | 3/4 | (baseline, from above) |
+| *improve* | `5bf0891` | | | | "a long window dwell leaves the door open: keep it short, be on the ground when the thief comes home" |
+| 2b run 06 | `5bf0891` | **85.71** | 8/10 | **4/4** | |
+| *improve* | `bcaf3d1` | | | | "dwell 0, land on the door tile" |
+| 2b run 07 | `bcaf3d1` | 71.43 | 8/10 | 2/4 | |
+| *improve* | `d76de72` | | | | "move the window post nearer the stairs" |
+| 2b run 08 | `d76de72` | 64.29 | 8/10 | 1/4 | |
+| 2b run 09 | `5bf0891` (repeat of run 06) | **85.71** | 8/10 | **4/4** | |
+| 2b run 10 | `5bf0891` (second repeat) | **85.71** | 8/10 | **4/4** | |
+
+**What this shows, and what it does not.**
+
+- With the richer lesson, one learning cycle took the agent from 71.43 to 85.71, and the holdout from 3/4 to 4/4. The same Skill scored 85.71 three times out of three (runs 06, 09, 10). This is the first exam v2 gain that holds on heists the agent never saw.
+- For scale: of 5000 random legal keepers (one policy for all 14 heists), about 1% score 85.71 or more on this round, and 0.2% score 100. The most common random score is 71.43.
+- The two next cycles made things worse: 71.43, then 64.29. Each one over-tuned timing for the two door heists it still lost (`r2b-09`, `r2b-10`), and lost holdout heists in exchange. The loop stopped after two cycles without a gain, as planned.
+- Runs 07 and 08 show that more learning cycles do not always help. The best Skill is `5bf0891`. The branch head still carries the later Skill `d76de72`, kept as the agent wrote it.
+- Choosing `5bf0891` as "best" uses the total score, which includes the holdout. So 85.71 is the best measured result, not an untouched estimate of a fresh holdout. A new frozen holdout would be needed to confirm it.
+
+**Correction:** the commit message for 2b run 07 names the wrong TrueForge session (`01m6s9n8s1q0kqhzwdc9a3d3gr`). The right one is `01m6s9qct9bf3xf71knaa0y3w4`, as `summary.csv` and `score.json` show. The data is unaffected.
+
 ## Cost
 
-The 12 TrueForge sessions (8 evals, 4 improves) cost US$ 3.05 on the model gateway (`totalCostInUsd` in each `session.json`). Exam v1 cost about US$ 1.30.
+The first 12 TrueForge sessions (8 evals, 4 improves) cost US$ 3.05 on the model gateway (`totalCostInUsd` in each `session.json`). The continuation (5 evals, 3 improves) cost US$ 2.07. Exam v2 so far: US$ 5.12. Exam v1 cost about US$ 1.30.
 
 ## Re-check it yourself
 
