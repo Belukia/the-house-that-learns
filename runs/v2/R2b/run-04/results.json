@@ -1,0 +1,436 @@
+[
+  {
+    "task_id": "r2b-01",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window then door sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stand on the exits, not the relic. I go to the window first and wait there. Then I go down to the door and ignore distractions."
+    },
+    "outcome": "caught",
+    "ticks": 129,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rm3d3e2mden28dc9c7j9yt",
+    "status": "done",
+    "reply": "Following my skill, I'm posting the keeper at the window first, then the door.\n\n```json\n{\n  \"name\": \"Window then door sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stand on the exits, not the relic. I go to the window first and wait there. Then I go down to the door and ignore distractions.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-02",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window and door sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stand on the exits, not the relic. I take the window first, wait there, then walk down to the door. Decoys don't pull me off my posts."
+    },
+    "outcome": "caught",
+    "ticks": 126,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rm3s0n3jcd87ah8xerqk79",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window and door sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stand on the exits, not the relic. I take the window first, wait there, then walk down to the door. Decoys don't pull me off my posts.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-03",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window then door sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stand on the window first, then walk down to the door. I ignore decoys and don't guard the vault."
+    },
+    "outcome": "caught",
+    "ticks": 130,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rm47b1z4r8bh629zb0b7f9",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window then door sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stand on the window first, then walk down to the door. I ignore decoys and don't guard the vault.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-04",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window then door warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stand on the exits, not at the vault. I take the window first, then the door, and ignore the thief's glass."
+    },
+    "outcome": "caught",
+    "ticks": 586,
+    "relic_stolen": true,
+    "exit": null,
+    "turn_id": "01m6rm4nbaqgg2g1pmye5vygxe",
+    "status": "done",
+    "reply": "Following my playbook, I'm sending the keeper to the window first, then down to the door. I'm using a long dwell, skepticism 2, and protectRelic off.\n\n```json\n{\n  \"name\": \"Window then door warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stand on the exits, not at the vault. I take the window first, then the door, and ignore the thief's glass.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-05",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window then door sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I'll stand on the window first, then walk down to the door. I'll guard the exits and ignore any glass thrown to draw me away."
+    },
+    "outcome": "caught",
+    "ticks": 601,
+    "relic_stolen": true,
+    "exit": null,
+    "turn_id": "01m6rm50wt1rcg0bwnyhvgfjqn",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window then door sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I'll stand on the window first, then walk down to the door. I'll guard the exits and ignore any glass thrown to draw me away.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-06",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window then door warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stand on the window first, then the door, and ignore distractions. The thief has to pass one of them."
+    },
+    "outcome": "caught",
+    "ticks": 619,
+    "relic_stolen": true,
+    "exit": null,
+    "turn_id": "01m6rm5dbsy0r99tma0691x25y",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window then door warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stand on the window first, then the door, and ignore distractions. The thief has to pass one of them.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-07",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window then door sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stand on the window first, then the door. The thief has to pass one of them, so I won't chase noises or guard the vault."
+    },
+    "outcome": "caught",
+    "ticks": 113,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rm5sncz533v5nvdh4drxzk",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window then door sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stand on the window first, then the door. The thief has to pass one of them, so I won't chase noises or guard the vault.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-08",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Window then door sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stand on the exits and don't chase. I take the window first, then the door, and I ignore distractions."
+    },
+    "outcome": "escaped",
+    "ticks": 911,
+    "relic_stolen": true,
+    "exit": "door",
+    "turn_id": "01m6rm655b3qcbvzc427bjk12f",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window then door sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stand on the exits and don't chase. I take the window first, then the door, and I ignore distractions.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-09",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Window then door sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I'll stand on the window first, then walk down to the door. I'll ignore noise and guard the exits instead of chasing the thief."
+    },
+    "outcome": "escaped",
+    "ticks": 773,
+    "relic_stolen": true,
+    "exit": "door",
+    "turn_id": "01m6rm6kpd9khnw8gqx45fn84x",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window then door sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I'll stand on the window first, then walk down to the door. I'll ignore noise and guard the exits instead of chasing the thief.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-10",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Window then door sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stand on the exits, not at the vault. I go to the window first, then the door, and I ignore glass thrown to draw me away."
+    },
+    "outcome": "escaped",
+    "ticks": 769,
+    "relic_stolen": true,
+    "exit": "door",
+    "turn_id": "01m6rm6zpxcg5nrtfzrjdnc44c",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window then door sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stand on the exits, not at the vault. I go to the window first, then the door, and I ignore glass thrown to draw me away.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-11",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window then door sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stand on the exits, not the relic: the window first, then the door, ignoring distractions."
+    },
+    "outcome": "caught",
+    "ticks": 218,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6rm7ay75sktgwb1aj8vps5n",
+    "status": "done",
+    "reply": "Following my playbook, I'm sending the keeper to camp on the window first, then to the door. I'm using a long dwell, skepticism 2, and no relic protection.\n\n```json\n{\n  \"name\": \"Window then door sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stand on the exits, not the relic: the window first, then the door, ignoring distractions.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-12",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window-then-door keeper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stand on the exits, not at the vault. I take the window first, then I come down the stairs to the door. I ignore noise."
+    },
+    "outcome": "caught",
+    "ticks": 629,
+    "relic_stolen": true,
+    "exit": null,
+    "turn_id": "01m6rm7prp3fgdqr6jyzzhdtgr",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window-then-door keeper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stand on the exits, not at the vault. I take the window first, then I come down the stairs to the door. I ignore noise.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-13",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window then door sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stand on the exits, not the relic. The window comes first, then the door, and I ignore distractions."
+    },
+    "outcome": "caught",
+    "ticks": 597,
+    "relic_stolen": true,
+    "exit": null,
+    "turn_id": "01m6rm81vrw51wkhwr0j072rjd",
+    "status": "done",
+    "reply": "I followed the loaded playbook: guard the window first because it is the nearer exit, then the door. I'm keeping protectRelic off and skepticism at 2, with a long dwell at each post.\n\n```json\n{\n  \"name\": \"Window then door sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stand on the exits, not the relic. The window comes first, then the door, and I ignore distractions.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-14",
+    "holdout": true,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Window then door sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 18
+        }
+      ],
+      "lesson": "I stand on the exits, not the relic: first the window, then down the stairs to the door, ignoring noise."
+    },
+    "outcome": "escaped",
+    "ticks": 751,
+    "relic_stolen": true,
+    "exit": "door",
+    "turn_id": "01m6rm8eqpffx4pn71h331782m",
+    "status": "done",
+    "reply": "Following my playbook, I'm posting the keeper at the window first and the door second. I'm using a long dwell, ignoring decoys, and not guarding the relic.\n\n```json\n{\n  \"name\": \"Window then door sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 3, \"y\": 18 }],\n  \"lesson\": \"I stand on the exits, not the relic: first the window, then down the stairs to the door, ignoring noise.\"\n}\n```"
+  }
+]
