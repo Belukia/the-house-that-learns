@@ -1,0 +1,4 @@
+run,session_id,agent_commit,score,date_utc,tasks_passed,tasks_total,tokens,tool_calls,duration_s
+1,01m6rhj7e3pq6rntsfn4cx5xbe,72579b976c70474a9aa8448dce78b2b00126d56c,70,2026-11-06T13:46:10Z,7,10,146445,16,195
+2,01m6rhvy552w26xkynskvwk46c,8b531e189aeaa70820a3eeceac79bf07fc16827a,70,2026-11-06T13:50:36Z,7,10,126420,13,143
+3,01m6rj14j1bee7yvdpag42n8yz,8b531e189aeaa70820a3eeceac79bf07fc16827a,70,2026-11-06T13:53:19Z,7,10,108058,10,135
