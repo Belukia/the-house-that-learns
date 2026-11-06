@@ -1,0 +1,10 @@
+072429d9d013bbbd3d5f57088440ab3ce4769ca97068cd539f5a0caa4a5ae883  R2/r2-01.json  ground→door 13.6s
+ab3411e0d5addddd31bf3c596371591233ba4272186f96f81c828faf48460da6  R2/r2-02.json  ground→door + glass 11.4s
+378d402add6d98a830ae8552bd930508145cc408c67a3a9bf99ef75d045c781e  R2/r2-03.json  ground→window 11.2s
+62df051df0762f2bbaad581b34271cb76dd2c19a3ce7ecf143346a8316ee3d88  R2/r2-04.json  upper→window 10s
+ecd48480ad5fb1781feedbe7b89ecf0b9095407e49736051184c73943644e8b3  R2/r2-05.json  glass at the door → window 10.4s
+7316024bdbaeb58c1632f514dcb5f834ce8073317678a8c5b58e4c2ce83c4c0b  R2/r2-06.json  glass at the vault → door 12.3s
+94d7a00ad336fc30c71422065efb3d9cdbff0f0cdce85d2b334f75d63af9c64c  R2/r2-07.json  sprints the hall (it creaks) → door (holdout) 11s
+3bce4649ee55576a40560f971ab063744696615a716ac5a6448cd9987e8e4bbf  R2/r2-08.json  upper→window (holdout) 15.2s
+524b4c14198b580ebd0d349a9c1ce2cf73a4ba2acd32071fbfba8bafc8d4e55d  R2/r2-09.json  glass at the door → window (holdout) 12.9s
+cf500079d7e9c230f5ab04cafd7c6d3bd0a20930a46c8620558871d0ebcb7141  R2/r2-10.json  glass at the vault → door (holdout) 12.8s

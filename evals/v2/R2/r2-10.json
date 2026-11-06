@@ -1,0 +1,369 @@
+{
+  "id": "r2-10",
+  "title": "glass at the vault → door (holdout)",
+  "holdout": true,
+  "engine": "realtime-platformer-v3",
+  "round": 2,
+  "actions": [
+    {
+      "frames": 2,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 35,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 25,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 35,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 194,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": true,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 29,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": false,
+        "down": true,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 39,
+      "input": {
+        "left": false,
+        "right": true,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 25,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 51,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 41,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 41,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 41,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 41,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 41,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 41,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 25,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 1,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": true,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    },
+    {
+      "frames": 50,
+      "input": {
+        "left": true,
+        "right": false,
+        "sprint": false,
+        "jump": false,
+        "down": false,
+        "decoy": false,
+        "hide": false
+      }
+    }
+  ]
+}
