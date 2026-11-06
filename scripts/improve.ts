@@ -29,6 +29,7 @@ import {
   writeJson,
   type Task,
   ROUND,
+  ROUND_ID,
   roundRules,
 } from "./lib.ts";
 import { createGame, step } from "../dist/engine.mjs";
@@ -146,9 +147,9 @@ const { data: session } = await tf.sessions.create({
   agent: coach
     ? { spec: { model: agent.model, instructions: "You coach the keeper of a mansion heist game: you rewrite its instruction files from the heists it lost.", config: { askUserQuestions: { enabled: false }, generativeUi: { enabled: false } } } }
     : { name: agent.name },
-  metadata: { purpose: "improve", learned_from_run: nn, ...(ROUND ? { exam: "v2", round: String(ROUND) } : {}) },
+  metadata: { purpose: "improve", learned_from_run: nn, ...(ROUND ? { exam: "v2", round: ROUND_ID } : {}) },
 });
-await tf.sessions.update(session.id, { title: `${ROUND ? `exam v2 R${ROUND} ` : ""}improve from run ${nn}` });
+await tf.sessions.update(session.id, { title: `${ROUND ? `exam v2 R${ROUND_ID} ` : ""}improve from run ${nn}` });
 console.log(`Asking ${coach ? "the coach" : `"${agent.name}"`} to rewrite its playbook from ${failed.length} failed tasks (session ${session.id})…`);
 
 const turn = await runTurn(tf, session.id, prompt, false);
@@ -202,7 +203,7 @@ if (isClean("agent")) {
 }
 console.log(git("diff", "--stat", "--", "agent"));
 
-const message = `agent: learn from ${ROUND ? `exam v2 R${ROUND} ` : ""}run ${nn}\n\n${learned || "(no summary given)"}\n\nAgent-Session: ${session.id}`;
+const message = `agent: learn from ${ROUND ? `exam v2 R${ROUND_ID} ` : ""}run ${nn}\n\n${learned || "(no summary given)"}\n\nAgent-Session: ${session.id}`;
 if (flag("no-commit")) {
   console.log(`\nFiles written, not committed. To commit:\n  git add agent runs && git commit -F- <<'EOF'\n${message}\nEOF`);
 } else {

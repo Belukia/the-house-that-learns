@@ -15,20 +15,25 @@ export const AGENT_DIR = join(ROOT, "agent");
 
 /**
  * Exam v2: `--round 2` runs the harder round-2 exam (a second exit: the upper window).
+ * `--round 2b` is the same round after its holdout was used up: the 4 used holdout heists join development
+ * and 4 fresh holdout heists are frozen (evals/v2/R2b/SHA256SUMS.txt) before its first run.
  * Without --round everything is exam v1, exactly as before: evals/tasks, runs/run-NN, runs/summary.csv.
- * Each round keeps its own frozen tasks (evals/v2/R<n>) and its own runs (runs/v2/R<n>/run-NN).
+ * Each round keeps its own frozen tasks (evals/v2/R<id>) and its own runs (runs/v2/R<id>/run-NN).
  */
 const roundArg = (() => {
   const i = process.argv.indexOf("--round");
-  return i >= 0 ? Number(process.argv[i + 1]) : 0;
+  return i >= 0 ? String(process.argv[i + 1]) : "";
 })();
-if (roundArg && ![2].includes(roundArg)) {
-  console.error(`\n✗ Unknown round ${process.argv[process.argv.indexOf("--round") + 1]}. Exam v2 has round 2.\n`);
+if (roundArg && !["2", "2b"].includes(roundArg)) {
+  console.error(`\n✗ Unknown round ${roundArg}. Exam v2 has rounds 2 and 2b.\n`);
   process.exit(1);
 }
-export const ROUND: number = roundArg;
-export const TASKS_DIR = ROUND ? join(ROOT, "evals", "v2", `R${ROUND}`) : join(ROOT, "evals", "tasks");
-export const RUNS_DIR = ROUND ? join(ROOT, "runs", "v2", `R${ROUND}`) : join(ROOT, "runs");
+/** The round's id for paths ("2", "2b"); "" for exam v1. */
+export const ROUND_ID: string = roundArg;
+/** The engine round (2 for both 2 and 2b: same house, same rules); 0 for exam v1. */
+export const ROUND: number = roundArg ? parseInt(roundArg, 10) : 0;
+export const TASKS_DIR = ROUND ? join(ROOT, "evals", "v2", `R${ROUND_ID}`) : join(ROOT, "evals", "tasks");
+export const RUNS_DIR = ROUND ? join(ROOT, "runs", "v2", `R${ROUND_ID}`) : join(ROOT, "runs");
 export const SUMMARY_CSV = join(RUNS_DIR, "summary.csv");
 
 // ---------- config ----------
