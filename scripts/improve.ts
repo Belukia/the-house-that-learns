@@ -32,7 +32,7 @@ import {
   ROUND_ID,
   roundRules,
 } from "./lib.ts";
-import { createGame, step } from "../dist/engine.mjs";
+import { createGame, step, WINDOW } from "../dist/engine.mjs";
 
 // ---------- which run ----------
 
@@ -67,9 +67,18 @@ function heistReport(t: Task, r: Result): string[] {
   // dist/engine.mjs is plain JS; its inferred types do not describe a game in progress.
   const s: any = ROUND ? createGame(r.policy as any, { round: ROUND }) : createGame(r.policy as any);
   const lines: string[] = [];
+  // Key moments, measured on the replay of the agent's own policy (exam v2 only: exam v1 prompts stay as they were).
+  let relicAt: number | null = null, firstSeenAt: number | null = null, closest = Infinity, closestAt = 0;
+  const watch = () => {
+    if (relicAt === null && s.hasRelic) relicAt = s.turn;
+    if (firstSeenAt === null && s.seen > 0) firstSeenAt = s.turn;
+    const d = Math.hypot(s.player.x - s.guard.x, s.player.y - s.guard.y);
+    if (d < closest) { closest = d; closestAt = s.turn; }
+  };
   outer: for (const a of t.actions) {
     for (let n = 0; n < a.frames; n++) {
       step(s, a.input);
+      if (ROUND) watch();
       if (s.turn % 60 === 0 || s.status !== "playing") {
         const p = s.player, g = s.guard;
         const floor = p.y < 170 ? "upper floor" : p.y < 270 ? "stairs" : "ground";
@@ -79,13 +88,43 @@ function heistReport(t: Task, r: Result): string[] {
     }
   }
   // Exam v2 traces that run out are padded with stillness until dawn, exactly as the scorer does.
-  if (ROUND) while (s.status === "playing") step(s, {});
-  const how = s.status === "escaped" ? (String(s.message).includes("window") ? " through the upper window" : " through the front door") : "";
+  if (ROUND) while (s.status === "playing") { step(s, {}); watch(); }
+  const viaWindow = String(s.message).includes("window");
+  const how = s.status === "escaped" ? (viaWindow ? " through the upper window" : " through the front door") : "";
+  const sec = (turn: number) => `${(turn / 60).toFixed(1)}s`;
+  const moments: string[] = [];
+  if (ROUND) {
+    moments.push("Key moments:");
+    moments.push(`  - The thief took the emerald at ${relicAt === null ? "no point" : sec(relicAt)}.`);
+    moments.push(`  - The keeper first saw the thief at ${firstSeenAt === null ? "no point: he never saw the thief" : sec(firstSeenAt)}.`);
+    moments.push(`  - The keeper came closest at ${sec(closestAt)}: ${Math.round(closest)} px from the thief.`);
+    if (s.status === "escaped") {
+      const exit = viaWindow ? { x: WINDOW.x, y: 154, name: "the upper window" } : { x: 40, y: 282, name: "the front door" };
+      const g = s.guard;
+      const where = g.y < 170 ? "upper floor" : g.y < 270 ? "stairs" : "ground";
+      moments.push(`  - When the thief left through ${exit.name}, the keeper was at (${Math.round(g.x)},${Math.round(g.y)}) on the ${where}, ${Math.round(Math.hypot(g.x - exit.x, g.y - exit.y))} px from that exit.`);
+    }
+  }
   return [
     `Outcome: ${s.status}${how} at ${(s.turn / 60).toFixed(1)}s. The keeper saw the thief for ${(s.seen / 60).toFixed(1)}s; decoys thrown: ${s.decoysThrown}.`,
+    ...moments,
     "Positions in pixels (x right, y down; ground y 282, upper floor y 154):",
     ...lines,
   ];
+}
+
+/** Exam v2: the training heists the keeper stopped, with the policy that stopped each one, so a fix does not undo a win. */
+function stoppedReport(): string {
+  if (!ROUND) return "";
+  const won = results.filter((r) => r.passed && !r.holdout);
+  if (!won.length) return "";
+  const rowsWon = won.map((r, i) => {
+    const p: any = r.policy ?? {};
+    const how = Number(r.ticks) >= 3600 ? "the thief was still inside at dawn" : `caught by contact at ${(Number(r.ticks) / 60).toFixed(1)}s`;
+    const patrol = Array.isArray(p.patrol) ? p.patrol.map((w: any) => `(${w.x},${w.y})`).join(" → ") : "?";
+    return `- Stopped heist ${i + 1}: ${how}. Policy: patrol ${patrol}, dwell ${p.dwell ?? "?"}, decoySkepticism ${p.decoySkepticism ?? "?"}, protectRelic ${p.protectRelic ?? "?"}.`;
+  });
+  return `\n## Heists you stopped in run ${nn}\n\nThese worked. A new rule that fixes a loss but would have let one of these through is not progress.\n\n${rowsWon.join("\n")}\n`;
 }
 
 const feedback = failed
@@ -136,7 +175,13 @@ ${currentFiles.map((f) => `<<<FILE ${f.path}\n${f.text.trim()}\n>>>`).join("\n\n
 ## What went wrong in run ${nn}
 
 ${feedback}
-`;
+${stoppedReport()}`;
+
+// --print-prompt shows the exact prompt and stops: no TrueForge session, no cost.
+if (flag("print-prompt")) {
+  console.log(prompt);
+  process.exit(0);
+}
 
 // ---------- ask the agent ----------
 
