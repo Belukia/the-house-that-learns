@@ -303,3 +303,18 @@ footer button{font:700 10px var(--serif);color:var(--red)}
 /* 7 nov: on phones, decoy and hide sit right above the arrows */
 .touch-actions{display:none}
 @media(max-width:750px){.touch-pad{flex-wrap:wrap}.touch-actions{display:flex;gap:8px;width:100%;order:0}.touch-pad>div:not(.touch-actions){order:1}.touch-pad>button{order:2}.control-bar{display:none}.touch-pad .t-act{width:auto;flex:1;height:52px;font:700 11px var(--serif);letter-spacing:1px;touch-action:none;user-select:none;-webkit-user-select:none}.t-act small{display:block;font:italic 10px var(--serif);letter-spacing:0;color:var(--ink2)}.t-act:disabled{opacity:.4}}
+
+/* 7 nov (Tami): the top is a title and one plain line, so the game shows first and reads as a game. */
+.epigraph{font:400 17px/1.45 var(--serif);font-style:normal;text-transform:lowercase;letter-spacing:.3px;color:var(--ink2);max-width:640px;margin:0 auto}
+.heading{margin-bottom:12px;padding-bottom:12px}
+/* The start card stands out from the paper: newspaper red, with the paper colour for its text. */
+.notice{background:var(--red);border-color:var(--red);box-shadow:0 10px 30px #0008,inset 0 0 0 5px var(--red),inset 0 0 0 6px #ebe2cc99}
+.notice>.eyebrow{color:#f3dcc0}
+.notice>p:not(.eyebrow),.notice .intro-note{color:#f3e7d3}
+.intro h2{color:var(--paper)}
+.intro h2 em{color:#f6c98f}
+.notice .primary{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.notice .primary:hover{background:#fff4df;border-color:#fff4df;color:var(--ink)}
+.notice .sound-hint{color:#f3e7d3}
+.notice .sound-hint u{color:#fff}
+@media(max-width:750px){.epigraph{font-size:15px;max-width:300px}.heading{margin-bottom:10px;padding-bottom:10px}main{padding-top:8px}}
