@@ -5,7 +5,7 @@
 // The tasks (evals/v2/R<n>/*.json) are frozen with SHA256SUMS.txt before the first run of each round.
 //
 //   npx tsx evals/v2/score.ts --selftest        check the scorer on fixed policies
-//   npx tsx evals/v2/score.ts runs/v2/R2/run-01 re-score a saved run
+//   npx tsx evals/v2/score.ts runs/v2/R2/run-01 re-score a saved run (R2b runs too: the round comes from the folder)
 
 import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
@@ -72,7 +72,7 @@ export function scoreRun(tasks: { score: number; passed: boolean }[]): { score: 
 
 const here = dirname(fileURLToPath(import.meta.url));
 
-export function loadRoundTasks(round: number): RoundTask[] {
+export function loadRoundTasks(round: number | string): RoundTask[] {
   const dir = join(here, `R${round}`);
   return readdirSync(dir)
     .filter((f) => f.endsWith(".json"))
@@ -113,7 +113,9 @@ if (resolve(process.argv[1] ?? "") === fileURLToPath(import.meta.url)) {
   if (arg === "--selftest") selftest();
   else if (arg) {
     const results = JSON.parse(readFileSync(join(arg, "results.json"), "utf8"));
-    const tasks = new Map(loadRoundTasks(2).map((t) => [t.id, t]));
+    // The run's round comes from its folder (runs/v2/R2/…, runs/v2/R2b/…). Scoring itself is unchanged.
+    const round = /\/R(2b|\d+)\//.exec(resolve(arg) + "/")?.[1] ?? "2";
+    const tasks = new Map(loadRoundTasks(round).map((t) => [t.id, t]));
     const re = results.map((r: any) => scoreTask(tasks.get(r.task_id)!, r.reply));
     const saved = JSON.parse(readFileSync(join(arg, "score.json"), "utf8")).score;
     const now = scoreRun(re).score;
