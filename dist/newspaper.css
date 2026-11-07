@@ -318,3 +318,101 @@ footer button{font:700 10px var(--serif);color:var(--red)}
 .notice .sound-hint{color:#f3e7d3}
 .notice .sound-hint u{color:#fff}
 @media(max-width:750px){.epigraph{font-size:15px;max-width:300px}.heading{margin-bottom:10px;padding-bottom:10px}main{padding-top:8px}}
+
+/* ===== 7 nov revamp: the game first, fewer labels, a goal before every night ===== */
+@media(min-width:751px){.game-layout{grid-template-columns:minmax(0,1fr) 230px}}
+@media(min-width:751px) and (max-width:1100px){.game-layout{grid-template-columns:minmax(0,1fr) 200px}}
+.board-top{display:flex;justify-content:space-between;align-items:center;text-transform:uppercase}
+.board-top button{background:var(--ink);color:var(--paper);border:0;padding:5px 10px;font:700 10px var(--serif);letter-spacing:1.2px;text-transform:uppercase;cursor:pointer}
+.board-top button:hover{background:var(--red)}
+.narrator-strip>span{text-transform:uppercase}
+.dateline{text-transform:uppercase}
+.dateline button{text-transform:uppercase}
+/* The start card: what this is, in three short lines */
+.notice .context{list-style:none;margin:6px 0 12px;padding:0;max-width:340px;text-align:left}
+.notice .context li{font:400 13px/1.35 var(--serif);color:#f6ead6;padding-left:14px;position:relative;margin:4px 0}
+.notice .context li:before{content:'◆';position:absolute;left:0;top:1px;font-size:8px;color:#f6c98f}
+.notice .context a{color:#fff;font-weight:700}
+.sound-hint{text-transform:uppercase}
+/* The goal before each night: a paper slip, waits for GO */
+.brief{background:#10121acc}
+.brief .brief-card{background:var(--paper);border-color:var(--ink);box-shadow:0 10px 30px #0008,inset 0 0 0 5px var(--paper),inset 0 0 0 6px var(--ink);transform:rotate(.6deg);text-align:center}
+.brief-night{font:900 26px/1 var(--head);text-transform:uppercase;color:var(--ink);margin:2px 0 8px}
+.brief-goal{font:400 15px/1.4 var(--serif);color:var(--ink);max-width:360px;margin:0 0 10px}
+.brief-label{font:700 10px var(--serif);letter-spacing:2px;color:var(--red);text-transform:uppercase;margin:4px 0}
+.brief-known{list-style:none;margin:0 0 10px;padding:0;font:italic 13px/1.35 var(--serif);color:var(--ink2)}
+.brief .notice .primary,.brief .primary{background:var(--ink);border-color:var(--ink);color:var(--paper);min-width:160px}
+.result-cause{font:700 13px var(--serif)!important;color:var(--red)!important;letter-spacing:.5px;margin:2px 0 6px!important;display:block}
+.rail-links{display:flex;flex-direction:column;align-items:flex-start;border-top:1px solid var(--rule);margin-top:12px;padding-top:6px}
+.rail-links .text-button{color:var(--red);font:700 11px var(--serif);letter-spacing:1px;text-transform:uppercase;padding:6px 0}
+.keeper-heading h2{text-transform:none}
+.suspicion-block span,.memory-heading span:first-child{text-transform:uppercase}
+.touch-only{display:none}
+.legend span{text-transform:uppercase}
+@media(max-width:750px){
+ .notice .context{margin:4px 0 8px}.notice .context li{font-size:11px;margin:2px 0}
+ .brief-night{font-size:20px;margin:0 0 6px}.brief-goal{font-size:13px;margin-bottom:6px}.brief-known{font-size:11px;margin-bottom:6px}
+ .touch-only{display:inline-block}.legend{justify-content:space-between}
+ .board-top button{padding:4px 8px;font-size:9px}
+}
+/* Full screen (and the iPhone game mode): only the board and its controls */
+.board-column:fullscreen,body.game-mode .board-column{position:fixed;inset:0;z-index:60;background:var(--paper);overflow:auto;padding:8px 10px;display:flex;flex-direction:column;justify-content:center}
+.board-column:fullscreen .board-frame,body.game-mode .board-frame{width:min(100%,calc((100dvh - 190px)*1.667));margin:0 auto}
+.board-column:fullscreen .legend,body.game-mode .legend{display:none}
+body.game-mode{overflow:hidden}
+/* Touch screens: touch controls at any width */
+body.touch .control-bar{display:none}
+body.touch .touch-pad{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;gap:6px;margin-top:10px}
+body.touch .touch-pad div{display:flex;gap:6px}
+body.touch .touch-pad button{width:58px;height:48px;font-size:22px;touch-action:none;background:var(--paper)!important;border:1px solid var(--ink)!important;color:var(--ink)}
+body.touch .touch-actions{display:flex;width:100%;order:0}
+body.touch .touch-pad .t-act{width:auto;flex:1;height:52px;font:700 11px var(--serif);letter-spacing:1px}
+body.touch .touch-only{display:inline-block}
+/* A phone on its side, in full screen or game mode: the board fills the height; controls float on the edges */
+@media(orientation:landscape) and (max-height:520px){
+ .board-column:fullscreen,body.game-mode .board-column{justify-content:flex-start;padding:4px 8px}
+ .board-column:fullscreen .board-top,body.game-mode .board-top{height:24px}
+ .board-column:fullscreen .narrator-strip,body.game-mode .narrator-strip{min-height:0;padding:3px 10px}
+ .board-column:fullscreen .narrator-strip p,body.game-mode .narrator-strip p{font-size:12px;line-height:1.3}
+ .board-column:fullscreen .board-status,body.game-mode .board-status{display:none}
+ .board-column:fullscreen .board-frame,body.game-mode .board-frame{width:min(100%,calc((100dvh - 78px)*1.667))}
+ body.touch.game-mode .touch-pad,body.touch .board-column:fullscreen .touch-pad{position:fixed;left:6px;right:6px;bottom:6px;margin:0;pointer-events:none;z-index:70}
+ body.touch.game-mode .touch-pad button,body.touch .board-column:fullscreen .touch-pad button{pointer-events:auto;opacity:.8;width:52px;height:44px}
+ body.touch.game-mode .touch-actions,body.touch .board-column:fullscreen .touch-actions{position:fixed;right:6px;bottom:56px;width:auto;z-index:70}
+ body.touch.game-mode .touch-pad .t-act,body.touch .board-column:fullscreen .touch-pad .t-act{width:110px;height:44px}
+ body.game-mode .control-bar{display:none}
+}
+/* Phones: a card over the board (start, goal, result) may be taller than the board. The board grows to fit it. */
+@media(max-width:750px){
+ .canvas-wrap:has(> .intro:not(.hidden)),.canvas-wrap:has(> .result:not(.hidden)){aspect-ratio:auto;min-height:60vw}
+ .canvas-wrap:has(> .intro:not(.hidden)) canvas,.canvas-wrap:has(> .result:not(.hidden)) canvas{position:absolute;inset:0}
+ .canvas-wrap > .intro:not(.hidden),.canvas-wrap > .result:not(.hidden){position:relative;inset:auto;min-height:60vw;padding:12px 8px}
+ .notice,.result-card{max-height:none!important;overflow:visible}
+}
+.brief-card>p,.brief-card>div:not(.hidden){display:block!important}
+.brief .brief-card>p.brief-night{color:var(--ink);font:900 26px/1 var(--head)}
+.brief .brief-card>p.brief-goal{color:var(--ink);font:400 15px/1.4 var(--serif);font-style:normal}
+.brief .brief-card .brief-label{color:var(--red)}
+@media(max-width:750px){.brief .brief-card>p.brief-night{font-size:20px}.brief .brief-card>p.brief-goal{font-size:13px}}
+.brief .brief-card>p.brief-goal{text-align:center}
+body.touch .touch-pad>div:not(.touch-actions){order:1}
+body.touch .touch-pad>button{order:2}
+@media(orientation:landscape) and (max-height:520px){body.touch.game-mode .t-act small,body.touch .board-column:fullscreen .t-act small{display:none}}
+/* ===== The lower page: one story, three letters, two ads ===== */
+.story-wrap .lead-story{max-width:980px;margin:0 auto}
+.story-wrap .lead-story h2{font:900 clamp(30px,4vw,54px)/1.02 var(--head);text-align:center;margin:4px 0 8px;letter-spacing:-.5px}
+.story-wrap .story-deck{text-align:center}
+.story-wrap .story-cols{columns:3}
+.story-wrap .byline a{color:var(--red)}
+.letters-title{font:900 clamp(24px,2.6vw,36px)/1.1 var(--head);text-align:center;margin:0 0 14px}
+.guestbook .reviews{grid-template-columns:repeat(3,minmax(0,1fr))}
+.guestbook .reviews .review{border-top:0!important;padding-top:4px!important}
+.guestbook .reviews .review:first-child{border-left:0;padding-left:0}
+.ads-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:760px;margin:26px auto 0}
+.ads-row .ad{margin:0}
+/* Paper: grain and slightly darker edges, so it reads as a printed page (no fold) */
+.site-shell{position:relative;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='.6' numOctaves='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .38 0 0 0 0 .31 0 0 0 0 .2 0 0 0 .13 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>"),radial-gradient(ellipse at center,transparent 60%,rgba(90,70,40,.13) 100%)}
+.board-frame{box-shadow:0 1px 0 #fff8,0 8px 22px #3b2f1d33;outline:4px double var(--ink);outline-offset:4px}
+@media(max-width:750px){.story-wrap .story-cols{columns:1}.guestbook .reviews{grid-template-columns:1fr}.guestbook .reviews .review{border-left:0;padding-left:0;border-top:1px solid var(--ink)!important;padding-top:12px!important}.ads-row{grid-template-columns:1fr}.board-frame{outline-width:3px;outline-offset:3px}}
+.masthead{grid-template-columns:1fr!important}
+.ads-row .ad{grid-column:auto!important;grid-row:auto!important}
