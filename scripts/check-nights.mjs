@@ -15,7 +15,7 @@ export const KEEPERS={
  'knows everything':keeper({waitAt:52,wardrobe:1,exit:true,door:true,window:true},{decoySkepticism:2}),
 };
 const F=12; // frames per macro step
-const MOVES=[{right:true},{left:true},{right:true,sprint:true},{left:true,sprint:true},{right:true,jump:true},{left:true,jump:true},{jump:true},{down:true},{left:true,down:true},{right:true,down:true},{},{hide:true},{decoy:true}];
+const MOVES=[{right:true},{left:true},{right:true,sprint:true},{left:true,sprint:true},{right:true,jump:true},{left:true,jump:true},{jump:true},{down:true},{left:true,down:true},{right:true,down:true},{},{hide:true}]; // no decoys: the game took them out on 7 Nov
 const STAIRS=[{foot:100,top:240},{foot:930,top:790}];
 let STYLE={climb:true,wary:true}; // the search tries three styles; any escape it finds is a real, simulated escape
 function pathDist(a,t){
