@@ -1,6 +1,6 @@
 // All movement is continuous. The simulation advances at 60 fixed ticks/second.
 export const TILE=16, WIDTH=1024, HEIGHT=352, GROUND=304;
-export const ENTRY={x:48,y:282}, RELIC={x:944,y:280};
+export const ENTRY={x:48,y:282}, RELIC={x:944,y:280}, UPPER_RELIC=Object.freeze({x:580,y:152});
 export const HIDING=[{x:160,y:304},{x:528,y:304},{x:816,y:304}];
 export const PLATFORMS=[{x:96,y:272,w:96},{x:144,y:240,w:96},{x:192,y:208,w:96},{x:224,y:176,w:576},{x:800,y:208,w:48},{x:848,y:240,w:48},{x:896,y:272,w:48}];
 export const BLOCKS=[{x:368,y:272,w:32,h:32},{x:688,y:288,w:32,h:16}];
@@ -33,7 +33,16 @@ export function sight(a,b,radius=160){return Math.hypot(a.x-b.x,a.y-b.y)<radius&
 export const EXAM_RULES=Object.freeze({limit:90,speed:1,vision:160,decoys:3,door:false});
 // From night 2 he hunts: he chases what he sees, remembers where he last saw you, and takes the stairs.
 // From night 3 the house opens a window upstairs, above the door: a second way out (the same window as exam v2).
-export const NIGHTS=Object.freeze({2:{limit:55,speed:1,vision:170,decoys:3,door:false,chase:true},3:{limit:50,speed:1.1,vision:200,decoys:2,door:false,chase:true,exits:['door','window']},4:{limit:45,speed:1.2,vision:230,decoys:1,door:false,chase:true,exits:['door','window']},5:{limit:40,speed:1.3,vision:260,decoys:0,door:false,chase:true,exits:['door','window']}});
+export const NIGHTS=Object.freeze({2:{limit:55,speed:1,vision:170,decoys:3,door:false,chase:true},3:{limit:50,speed:1.1,vision:200,decoys:2,door:false,chase:true,exits:['door','window']},4:{limit:45,speed:1.2,vision:230,decoys:1,door:false,chase:true,exits:['door','window']},5:{limit:40,speed:1.3,vision:260,decoys:0,door:false,chase:true,exits:['door','window']},
+ // Nights 6-10: each adds ONE new thing. 6 the long hall creaks under a sprint; 7 the candles are out (you see a small circle,
+ // he sees less); 8 the front door is locked (window only); 9 the emerald has been moved upstairs; 10 all of it at once.
+ 6:{limit:45,speed:1.25,vision:240,decoys:1,door:false,chase:true,exits:['door','window'],creaky:true},
+ 7:{limit:45,speed:1.25,vision:150,decoys:1,door:false,chase:true,exits:['door','window'],dark:true},
+ 8:{limit:45,speed:1.3,vision:240,decoys:1,door:false,chase:true,exits:['window']},
+ 9:{limit:45,speed:1.3,vision:240,decoys:1,door:false,chase:true,exits:['door','window'],relic:UPPER_RELIC},
+ 10:{limit:50,speed:1.3,vision:150,decoys:1,door:false,chase:true,exits:['window'],creaky:true,dark:true,relic:UPPER_RELIC}});
+// What each new night adds, for the briefing and the status line.
+export const NIGHT_NEWS=Object.freeze({6:'THE LONG HALL CREAKS IF YOU RUN',7:'THE CANDLES ARE OUT',8:'THE FRONT DOOR IS LOCKED',9:'THE EMERALD HAS BEEN MOVED UPSTAIRS',10:'ALL OF IT, AT ONCE'});
 // Exam v2 (prototype): rounds that get harder. A round only adds rules; rounds never change what earlier rounds meant.
 // Evaluations of exam v1 never pass {round}, so they keep EXAM_RULES exactly.
 // Same keeper as exam v1 (no hunting memory, sees only on his own floor); the only new ability is walking to upper waypoints.
@@ -67,7 +76,7 @@ function route(g,t){
 }
 export function createGame(policy=DEFAULT_POLICY,options={}){
  const rules=options.round?{...EXAM_V2,...ROUNDS[options.round]}:NIGHTS[options.night]||EXAM_RULES;
- return {rules,player:actor(ENTRY.x,ENTRY.y),guard:actor(options.tutorial?600:480,282),tutorial:Boolean(options.tutorial),turn:0,time:0,patrolIndex:0,dwell:0,policy:options.round?validatePolicyV2(policy):validatePolicy(policy,{habits:Boolean(options.habits)}),suspicion:0,decoys:rules.decoys,noise:null,hidden:false,hasRelic:false,status:'playing',message:'A/D to run, Space to jump, F throws a decoy ahead of you, H hides you in a wardrobe. The emerald is to the right.',history:[],inputs:[],events:[],decoysThrown:0,seen:0,lastJump:false,lastDecoy:false,lastHide:false};
+ return {rules,player:actor(ENTRY.x,ENTRY.y),guard:actor(options.tutorial?600:480,282),tutorial:Boolean(options.tutorial),turn:0,time:0,patrolIndex:0,dwell:0,policy:options.round?validatePolicyV2(policy):validatePolicy(policy,{habits:Boolean(options.habits)}),suspicion:0,decoys:rules.decoys,noise:null,hidden:false,hasRelic:false,relic:rules.relic||RELIC,status:'playing',message:'A/D to run, Space to jump, F throws a decoy ahead of you, H hides you in a wardrobe. The emerald is to the right.',history:[],inputs:[],events:[],decoysThrown:0,seen:0,lastJump:false,lastDecoy:false,lastHide:false};
 }
 function physics(a,dir,jump,drop=false,speed=2.15){
  a.vx=dir*speed;if(dir)a.facing=Math.sign(dir);
@@ -90,11 +99,12 @@ export function step(s,input={}){
  physics(s.player,s.hidden?0:dir,Boolean(input.jump&&!s.lastJump),Boolean(input.down),input.sprint?2.65:2.15);
  if(input.decoy&&!s.lastDecoy&&s.decoys){s.decoys--;s.decoysThrown++;s.noise={x:Math.max(22,Math.min(990,s.player.x+s.player.facing*135)),y:282,ttl:240};s.message=s.policy.decoySkepticism?'The keeper remembers broken glass.':'Glass shatters. That got his attention.';}
  s.lastJump=Boolean(input.jump);s.lastDecoy=Boolean(input.decoy);s.lastHide=Boolean(input.hide);
- if(!s.hasRelic&&Math.abs(s.player.x-RELIC.x)<22&&Math.abs(s.player.y-RELIC.y)<34){s.hasRelic=true;s.events.push({type:'relic',turn:s.turn});s.message='Emerald acquired! Run LEFT to the green door.';}
- if(s.hasRelic&&s.player.x<68&&s.player.y>250){s.status='escaped';s.message='You escaped. The house remembers.';}
+ if(!s.hasRelic&&Math.abs(s.player.x-s.relic.x)<22&&Math.abs(s.player.y-s.relic.y)<34){s.hasRelic=true;s.events.push({type:'relic',turn:s.turn});s.message='Emerald acquired! Run LEFT to the green door.';}
+ const doorOpen=!s.rules.exits||s.rules.exits.includes('door');
+ if(s.hasRelic&&s.player.x<68&&s.player.y>250){if(doorOpen){s.status='escaped';s.message='You escaped. The house remembers.';}else if(!s.triedDoor){s.triedDoor=true;s.events.push({type:'locked',turn:s.turn});s.message='Locked. The way out tonight is the window upstairs.';}}
  if(s.status==='playing'&&s.hasRelic&&s.rules.exits?.includes('window')&&input.hide&&upstairs(s.player)&&Math.abs(s.player.x-WINDOW.x)<WINDOW.reach){s.status='escaped';s.message='Out through the window.';s.events.push({type:'window',turn:s.turn});}
  // Round 3: the long hall creaks under a sprint. That noise is real: it is where the thief is.
- if(s.rules.creaky&&input.sprint&&dir&&s.player.grounded&&downstairs(s.player)&&s.player.x>400&&s.player.x<640&&!s.noise)s.noise={x:s.player.x,y:282,ttl:90,real:true};
+ if(s.rules.creaky&&input.sprint&&dir&&s.player.grounded&&downstairs(s.player)&&s.player.x>400&&s.player.x<640&&!s.noise){s.noise={x:s.player.x,y:282,ttl:90,real:true};s.events.push({type:'creak',turn:s.turn});}
  if(!s.tutorial&&s.status==='playing'){
   let visible=!s.hidden&&(s.rules.chase?huntSight(s.guard,s.player,s.rules.vision):sight(s.guard,s.player,s.rules.vision)),target;const H=s.policy.habits,R=s.rules;
   // A keeper who knows your wardrobe opens it when he walks past.
@@ -105,14 +115,14 @@ export function step(s,input={}){
   else{s.suspicion=Math.max(0,s.suspicion-.35);
    // A hunter goes to where he last saw you for six seconds before giving up.
    if(R.chase&&s.lastSeen?.ttl>0){target=s.lastSeen;s.lastSeen.ttl--;if(Math.abs(s.guard.x-target.x)<8&&upstairs(s.guard)===upstairs(target))s.lastSeen.ttl=0;s.message='He lost you. He is looking.';}
-   else if(s.noise&&(!s.policy.decoySkepticism||(s.policy.decoySkepticism===1&&Math.abs(s.guard.x-s.noise.x)<70)))target=s.noise;
+   else if(s.noise&&((s.noise.real&&!R.v2)||!s.policy.decoySkepticism||(s.policy.decoySkepticism===1&&Math.abs(s.guard.x-s.noise.x)<70)))target=s.noise;
    else if(R.door){target={x:s.patrolIndex%2?64:32};if(Math.abs(s.guard.x-target.x)<6)s.patrolIndex++;}
-   else if(H&&H.exit&&s.hasRelic)target=H.window&&R.exits?.includes('window')?{x:WINDOW.x,up:true}:{x:92};
+   else if(H&&H.exit&&s.hasRelic)target=(H.window||(R.exits&&!R.exits.includes('door')))&&R.exits?.includes('window')?{x:WINDOW.x,up:true}:{x:92};
    else if(s.policy.protectRelic&&!s.hasRelic)target={x:900};
-   else if(H&&(H.waitAt!=null||H.wardrobe!=null||H.door||(H.window&&R.exits?.includes('window')))){
+   else if(H&&(H.waitAt!=null||H.wardrobe!=null||(H.door&&(!R.exits||R.exits.includes('door')))||(H.window&&R.exits?.includes('window')))){
     // Wait where this player was last time; check their wardrobe on the way. Two seconds at each stop.
     // A hunter who saw you take the upper floor waits for you up there.
-    const stops=[...(H.waitAt!=null?[R.chase&&H.waitAt===52?{x:UPPER_AMBUSH,up:true}:{x:H.waitAt*16,up:false}]:[]),...(H.wardrobe!=null?[{x:HIDING[H.wardrobe].x,up:false}]:[]),...(H.door?[{x:80,up:false}]:[]),...(H.window&&R.exits?.includes('window')?[{x:WINDOW.x,up:true}]:[])];
+    const stops=[...(H.waitAt!=null?[R.chase&&H.waitAt===52?{x:UPPER_AMBUSH,up:true}:{x:H.waitAt*16,up:false}]:[]),...(H.wardrobe!=null?[{x:HIDING[H.wardrobe].x,up:false}]:[]),...(H.door&&(!R.exits||R.exits.includes('door'))?[{x:80,up:false}]:[]),...(H.window&&R.exits?.includes('window')?[{x:WINDOW.x,up:true}]:[])];
     target=stops[s.patrolIndex%stops.length];
     if(Math.abs(s.guard.x-target.x)<6&&(!R.chase||upstairs(s.guard)===target.up)&&++s.dwell>=(stops.length>1?120:1e9)){s.dwell=0;s.patrolIndex++;}
    }
@@ -174,7 +184,7 @@ export function replayEpisode(policy,ep){
 const PLACES=x=>x<400?'by the crates':x<700?'in the long hall':'by the vault';
 const WARDROBES=['the first wardrobe','the middle wardrobe','the wardrobe by the vault'];
 // Short labels for the briefing before each night.
-export function knownLabels(h,p){if(!h)return [];return [h.waitAt!=null&&(h.waitAt===52?'HE WAITS FOR YOU UPSTAIRS':`HE WAITS ${PLACES(h.waitAt*16).toUpperCase()}`),h.wardrobe!=null&&`HE OPENS ${WARDROBES[h.wardrobe].toUpperCase()}`,p.decoySkepticism===1&&'HE ONLY CHECKS DECOYS NEARBY',p.decoySkepticism===2&&'HE IGNORES DECOYS',h.window&&'HE WAITS AT THE WINDOW',h.exit&&'HE RUNS FOR THE DOOR WHEN THE EMERALD MOVES',h.door&&'HE CHECKS THE DOOR'].filter(Boolean);}
+export function knownLabels(h,p,rules={}){if(!h)return [];const locked=Boolean(rules.exits&&!rules.exits.includes('door'));return [h.waitAt!=null&&(h.waitAt===52?'HE WAITS FOR YOU UPSTAIRS':`HE WAITS ${PLACES(h.waitAt*16).toUpperCase()}`),h.wardrobe!=null&&`HE OPENS ${WARDROBES[h.wardrobe].toUpperCase()}`,p.decoySkepticism===1&&'HE ONLY CHECKS DECOYS NEARBY',p.decoySkepticism===2&&'HE IGNORES DECOYS',h.window&&'HE WAITS AT THE WINDOW',h.exit&&(locked?'HE RUNS FOR THE WINDOW WHEN THE EMERALD MOVES':'HE RUNS FOR THE DOOR WHEN THE EMERALD MOVES'),h.door&&!locked&&'HE CHECKS THE DOOR'].filter(Boolean);}
 export function readHeist(s){
  const way=s.history.filter(h=>!h.hasRelic);
  const upper=way.some(h=>h.player.y<170&&h.player.x>260&&h.player.x<780);

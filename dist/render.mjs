@@ -1,11 +1,15 @@
 import {WIDTH,GROUND,PLATFORMS,BLOCKS,HIDING,RELIC,WINDOW} from './engine.mjs';
 const buffer=typeof document==='undefined'?null:document.createElement('canvas');if(buffer){buffer.width=480;buffer.height=288;}
+// Nights 7 and 10: the candles are out. A second canvas holds the dark, with holes cut for the light.
+const shade=typeof document==='undefined'?null:document.createElement('canvas');if(shade){shade.width=480;shade.height=288;}
+// On phones there is no keyboard: hints talk about buttons, not keys.
+const touch=typeof matchMedia!=='undefined'&&matchMedia('(max-width:750px),(pointer:coarse)').matches;
 let camera=0;
 export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null,briefing=null}={}){
  const c=buffer.getContext('2d');c.imageSmoothingEnabled=false;
  camera=Math.max(0,Math.min(WIDTH-480,Math.round(s.player.x-180)));
  const rect=(x,y,w,h,col)=>{c.fillStyle=col;c.fillRect(Math.round(x-camera),Math.round(y-48),w,h);};
- const windowOpen=Boolean(s.rules.exits?.includes('window'));
+ const windowOpen=Boolean(s.rules.exits?.includes('window')),doorLocked=Boolean(s.rules.exits&&!s.rules.exits.includes('door')),relic=s.relic||RELIC,moved=relic!==RELIC&&relic.x!==RELIC.x;
  c.fillStyle='#131827';c.fillRect(0,0,480,288);
  // Wallpaper, stone foundation and repeating original architectural details.
  for(let x=0;x<WIDTH;x+=16){rect(x,48,1,256,'#2e2838');for(let y=64;y<290;y+=32)rect(x+7,y,2,3,'#383040');}
@@ -21,6 +25,8 @@ export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null,brief
  rect(0,GROUND,WIDTH,48,'#37303b');rect(0,GROUND,WIDTH,4,'#af8665');
  for(let x=0;x<WIDTH;x+=32){rect(x,310,30,2,'#5b4550');rect(x+16,328,30,2,'#5b4550');}
  // Upper floor, climbable one-way ledges and furniture.
+ // Nights 6 and 10: the long hall's boards creak under a sprint. Lighter, warped boards show where.
+ if(s.rules.creaky){rect(400,GROUND,240,4,'#d3a274');for(let x=404;x<640;x+=22)rect(x,GROUND+1,9,1,'#6e4a3a');}
  for(const p of PLATFORMS){rect(p.x,p.y,p.w,5,'#a57d61');rect(p.x,p.y+5,p.w,5,'#4b3440');for(let x=p.x+4;x<p.x+p.w;x+=16)rect(x,p.y+1,1,3,'#d0a47a');}
  for(let x=245;x<790;x+=40){rect(x,151,2,25,'#715262');rect(x-7,151,16,2,'#92717a');}
  for(let x=275;x<770;x+=150){if(windowOpen&&x===275)continue;rect(x,117,37,40,'#ab855a');rect(x+3,120,31,34,'#343447');rect(x+13,126,10,12,'#8c766d');rect(x+9,138,18,16,'#514553');}
@@ -35,9 +41,17 @@ export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null,brief
   rect(wx-11,158,22,11,'#04070d');}
  // Entrance and vault dais.
  rect(31,261,27,43,'#1c4e49');rect(34,264,21,40,'#326d5e');rect(48,283,3,3,'#d4c38b');
+ // Night 8 and 10: the front door is locked. Boards across it and a padlock.
+ if(doorLocked){rect(29,270,31,4,'#8a6a4c');rect(29,290,31,4,'#8a6a4c');rect(41,278,8,7,'#c9a34a');rect(43,274,4,5,'#c9a34a');rect(44,276,2,3,'#1c4e49');}
  rect(932,293,33,11,'#7d7180');rect(938,288,21,5,'#b1a19c');
- if(!s.hasRelic){const y=RELIC.y-5+Math.round(Math.sin(time/260)*2);rect(RELIC.x-4,y,8,3,'#a8f2bf');rect(RELIC.x-6,y+3,12,5,'#48bda1');rect(RELIC.x-3,y+8,6,3,'#268d83');rect(RELIC.x-1,y+11,2,2,'#a8f2bf');}
+ // Night 9 and 10: the emerald has been moved upstairs. A small stand marks its new place.
+ if(moved){rect(relic.x-8,relic.y+17,17,7,'#7d7180');rect(relic.x-5,relic.y+13,11,4,'#b1a19c');}
+ if(!s.hasRelic){const y=relic.y-5+Math.round(Math.sin(time/260)*2);rect(relic.x-4,y,8,3,'#a8f2bf');rect(relic.x-6,y+3,12,5,'#48bda1');rect(relic.x-3,y+8,6,3,'#268d83');rect(relic.x-1,y+11,2,2,'#a8f2bf');}
  if(s.noise){rect(s.noise.x,298,7,2,'#b8d8da');rect(s.noise.x+9,296,3,3,'#e2ece0');}
+ if(s.rules.dark&&shade){const d=shade.getContext('2d');d.globalCompositeOperation='source-over';d.clearRect(0,0,480,288);d.fillStyle='rgba(4,6,12,.9)';d.fillRect(0,0,480,288);d.globalCompositeOperation='destination-out';
+  const hole=(x,y,r)=>{const g=d.createRadialGradient(x-camera,y-48,0,x-camera,y-48,r);g.addColorStop(0,'rgba(0,0,0,1)');g.addColorStop(.6,'rgba(0,0,0,.85)');g.addColorStop(1,'rgba(0,0,0,0)');d.fillStyle=g;d.fillRect(x-camera-r,y-48-r,r*2,r*2);};
+  hole(s.player.x+5,s.player.y+11,72);if(!s.tutorial)hole(s.guard.x+5,s.guard.y+11,46);if(!s.hasRelic)hole(relic.x,relic.y,22);if(s.noise)hole(s.noise.x+5,298,24);
+  c.drawImage(shade,0,0);}
  const sprite=(a,guard=false)=>{
   const x=Math.round(a.x),y=Math.round(a.y),walk=Math.abs(a.vx)>.1&&a.grounded?Math.sin(time/65)*3:0;
   if(!guard&&s.hidden)return;
@@ -60,7 +74,7 @@ export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null,brief
   else if(H.waitAt!=null)mark(H.waitAt*16+5,'HE WAITS HERE');
   if(H.wardrobe!=null){const w=HIDING[H.wardrobe];rect(w.x-9,w.y-37,27,2,'#e8604c');c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.fillText('HE OPENS IT',Math.round(w.x-14-camera),w.y-108);}
   if(H.window&&windowOpen&&!briefing){c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.textAlign='center';c.fillText('HE WAITS AT THE WINDOW',Math.round(WINDOW.x-camera),66);c.textAlign='left';}
-  if(H.door||s.rules.door){c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.fillText('HE GUARDS',Math.round(24-camera),184);c.fillText('THE DOOR',Math.round(26-camera),193);}
+  if((H.door||s.rules.door)&&!doorLocked){c.font='bold 7px monospace';c.fillStyle='#ff8a70';c.fillText('HE GUARDS',Math.round(24-camera),184);c.fillText('THE DOOR',Math.round(26-camera),193);}
  }
  // Your last heist, as the keeper remembers it.
  if(ghost?.length){for(const p of ghost)rect(p.x+3,p.y+10,3,3,'rgba(238,125,88,.75)');}
@@ -68,11 +82,12 @@ export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null,brief
  sprite(s.guard,true);sprite(s.player);
  const label=(str,x,y,color='#e3d6af')=>{c.font='7px monospace';c.fillStyle=color;c.fillText(str,Math.round(x-camera),y-48);};
  if(s.tutorial)label('zzz',s.guard.x,s.guard.y-10,'#a5a1b7');
- label('EXIT',30,253,'#8bddb5');if(windowOpen&&!(H?.window&&!s.tutorial))label('WINDOW · H',WINDOW.x-20,114,'#8bddb5');label('HIDE',150,260,'#a9bbd8');label('VAULT',929,254,'#d9bd80');
- c.fillStyle='#101622';c.fillRect(0,0,480,16);c.font='7px monospace';c.fillStyle='#b1b9bd';c.fillText(s.tutorial?'THE KEEPER IS ASLEEP. TAKE THE EMERALD.':(windowOpen?'A / D RUN   SPACE JUMP   H HIDE · WINDOW   F DECOY':'A / D RUN   SPACE JUMP   H HIDE   F DECOY'),10,11);
+ label(doorLocked?'LOCKED':'EXIT',doorLocked?26:30,253,doorLocked?'#e8a25c':'#8bddb5');if(windowOpen&&!(H?.window&&!s.tutorial))label(touch?'WINDOW · HIDE':'WINDOW · H',WINDOW.x-(touch?26:20),114,'#8bddb5');label('HIDE',150,260,'#a9bbd8');if(s.rules.creaky)label('CREAKY FLOOR · WALK',474,318,'#d3a274');label(moved?'EMPTY VAULT':'VAULT',moved?918:929,254,'#d9bd80');if(moved&&!s.hasRelic)label('EMERALD',relic.x-14,relic.y-14,'#8bddb5');
+ c.fillStyle='#101622';c.fillRect(0,0,480,16);c.font='7px monospace';c.fillStyle='#b1b9bd';c.fillText(s.tutorial?'THE KEEPER IS ASLEEP. TAKE THE EMERALD.':touch?(windowOpen?'ARROWS RUN · ↑ JUMP · HIDE ALSO OPENS THE WINDOW':'ARROWS RUN · ↑ JUMP · HIDE IN A WARDROBE'):(windowOpen?'A / D RUN   SPACE JUMP   H HIDE · WINDOW   F DECOY':'A / D RUN   SPACE JUMP   H HIDE   F DECOY'),10,11);
  if(s.status==='caught'){c.fillStyle='rgba(10,8,14,.55)';c.fillRect(0,0,480,288);c.fillStyle='rgba(122,24,32,.92)';c.fillRect(0,112,480,50);c.textAlign='center';c.font='bold 30px Georgia,serif';c.fillStyle='#f4e7c8';c.fillText(s.time>=s.rules.limit?'DAWN. CAUGHT.':'CAUGHT.',240,146);c.font='7px monospace';c.fillStyle='#f0b9a6';c.fillText(s.time>=s.rules.limit?'THE HOUSE SEALED ITS DOORS':'THE KEEPER HAS YOUR NUMBER',240,158);c.textAlign='left';}
  if(briefing){c.fillStyle='rgba(10,8,14,.78)';c.fillRect(0,16,480,272);c.textAlign='center';c.font='bold 22px Georgia,serif';c.fillStyle='#f4e7c8';c.fillText(`NIGHT ${briefing.night}`,240,70);
-  c.font='7px monospace';c.fillStyle='#d9bd80';c.fillText('TONIGHT HE KNOWS',240,92);c.fillStyle='#ff8a70';c.font='bold 8px monospace';briefing.lines.forEach((l,i)=>c.fillText(l,240,116+i*16));
+  let top=92;if(briefing.news){c.font='7px monospace';c.fillStyle='#8bddb5';c.fillText('NEW TONIGHT',240,top);c.font='bold 9px monospace';c.fillText(briefing.news,240,top+14);top+=36;}
+  if(briefing.lines.length){c.font='7px monospace';c.fillStyle='#d9bd80';c.fillText('TONIGHT HE KNOWS',240,top);c.fillStyle='#ff8a70';c.font='bold 8px monospace';briefing.lines.forEach((l,i)=>c.fillText(l,240,top+20+i*14));}
   c.font='7px monospace';c.fillStyle='#b1b9bd';c.fillText('GET READY…',240,248);c.textAlign='left';}
  const out=canvas.getContext('2d');out.imageSmoothingEnabled=false;out.clearRect(0,0,canvas.width,canvas.height);out.drawImage(buffer,0,0,canvas.width,canvas.height);
 }

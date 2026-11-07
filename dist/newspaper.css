@@ -294,3 +294,12 @@ footer button{font:700 10px var(--serif);color:var(--red)}
  .result-card .primary{padding:7px 10px;margin-top:5px;font-size:9px}
  .result-card .text-button{font-size:8px;padding:5px 0}
 }
+
+/* 7 nov: the losing card says only what matters: the verdict, what he learned, play again */
+.result-card #result-kicker,.result-card #result-copy,.result-card #known,.result-card #challenge-line,.result-card #result-stats,.result-card #learn-status{display:none}
+.result-card.final #result-kicker,.result-card.final #result-copy{display:block}
+.result-card blockquote{font-size:20px!important;line-height:1.35;margin:10px 0 14px!important}
+@media(max-width:750px){.result-card h2{font-size:26px!important}.result-card blockquote{font-size:15px!important;margin:6px 0 10px!important}.result-card .primary{font-size:10px!important;padding:11px!important}.result-card .text-button{font-size:8px!important}}
+/* 7 nov: on phones, decoy and hide sit right above the arrows */
+.touch-actions{display:none}
+@media(max-width:750px){.touch-pad{flex-wrap:wrap}.touch-actions{display:flex;gap:8px;width:100%;order:0}.touch-pad>div:not(.touch-actions){order:1}.touch-pad>button{order:2}.control-bar{display:none}.touch-pad .t-act{width:auto;flex:1;height:52px;font:700 11px var(--serif);letter-spacing:1px;touch-action:none;user-select:none;-webkit-user-select:none}.t-act small{display:block;font:italic 10px var(--serif);letter-spacing:0;color:var(--ink2)}.t-act:disabled{opacity:.4}}
