@@ -62,3 +62,6 @@ export function aftermath(episode,night,courtesy){
  const caught=night===3?'Caught again. The people at TrueForge asked me to make it harder. I said yes.':night===4?'There are ten nights. And you are still on this one.':'And so the burglar was caught. Exactly as written.';
  return {kicker:'THE NARRATOR WOULD LIKE A WORD.',title:night>=3?'There it is.':'How predictable.',copy:'',challenge:caught,button:'THAT DID NOT COUNT. →'};
 }
+// Another try at the same night: the keeper has not moved, and the narrator has noticed.
+const RETRY=['Again. The keeper had not moved an inch.','The burglar tried again. The house had seen this before.','Once more. The narrator has stopped counting. The keeper has not.'];
+export function retryLine(attempt){return RETRY[(attempt-2)%RETRY.length];}

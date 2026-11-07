@@ -1,6 +1,6 @@
 import {createGame,step,summarize,learnLocal,validatePolicy,DEFAULT_POLICY,upstairs,knownLabels} from './engine.mjs';
 import {draw} from './render.mjs';
-import {opening,commentary,aftermath,taunt} from './narrator.mjs';
+import {opening,commentary,aftermath,taunt,retryLine} from './narrator.mjs';
 import {VOICE_LINES} from './voice.mjs';
 import {sound} from './sound.mjs';
 const $=id=>document.getElementById(id), canvas=$('game');
@@ -8,6 +8,8 @@ const KEY='blackthorn-beta-v1',LAST=10;let saved={};try{saved=JSON.parse(localSt
 const H={habits:true};let policy;try{policy=validatePolicy(saved.policy||DEFAULT_POLICY,H)}catch{policy=validatePolicy(DEFAULT_POLICY,H)}
 let memories=Array.isArray(saved.memories)?saved.memories.slice(-12):[],night=Number.isInteger(saved.night)?Math.max(1,saved.night):1;
 let courtesyCompleted=Boolean(saved.courtesyCompleted??memories.some(m=>m.outcome==='escaped'));
+// You stay on a night until you escape it. attempt = the try you are on tonight; tries = every try so far.
+let attempt=Number.isInteger(saved.attempt)?Math.max(1,saved.attempt):1,tries=Number.isInteger(saved.tries)?Math.max(0,saved.tries):0;
 const newGame=()=>createGame(policy,{tutorial:!courtesyCompleted,habits:true,night:Math.min(LAST,night)});
 // Before every night: the goal, in one or two sentences. How to do it is the player's problem.
 const GOAL={1:'Take the emerald from the vault (far right) and bring it back out of the green door. He is asleep tonight.',
@@ -21,9 +23,13 @@ const GOAL={1:'Take the emerald from the vault (far right) and bring it back out
  10:'All of it at once: the hall creaks, the candles are out, the door is padlocked and the emerald is upstairs. 50 seconds.'};
 // The status line while you play: the goal, shorter.
 const SHORT={1:'Emerald: far right. Way out: the green door.',2:'Get the emerald out before dawn.',3:'Two ways out: the door, or the window upstairs (H).',4:'Two ways out: the door, or the window upstairs (H).',5:'Two ways out: the door, or the window upstairs (H).',6:'Walk across the long hall. Sprinting creaks.',7:'Candles out. Stay out of his lantern.',8:'Door padlocked. Out through the window upstairs (H).',9:'The emerald is upstairs now.',10:'Window only. Emerald upstairs. Walk the hall.'};
+// What the keeper says when he catches you: he has nothing to learn, so he changes nothing.
+const HOLD={seen:'I saw you coming. I will not change a thing.',heard:'The floor told me where you were. I will not change a thing.',waiting:'I was right where I said I would be. I will not change a thing.',exit:'You ran for the door. So did I. I will not change a thing.',patrol:'You walked right into me. I will not change a thing.',glass:'I came to the noise, and there you were. I will not change a thing.',dawn:'The sun did my job for me. Same plan tonight.'};
 const CAUSE={seen:'He saw you.',heard:'He heard the floor creak.',waiting:'He was waiting for you there.',exit:'He ran to the exit the moment the emerald moved.',patrol:'You walked into his rounds.',glass:'He came to the noise.',dawn:'The sun came up.'};
+let shownBook='';
 let state=newGame(),started=false,briefing=false,replay=null,replayTimer=null,learning=false,epoch=0,runtime={configured:false},soundChosen=false,usedLines=new Set(),lastLine='',lastLineAt=0,stillSince=0,walked=0;
-function save(){try{localStorage.setItem(KEY,JSON.stringify({policy,memories,night,courtesyCompleted}))}catch{}}
+state.message=SHORT[Math.min(LAST,night)]||state.message;
+function save(){try{localStorage.setItem(KEY,JSON.stringify({policy,memories,night,courtesyCompleted,attempt,tries}))}catch{}}
 // On phones there is no keyboard: the text talks about buttons, not keys.
 const touch=matchMedia('(max-width:750px),(pointer:coarse)').matches;
 // Touch screens get the touch controls at any width (a phone on its side is wider than 750 px).
@@ -44,7 +50,7 @@ function setSound(on){soundChosen=true;if(on)sound.enable();else{sound.disable()
 function text(tag,content){const e=document.createElement(tag);e.textContent=content;return e;}
 function showKnown(){const k=policy.habits?.known||[];$('known').replaceChildren(...(k.length?[text('li','WHAT HE KNOWS ABOUT YOU'),...k.map((n,i)=>{const li=text('li',n.line);if(i===k.length-1&&memories.at(-1)?.newKey===n.key)li.className='new';return li;})]:[]));}
 function refresh(){
- const label=`Night ${shownNight()} / ${LAST}`;$('night').textContent=label;$('board-night').textContent=label;
+ const label=`Night ${shownNight()} / ${LAST}`+(attempt>1?` · try ${attempt}`:'');$('night').textContent=label;$('board-night').textContent=label;
  $('turns').textContent=`${Math.floor(state.time)}s / ${state.tutorial?'∞':state.rules.limit+'s'}`;$('turns').style.color=!state.tutorial&&state.rules.limit-state.time<=10?'#e8604c':'';
  $('message').textContent=forScreen(state.message);
  $('suspicion').style.width=`${state.suspicion}%`;$('suspicion-label').textContent=state.suspicion>=68?'ON YOUR HEELS':state.suspicion?'SUSPICIOUS':'UNAWARE';
@@ -54,7 +60,8 @@ function refresh(){
  for(const id of ['wait','hide','restart','t-hide','t-restart'])$(id).disabled=!live;
  document.querySelectorAll('[data-move]').forEach(e=>e.disabled=!live);
  $('memory-count').textContent=String(memories.length).padStart(2,'0');
- if(memories.length){$('memories').replaceChildren(...memories.slice(-2).reverse().map(m=>{const d=document.createElement('div');d.className='memory';d.append(text('b',`NIGHT ${String(m.night).padStart(2,'0')} / ${m.outcome==='escaped'?'OUTWITTED':'ENCOUNTER'}`),text('p',m.lesson));return d;}));}
+ // The black book is redrawn only when he writes something new (redrawing it ten times a second made it flicker).
+ const bookKey=memories.map(m=>m.night+':'+m.lesson).join('|');if(memories.length&&bookKey!==shownBook){shownBook=bookKey;$('memories').replaceChildren(...memories.slice(-2).reverse().map(m=>{const d=document.createElement('div');d.className='memory';d.append(text('b',`NIGHT ${String(m.night).padStart(2,'0')} · OUTWITTED${m.tries>1?` ON TRY ${m.tries}`:''}`),text('p',m.lesson));return d;}));}
  $('policy-view').textContent=`Behavior: ${policy.name}\nWhat he knows about you:\n${(policy.habits?.known||[]).map(k=>'· '+k.line).join('\n')||'· Nothing yet.'}\nCompleted heists remembered: ${memories.length}`;
  $('runtime-label').textContent=runtime.configured?'TrueForge bridge configured. Completed heists will request a candidate skill revision.':'In this browser the keeper learns with simple game rules. The TrueForge agent learned in a separate exam (see the article below the game).';
 }
@@ -62,11 +69,11 @@ const held=new Set();let accumulator=0,lastTime=0;
 // A night starts with its goal on screen, and waits for GO.
 function begin(){if(night>LAST)return startOver();held.clear();accumulator=0;clearInterval(replayTimer);replay=null;usedLines=new Set();state=newGame();state.message=SHORT[shownNight()]||state.message;started=true;briefing=true;
  $('intro').classList.add('hidden');$('result').classList.add('hidden');
- $('brief-night').textContent=`Night ${shownNight()} of ${LAST}`;$('brief-goal').textContent=forScreen(GOAL[shownNight()]);
+ $('brief-night').textContent=`Night ${shownNight()} of ${LAST}`+(attempt>1?` · try ${attempt}`:'');$('brief-goal').textContent=forScreen(GOAL[shownNight()]);
  const k=state.tutorial?[]:knownLabels(policy.habits,policy,state.rules);$('brief-known').replaceChildren(...k.map(l=>text('li',l.toLowerCase())));$('brief-known-wrap').classList.toggle('hidden',!k.length);
  $('brief').classList.remove('hidden');refresh();$('go').focus();}
 function go(){briefing=false;$('brief').classList.add('hidden');stillSince=performance.now();walked=0;sound.play('go');
- narrate(opening(state.tutorial,shownNight(),!state.tutorial&&policy.habits?.known?.length?policy.lesson:null));refresh();canvas.focus();}
+ narrate(attempt>1?retryLine(attempt):opening(state.tutorial,shownNight(),!state.tutorial&&policy.habits?.known?.length?policy.lesson:null));refresh();canvas.focus();}
 function sfx(before,a){
  const fresh=state.events.slice(before.events);
  if(fresh.some(e=>e.type==='creak'))sound.play('creak');
@@ -94,23 +101,27 @@ async function finish(){
  if(state.status==='caught')sound.play(state.cause==='dawn'?'dawn':'caught');else if(state.status==='escaped')sound.play(state.events.some(e=>e.type==='window')?'window':'escape');
  // Hold the CAUGHT frame on the board for a beat, so you can see why, before the card covers it.
  if(state.status==='caught'){const e=epoch;await new Promise(r=>setTimeout(r,1700));if(e!==epoch)return;}
- learning=true;const thisEpoch=epoch,episode=summarize(state),prior=validatePolicy(policy,H);
- const ending=aftermath(episode,shownNight(),state.tutorial);
+ learning=true;const thisEpoch=epoch,episode=summarize(state),prior=validatePolicy(policy,H),won=episode.outcome==='escaped';tries++;
+ const ending=aftermath(episode,shownNight(),state.tutorial),lastWin=won&&night>=LAST;
  // The last night closes the game: the house keeps score.
- if(night>=LAST){const wins=memories.filter(m=>!m.courtesy&&m.outcome==='escaped').length+(episode.outcome==='escaped'?1:0);Object.assign(ending,episode.outcome==='escaped'?{kicker:`NIGHT ${LAST}. YOU WON IT.`,title:'Impossible.',copy:'The burglar beat the last night. The house is quietly rewriting its rules.'}:{kicker:`${LAST} NIGHTS. YOU GOT OUT ${wins===1?'ONCE':wins+' TIMES'}.`,title:'The house wins.',copy:'Every night the keeper learned one more thing about the burglar. On the last night, he knew enough.'});}
- $('result').querySelector('.result-card').classList.toggle('final',night>=LAST);$('result-title').textContent=ending.title;$('result-kicker').textContent=ending.kicker;$('result-copy').textContent=ending.copy;$('challenge-line').textContent=ending.challenge;
- $('result-cause').textContent=state.status==='caught'?CAUSE[state.cause]||'':state.status==='escaped'?(state.events.some(e=>e.type==='window')?'Out through the window.':'Out through the front door.'):'';
- narrate(ending.challenge);
- $('lesson').textContent='“Let me think about what you just did…”';$('known').replaceChildren();$('learn-status').textContent='';
+ if(lastWin)Object.assign(ending,{kicker:`${LAST} NIGHTS · ${tries} TRIES`,title:'Impossible.',copy:`The burglar beat all ${LAST} nights, in ${tries} tries. The house is quietly rewriting its rules.`});
+ $('result').querySelector('.result-card').classList.toggle('final',lastWin);$('result-title').textContent=ending.title;$('result-kicker').textContent=ending.kicker;$('result-copy').textContent=ending.copy;$('challenge-line').textContent=ending.challenge;
+ $('result-cause').textContent=state.status==='caught'?CAUSE[state.cause]||'':won?(state.events.some(e=>e.type==='window')?'Out through the window.':'Out through the front door.'):'';
+ narrate(ending.challenge);$('known').replaceChildren();$('learn-status').textContent='';
+ // Caught: you stay on this night. He learns nothing from catching you, so you can learn his pattern.
+ if(!won){attempt++;save();$('lesson').textContent=`“${HOLD[state.cause]||'I will not change a thing.'}”`;
+  $('again').innerHTML='TRY AGAIN <span>→</span>';$('again').disabled=false;$('replay').disabled=false;$('result').classList.remove('hidden');learning=false;refresh();return;}
+ $('lesson').textContent='“Let me think about what you just did…”';
  $('again').disabled=true;$('replay').disabled=true;$('result').classList.remove('hidden');refresh();
+ // Escaped: he learns how you did it, and the next night uses it.
  let next,mode='local',sessionId;
  if(runtime.configured){try{const response=await fetch('/api/learn',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({episode,policy:prior})});const data=await response.json();if(!response.ok)throw Error(data.error||'Learning request failed');next=validatePolicy(data.policy,H);mode='trueforge';sessionId=data.sessionId;}
  catch(e){$('learn-status').textContent='TrueForge was unavailable. This lesson uses local game rules.';}}
  if(thisEpoch!==epoch)return;
- policy=next||learnLocal(prior,state);if(state.tutorial&&episode.outcome==='escaped')courtesyCompleted=true;memories.push({night,outcome:episode.outcome,courtesy:state.tutorial,lesson:policy.lesson,mode,sessionId,newKey:(policy.habits?.known||[]).find(k=>k.line===policy.lesson)?.key});memories=memories.slice(-12);night++;save();
+ policy=next||learnLocal(prior,state);if(state.tutorial)courtesyCompleted=true;memories.push({night,outcome:episode.outcome,courtesy:state.tutorial,tries:attempt,lesson:policy.lesson,mode,sessionId,newKey:(policy.habits?.known||[]).find(k=>k.line===policy.lesson)?.key});memories=memories.slice(-12);night++;attempt=1;save();
  $('lesson').textContent=`“${policy.lesson}”`;showKnown();if(mode==='trueforge')$('learn-status').textContent=`TrueForge proposed a skill revision · candidate, not yet active · ${sessionId}`;
  // Buttons say what they do.
- $('again').innerHTML=night>LAST?'PLAY AGAIN <span>→</span>':state.tutorial&&episode.outcome!=='escaped'?'TRY AGAIN <span>→</span>':`NIGHT ${Math.min(LAST,night)} <span>→</span>`;
+ $('again').innerHTML=night>LAST?'PLAY AGAIN <span>→</span>':`NIGHT ${Math.min(LAST,night)} <span>→</span>`;
  $('again').disabled=false;$('replay').disabled=false;learning=false;refresh();
 }
 const controlKeys=new Set(['a','d','w','s','arrowleft','arrowright','arrowup','arrowdown',' ','shift','h']);
@@ -134,20 +145,27 @@ $('replay').onclick=()=>{clearInterval(replayTimer);$('result').classList.add('h
 for(const [b,d] of [['lab','notes-dialog'],['how','help-dialog'],['privacy','privacy-dialog']])$(b).onclick=()=>{refresh();held.clear();$(d).showModal();};
 document.querySelectorAll('.close-dialog').forEach(b=>b.onclick=()=>b.closest('dialog').close());
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}}));
-function startOver(){epoch++;learning=false;memories=[];night=1;courtesyCompleted=false;policy=validatePolicy(DEFAULT_POLICY,H);save();$('memories').innerHTML='<div class="empty-memory"><span>“</span><p>Nothing to remember.<br>How fortunate for you.</p></div>';begin();refresh();}
+function startOver(){epoch++;learning=false;memories=[];night=1;attempt=1;tries=0;shownBook='';courtesyCompleted=false;policy=validatePolicy(DEFAULT_POLICY,H);save();$('memories').innerHTML='<div class="empty-memory"><span>“</span><p>Nothing to remember.<br>How fortunate for you.</p></div>';begin();refresh();}
 $('forget').onclick=()=>{$('notes-dialog').close();startOver();};
 $('download').onclick=()=>{const blob=new Blob([JSON.stringify({version:1,mode:memories.at(-1)?.mode||'local',policy,memories,episode:summarize(state),history:state.history},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='blackthorn-field-notes.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
 $('sound').onclick=()=>{setSound(!sound.on);if(sound.on)narrate($('narrator').textContent);};
 $('sound-hint').onclick=()=>setSound(!(soundChosen?sound.on:true));
 // Full screen: the real thing where the browser allows it (Android, computers); elsewhere (iPhone) a game mode that covers the page.
 const column=document.querySelector('.board-column');
-function setFullLabel(){const full=document.fullscreenElement||document.body.classList.contains('game-mode');$('fullscreen').textContent=full?'✕ Exit full screen':'⤢ Full screen';}
-$('fullscreen').onclick=async()=>{
- if(document.fullscreenElement){await document.exitFullscreen().catch(()=>{});return setFullLabel();}
- if(document.body.classList.contains('game-mode')){document.body.classList.remove('game-mode');return setFullLabel();}
- if(column.requestFullscreen&&document.fullscreenEnabled){try{await column.requestFullscreen();try{await screen.orientation?.lock?.('landscape')}catch{}return setFullLabel();}catch{}}
- document.body.classList.add('game-mode');window.scrollTo(0,0);setFullLabel();};
-document.addEventListener('fullscreenchange',setFullLabel);
+const fsElement=()=>document.fullscreenElement||document.webkitFullscreenElement;
+function setFullLabel(){const full=fsElement()||document.body.classList.contains('game-mode');$('fullscreen').textContent=full?'✕ Exit full screen':'⤢ Full screen';}
+function gameMode(on){document.body.classList.toggle('game-mode',on);if(on)window.scrollTo(0,0);setFullLabel();}
+$('fullscreen').onclick=()=>{
+ if(fsElement()){(document.exitFullscreen||document.webkitExitFullscreen).call(document);return;}
+ if(document.body.classList.contains('game-mode'))return gameMode(false);
+ // The request must happen inside the click itself, before anything is awaited, or the browser refuses it.
+ const req=column.requestFullscreen||column.webkitRequestFullscreen;
+ if(!req)return gameMode(true);
+ try{const p=req.call(column);if(p&&p.then)p.then(()=>{setFullLabel();try{screen.orientation?.lock?.('landscape').catch(()=>{})}catch{}},()=>gameMode(true));}catch{gameMode(true);}
+ // Some browsers neither open full screen nor refuse it. If nothing happened after a moment, cover the page instead.
+ setTimeout(()=>{if(!fsElement())gameMode(true);},900);
+};
+document.addEventListener('fullscreenchange',setFullLabel);document.addEventListener('webkitfullscreenchange',setFullLabel);
 fetch('/api/status').then(r=>r.ok?r.json():{}).then(d=>{runtime=d;refresh();}).catch(()=>{});
 refresh();
 function frame(time){if(!lastTime)lastTime=time;const dt=Math.min(.05,(time-lastTime)/1000);lastTime=time;
