@@ -106,22 +106,25 @@ export function step(s,input={}){
  // Round 3: the long hall creaks under a sprint. That noise is real: it is where the thief is.
  if(s.rules.creaky&&input.sprint&&dir&&s.player.grounded&&downstairs(s.player)&&s.player.x>400&&s.player.x<640&&!s.noise){s.noise={x:s.player.x,y:282,ttl:90,real:true};s.events.push({type:'creak',turn:s.turn});}
  if(!s.tutorial&&s.status==='playing'){
+  // Why he is heading where he is heading; kept so the game can say why you were caught. Scores never read it.
+  let why='patrol';
   let visible=!s.hidden&&(s.rules.chase?huntSight(s.guard,s.player,s.rules.vision):sight(s.guard,s.player,s.rules.vision)),target;const H=s.policy.habits,R=s.rules;
   // A keeper who knows your wardrobe opens it when he walks past.
   if(!visible&&H&&H.wardrobe!=null&&s.hidden&&Math.abs(s.player.x-HIDING[H.wardrobe].x)<26&&Math.abs(s.guard.x-s.player.x)<30){s.hidden=false;visible=true;s.events.push({type:'found',turn:s.turn});}
   // On the last night he will not be drawn away from the door.
-  if(visible&&R.door&&s.player.x>160){s.seen++;s.suspicion=Math.min(100,s.suspicion+.65);s.message='He sees you. He stays by the door.';target={x:s.patrolIndex%2?64:32};if(Math.abs(s.guard.x-target.x)<6)s.patrolIndex++;visible=false;}
-  else if(visible){target=s.player;s.seen++;s.suspicion=Math.min(100,s.suspicion+.65);if(R.chase)s.lastSeen={x:s.player.x,y:s.player.y,h:s.player.h,ttl:360};s.message=R.chase?'He sees you! Run, hide, or lose him on the stairs. Shift sprints.':'He sees you! Jump, hide, or take the upper floor.';}
+  if(visible&&R.door&&s.player.x>160){why='waiting';s.seen++;s.suspicion=Math.min(100,s.suspicion+.65);s.message='He sees you. He stays by the door.';target={x:s.patrolIndex%2?64:32};if(Math.abs(s.guard.x-target.x)<6)s.patrolIndex++;visible=false;}
+  else if(visible){why='seen';target=s.player;s.seen++;s.suspicion=Math.min(100,s.suspicion+.65);if(R.chase)s.lastSeen={x:s.player.x,y:s.player.y,h:s.player.h,ttl:360};s.message=R.chase?'He sees you! Run, hide, or lose him on the stairs. Shift sprints.':'He sees you! Jump, hide, or take the upper floor.';}
   else{s.suspicion=Math.max(0,s.suspicion-.35);
    // A hunter goes to where he last saw you for six seconds before giving up.
-   if(R.chase&&s.lastSeen?.ttl>0){target=s.lastSeen;s.lastSeen.ttl--;if(Math.abs(s.guard.x-target.x)<8&&upstairs(s.guard)===upstairs(target))s.lastSeen.ttl=0;s.message='He lost you. He is looking.';}
-   else if(s.noise&&((s.noise.real&&!R.v2)||!s.policy.decoySkepticism||(s.policy.decoySkepticism===1&&Math.abs(s.guard.x-s.noise.x)<70)))target=s.noise;
-   else if(R.door){target={x:s.patrolIndex%2?64:32};if(Math.abs(s.guard.x-target.x)<6)s.patrolIndex++;}
-   else if(H&&H.exit&&s.hasRelic)target=(H.window||(R.exits&&!R.exits.includes('door')))&&R.exits?.includes('window')?{x:WINDOW.x,up:true}:{x:92};
-   else if(s.policy.protectRelic&&!s.hasRelic)target={x:900};
+   if(R.chase&&s.lastSeen?.ttl>0){why='seen';target=s.lastSeen;s.lastSeen.ttl--;if(Math.abs(s.guard.x-target.x)<8&&upstairs(s.guard)===upstairs(target))s.lastSeen.ttl=0;s.message='He lost you. He is looking.';}
+   else if(s.noise&&((s.noise.real&&!R.v2)||!s.policy.decoySkepticism||(s.policy.decoySkepticism===1&&Math.abs(s.guard.x-s.noise.x)<70))){why=s.noise.real?'heard':'glass';target=s.noise;}
+   else if(R.door){why='waiting';target={x:s.patrolIndex%2?64:32};if(Math.abs(s.guard.x-target.x)<6)s.patrolIndex++;}
+   else if(H&&H.exit&&s.hasRelic){why='exit';target=(H.window||(R.exits&&!R.exits.includes('door')))&&R.exits?.includes('window')?{x:WINDOW.x,up:true}:{x:92};}
+   else if(s.policy.protectRelic&&!s.hasRelic){why='waiting';target={x:900};}
    else if(H&&(H.waitAt!=null||H.wardrobe!=null||(H.door&&(!R.exits||R.exits.includes('door')))||(H.window&&R.exits?.includes('window')))){
     // Wait where this player was last time; check their wardrobe on the way. Two seconds at each stop.
     // A hunter who saw you take the upper floor waits for you up there.
+    why='waiting';
     const stops=[...(H.waitAt!=null?[R.chase&&H.waitAt===52?{x:UPPER_AMBUSH,up:true}:{x:H.waitAt*16,up:false}]:[]),...(H.wardrobe!=null?[{x:HIDING[H.wardrobe].x,up:false}]:[]),...(H.door&&(!R.exits||R.exits.includes('door'))?[{x:80,up:false}]:[]),...(H.window&&R.exits?.includes('window')?[{x:WINDOW.x,up:true}]:[])];
     target=stops[s.patrolIndex%stops.length];
     if(Math.abs(s.guard.x-target.x)<6&&(!R.chase||upstairs(s.guard)===target.up)&&++s.dwell>=(stops.length>1?120:1e9)){s.dwell=0;s.patrolIndex++;}
@@ -139,15 +142,16 @@ export function step(s,input={}){
    }
    else {target={x:s.policy.patrol[s.patrolIndex%s.policy.patrol.length].x*16};if(Math.abs(s.guard.x-target.x)<6){s.patrolIndex++;target={x:s.policy.patrol[s.patrolIndex%s.policy.patrol.length].x*16};}}
   }
-  s.sees=visible;
+  if(visible&&!s.sees)s.spotted={x:Math.round(s.player.x),y:Math.round(s.player.y)};
+  s.sees=visible;s.why=why;
   const way=R.chase||R.v2?route(s.guard,target):{dir:Math.abs(target.x-s.guard.x)>4?Math.sign(target.x-s.guard.x):0};
   const gd=way.dir;
   const obstacle=BLOCKS.some(o=>Math.abs((gd>0?o.x:o.x+o.w)-(gd>0?s.guard.x+s.guard.w:s.guard.x))<12&&s.guard.y+s.guard.h>o.y);
   const hunting=visible||(R.chase&&s.lastSeen?.ttl>0)||(H&&H.exit&&s.hasRelic);
   // Stair hops are short and careful, so each one lands on the next step.
   physics(s.guard,gd,(obstacle||way.jump)&&s.guard.grounded,Boolean(way.drop),way.jump?1:(hunting?1.85:R.chase?1.3:1.05)*R.speed);
-  if(!s.hidden&&overlaps(s.player,s.guard)){s.status='caught';s.message='Caught. The keeper has your number.';}
-  if(s.time>=R.limit){s.status='caught';s.message='Dawn. The house seals its doors.';}
+  if(!s.hidden&&overlaps(s.player,s.guard)){s.status='caught';s.cause=why;s.message='Caught. The keeper has your number.';}
+  if(s.time>=R.limit){s.status='caught';s.cause='dawn';s.message='Dawn. The house seals its doors.';}
  }
  if(s.noise&&--s.noise.ttl<=0)s.noise=null;
  // Sample a trace at 10Hz, rather than writing every animation frame.
