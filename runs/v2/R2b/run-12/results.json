@@ -1,0 +1,460 @@
+[
+  {
+    "task_id": "r2b-01",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window Sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 20,
+          "y": 10
+        },
+        {
+          "x": 18,
+          "y": 10
+        }
+      ],
+      "lesson": "I stop chasing shadows and camp upstairs at the window and stair top, where one post covers both exits."
+    },
+    "outcome": "caught",
+    "ticks": 129,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6v85ed4mq61rgprapmkp8j1",
+    "status": "done",
+    "reply": "I loaded the warden skill and followed its playbook. The keeper camps on the upper floor at the window and the stair top, so one post covers both exits. He holds there with a long dwell and ignores distractions. protectRelic is off, because the vault is too far from the exits to guard in time.\n\n```json\n{\n  \"name\": \"Window Sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 20, \"y\": 10 }, { \"x\": 18, \"y\": 10 }],\n  \"lesson\": \"I stop chasing shadows and camp upstairs at the window and stair top, where one post covers both exits.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-02",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window camper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 22,
+          "y": 10
+        }
+      ],
+      "lesson": "I'll stop chasing the thief and wait at the window. The stair top beside it is also on the way down to the door."
+    },
+    "outcome": "caught",
+    "ticks": 126,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6v85xrapns9swhbw8186b21",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window camper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 22, \"y\": 10 }],\n  \"lesson\": \"I'll stop chasing the thief and wait at the window. The stair top beside it is also on the way down to the door.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-03",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window Post Warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 22,
+          "y": 10
+        }
+      ],
+      "lesson": "I go straight to the upper floor by the window and stay there. That post also sits on the route down to the door. I ignore decoys, and I don't guard the vault."
+    },
+    "outcome": "caught",
+    "ticks": 130,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6v869y37egzfdpvnbbn3n69",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window Post Warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 22, \"y\": 10 }],\n  \"lesson\": \"I go straight to the upper floor by the window and stay there. That post also sits on the route down to the door. I ignore decoys, and I don't guard the vault.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-04",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 22,
+          "y": 10
+        }
+      ],
+      "lesson": "I'll camp the upper floor at the window and stair top, which also sits on the route down to the door. I'll ignore decoys and stay off the vault."
+    },
+    "outcome": "caught",
+    "ticks": 586,
+    "relic_stolen": true,
+    "exit": null,
+    "turn_id": "01m6v86p4ydcz8b1d0xz641dax",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 22, \"y\": 10 }],\n  \"lesson\": \"I'll camp the upper floor at the window and stair top, which also sits on the route down to the door. I'll ignore decoys and stay off the vault.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-05",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 22,
+          "y": 10
+        }
+      ],
+      "lesson": "I take the post at the window, where the stairs down to the door also lead, and I stay there. Decoys don't move me."
+    },
+    "outcome": "caught",
+    "ticks": 601,
+    "relic_stolen": true,
+    "exit": null,
+    "turn_id": "01m6v871js78b9634evcbmj6p6",
+    "status": "done",
+    "reply": "Skill loaded. I'm camping the keeper on the upper floor at the window. That post also sits on the stair route down to the door. protectRelic is off because the vault is too far away. Skepticism is 2 so decoys can't pull him off his post. Dwell is 4, and the two waypoints are close together.\n\n```json\n{\n  \"name\": \"Window warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 22, \"y\": 10 }],\n  \"lesson\": \"I take the post at the window, where the stairs down to the door also lead, and I stay there. Decoys don't move me.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-06",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window Warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 20,
+          "y": 10
+        },
+        {
+          "x": 17,
+          "y": 10
+        }
+      ],
+      "lesson": "I camp at the window and stair top, ignore distractions, and let the thief come to me."
+    },
+    "outcome": "caught",
+    "ticks": 616,
+    "relic_stolen": true,
+    "exit": null,
+    "turn_id": "01m6v87dwx777g3akv35kp6tv8",
+    "status": "done",
+    "reply": "Following my skill's playbook, I'm putting the keeper on the upper floor at the window and stair top. He waits there with a long dwell, so he stays on post instead of drifting off it. I'm ignoring distractions and not guarding the relic.\n\n```json\n{\n  \"name\": \"Window Warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 20, \"y\": 10 }, { \"x\": 17, \"y\": 10 }],\n  \"lesson\": \"I camp at the window and stair top, ignore distractions, and let the thief come to me.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-07",
+    "holdout": false,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 22,
+          "y": 10
+        },
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 17,
+          "y": 10
+        }
+      ],
+      "lesson": "I go straight to the window post, stay put, and ignore decoys. The stair top there also sits on the way down to the door."
+    },
+    "outcome": "caught",
+    "ticks": 113,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6v87twq6c2gw2am565ykxea",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 22, \"y\": 10 }, { \"x\": 19, \"y\": 10 }, { \"x\": 17, \"y\": 10 }],\n  \"lesson\": \"I go straight to the window post, stay put, and ignore decoys. The stair top there also sits on the way down to the door.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-08",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Window camper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 20,
+          "y": 10
+        },
+        {
+          "x": 17,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 10
+        },
+        {
+          "x": 23,
+          "y": 10
+        }
+      ],
+      "lesson": "I stop chasing noise and hold the upper floor at the window, where the escape routes meet."
+    },
+    "outcome": "escaped",
+    "ticks": 911,
+    "relic_stolen": true,
+    "exit": "door",
+    "turn_id": "01m6v88785m39cwm346a0swf94",
+    "status": "done",
+    "reply": "I loaded the skill and followed its advice. The keeper's first waypoint is his final post, so he doesn't detour. He camps on the upper floor at the window, which is also the stair top above the door route. He waits 4 seconds at each of two posts that are close together and span the window. He ignores decoys and doesn't guard the vault, because the thief reaches the emerald before he could get there. I haven't seen an evaluation, so I can't say yet whether this works.\n\n```json\n{\n  \"name\": \"Window camper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 20, \"y\": 10 }, { \"x\": 17, \"y\": 10 }, { \"x\": 20, \"y\": 10 }, { \"x\": 23, \"y\": 10 }],\n  \"lesson\": \"I stop chasing noise and hold the upper floor at the window, where the escape routes meet.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-09",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Window camper",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 22,
+          "y": 10
+        }
+      ],
+      "lesson": "I go straight to the window post upstairs and stay there. That spot also covers the stair route down to the door. I ignore decoys and I don't guard the far vault."
+    },
+    "outcome": "escaped",
+    "ticks": 773,
+    "relic_stolen": true,
+    "exit": "door",
+    "turn_id": "01m6v88mat5rx9m6yb61z14hsh",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window camper\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 22, \"y\": 10 }],\n  \"lesson\": \"I go straight to the window post upstairs and stay there. That spot also covers the stair route down to the door. I ignore decoys and I don't guard the far vault.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-10",
+    "holdout": false,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Window Sentinel",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 15,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 10
+        }
+      ],
+      "lesson": "I stop chasing noise and hold the upper floor by the window and stair top, so the thief must pass me on the way out."
+    },
+    "outcome": "escaped",
+    "ticks": 769,
+    "relic_stolen": true,
+    "exit": "door",
+    "turn_id": "01m6v890010f01bm3a9k7s7nay",
+    "status": "done",
+    "reply": "Following my playbook, I'm putting the keeper on the upper floor between the stair top and the window. That post covers the window directly and sits on the route down to the door. The keeper will wait there, ignore decoys, and stay away from the vault.\n\n```json\n{\n  \"name\": \"Window Sentinel\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 15, \"y\": 10 }, { \"x\": 20, \"y\": 10 }],\n  \"lesson\": \"I stop chasing noise and hold the upper floor by the window and stair top, so the thief must pass me on the way out.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-11",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window Post Warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 22,
+          "y": 10
+        }
+      ],
+      "lesson": "I stop chasing noise and camp the upper window. Its stair top also covers the route down to the door."
+    },
+    "outcome": "caught",
+    "ticks": 218,
+    "relic_stolen": false,
+    "exit": null,
+    "turn_id": "01m6v89cvxv5s788pk8t0yczva",
+    "status": "done",
+    "reply": "Skill loaded. I'm camping the keeper on the upper floor at the window. The stair top on that route down to the door is close by, so one post covers both exits. I'm using a long dwell, ignoring decoys, and not guarding the relic.\n\n```json\n{\n  \"name\": \"Window Post Warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 22, \"y\": 10 }],\n  \"lesson\": \"I stop chasing noise and camp the upper window. Its stair top also covers the route down to the door.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-12",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window post warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 22,
+          "y": 10
+        }
+      ],
+      "lesson": "I go straight to the upper floor by the window and camp there, which also covers the stair down to the door. I ignore decoys and I don't guard the vault."
+    },
+    "outcome": "caught",
+    "ticks": 629,
+    "relic_stolen": true,
+    "exit": null,
+    "turn_id": "01m6v89ycft5mtebr47c2t2ser",
+    "status": "done",
+    "reply": "```json\n{\n  \"name\": \"Window post warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 22, \"y\": 10 }],\n  \"lesson\": \"I go straight to the upper floor by the window and camp there, which also covers the stair down to the door. I ignore decoys and I don't guard the vault.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-13",
+    "holdout": true,
+    "score": 1,
+    "passed": true,
+    "parsed": true,
+    "policy": {
+      "name": "Window warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 19,
+          "y": 10
+        },
+        {
+          "x": 21,
+          "y": 10
+        }
+      ],
+      "lesson": "I stand at the window and stair top, where both exits can be covered, and ignore distractions."
+    },
+    "outcome": "caught",
+    "ticks": 597,
+    "relic_stolen": true,
+    "exit": null,
+    "turn_id": "01m6v8aah70dqba6wnsh47j99g",
+    "status": "done",
+    "reply": "Tonight I'm posting the keeper on the upper floor, next to the window. The stair top near the window is on the route down to the door, so one post covers both exits. I'm leaving protectRelic off, because the emerald is far from both exits and the thief takes it before the keeper could arrive. Skepticism is 2 so decoys can't pull him off the post. I left the skill unchanged, since this is an evaluation turn.\n\n```json\n{\n  \"name\": \"Window warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 19, \"y\": 10 }, { \"x\": 21, \"y\": 10 }],\n  \"lesson\": \"I stand at the window and stair top, where both exits can be covered, and ignore distractions.\"\n}\n```"
+  },
+  {
+    "task_id": "r2b-14",
+    "holdout": true,
+    "score": 0,
+    "passed": false,
+    "parsed": true,
+    "policy": {
+      "name": "Window warden",
+      "decoySkepticism": 2,
+      "protectRelic": false,
+      "dwell": 4,
+      "patrol": [
+        {
+          "x": 20,
+          "y": 10
+        },
+        {
+          "x": 18,
+          "y": 10
+        },
+        {
+          "x": 22,
+          "y": 10
+        }
+      ],
+      "lesson": "I camp upstairs by the window and stair top, covering both exits, and ignore decoys."
+    },
+    "outcome": "escaped",
+    "ticks": 751,
+    "relic_stolen": true,
+    "exit": "door",
+    "turn_id": "01m6v8apvvwt2v8vyesbp8ata0",
+    "status": "done",
+    "reply": "This policy puts the keeper upstairs next to the window. The stair top there is also on the thief's route down to the door. I've set `protectRelic` to false because the keeper can't reach the vault before the thief takes the emerald. I've set skepticism to 2 so decoys can't pull him off his post.\n\n```json\n{\n  \"name\": \"Window warden\",\n  \"decoySkepticism\": 2,\n  \"protectRelic\": false,\n  \"dwell\": 4,\n  \"patrol\": [{ \"x\": 20, \"y\": 10 }, { \"x\": 18, \"y\": 10 }, { \"x\": 22, \"y\": 10 }],\n  \"lesson\": \"I camp upstairs by the window and stair top, covering both exits, and ignore decoys.\"\n}\n```"
+  }
+]
