@@ -1,0 +1,14 @@
+e42c63fce3fa42db5de9cd548f52d6f4cf28947282c21eb9f4e8a6e73a192c6f  R2c/r2c-01.json  ground→door · exits by the door
+573de1a2c87473d47ca96565a57f8013a3d8b7c81f635f88ee3f8240d5c918fa  R2c/r2c-02.json  ground→door + glass · exits by the door
+269ef691bdf8180c5c199967a594972399c1a18112b333f628f7dfcf2b40c121  R2c/r2c-03.json  ground→window · exits by the window
+db4c764b04d9f7ea6cc5341facdf0ba22e67ef8c486f3113d24ce533be261361  R2c/r2c-04.json  upper→window · exits by the window
+f9729ee01f7802320b41e73ae6c19b014b6d20bb4163b96d7dc6d86536e3df6c  R2c/r2c-05.json  glass at the door → window · exits by the window
+db55abaaa77e0edd9d88d3d95f587b8e13e87b250694081619f3c9143396893c  R2c/r2c-06.json  glass at the vault → door · exits by the door
+53c0b7ec9301c2a1cacab7a4619d0c49d772a22855d37bd6b6ce71f632a94b38  R2c/r2c-07.json  sprints the hall (it creaks) → door · exits by the door
+cfe35fd1750f5ff1c7a27ba265153397a19bacd6ba4ab77657c2e0de85784b06  R2c/r2c-08.json  upper→window · exits by the door
+2c51b1449b3fbc28a4342f2d25e1c15aead25e4a6206f0d4e0b9bedeefa0b097  R2c/r2c-09.json  glass at the door → window · exits by the door
+b7cfec7c5f9e10f17b71adafb709af3ebabf72de32ade36d4d7378267323b402  R2c/r2c-10.json  glass at the vault → door · exits by the door
+2302bd721e366c29c699b8fbe56fde060b006ff7e858a1f50bc8395092faf2cd  R2c/r2c-11.json  ground→door · exits by the door (holdout) 12.3s
+c764d373e6af3681a1eb4ca44f218500cc7d704984d6757b6bc099d8d1b155a1  R2c/r2c-12.json  upper→window · exits by the window (holdout) 12.8s
+18562aaca32fd7b8b9d383d182f86cd821edd84157e6b9700a86a61034b10f0e  R2c/r2c-13.json  glass at the door → window · exits by the window (holdout) 10.4s
+8764eb1724672b8929f619c8050c15de615c15969e11be3279cbcdf17912ba6f  R2c/r2c-14.json  glass at the vault → door · exits by the door (holdout) 13.6s
