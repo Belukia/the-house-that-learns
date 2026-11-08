@@ -114,4 +114,35 @@ node evals/v2/generator/build-r2b.mjs evals/v2/R2 /tmp/R2b-check   # regenerates
 
 ## The game
 
-The playable game now uses the same window. From night 3 a window is open upstairs, above the door. If you escape through it, the in-browser keeper learns that ("You climbed out the window. Tonight I wait beside it.") and waits there the next night. The in-browser keeper learns with simple game rules, not with TrueForge. The TrueForge agent learns between eval runs, as shown above.
+The playable game now uses the same window. From night 4 a window is open upstairs, above the door. If you escape through it, the in-browser keeper learns that ("You climbed out the window. Tonight I wait beside it.") and waits there the next night. The in-browser keeper learns with simple game rules, not with TrueForge. The TrueForge agent learns between eval runs, as shown above.
+
+## Repeats and a fresh held-out check (8 Nov)
+
+Same scorer, same model (`tfy/sonnet`), same TrueForge loop. No `improve` step ran: these runs only re-measure two Skills that already existed.
+
+**Repeats on round 2b.** Is the gain noise? The starting Skill `a1fd2ff` was run twice more on round 2b.
+
+| Run | Skill | Score | Development | Holdout |
+|---|---|---|---|---|
+| 2b run 01 (6 Nov) | `a1fd2ff` | 71.43 | 7/10 | 3/4 |
+| 2b run 11 | `a1fd2ff` | 71.43 | 7/10 | 3/4 |
+| 2b run 12 | `a1fd2ff` | 71.43 | 7/10 | 3/4 |
+| 2b runs 06, 09, 10 | `5bf0891` | 85.71 ×3 | 8/10 | 4/4 |
+
+**Round 2c: four brand-new held-out heists.** The 4 round-2b holdout heists have now been seen in 10 runs, so they no longer measure anything new.
+- Round 2c keeps the same 10 development heists and generates 4 fresh holdout heists: the same scripted families, a new seed range, none identical to any heist from round 2 or 2b.
+- Tasks: `evals/v2/R2c/` (`SHA256SUMS.txt`). Generator: `evals/v2/generator/build-r2c.mjs`.
+- **Honest note:** round 2c was frozen with SHA-256 before its runs, but only locally. It was not pushed before the runs. The runs' `agent_commit` ends in `-dirty` because the round's new task files and a one-line script change (accepting `--round 2c`) were uncommitted. `agent/` itself was unchanged.
+
+| Run | Skill | Score | Development | Fresh holdout |
+|---|---|---|---|---|
+| 2c run 01 | `5bf0891` (learned) | 78.57 | 8/10 | 3/4 |
+| 2c run 02 | `5bf0891` (learned) | 78.57 | 8/10 | 3/4 |
+| 2c run 01 | `a1fd2ff` (starting) | 71.43 | 7/10 | 3/4 |
+
+**Reading:**
+- On heists neither Skill had seen, the learned Skill still beats the starting one, 78.57 vs 71.43. The difference is one development heist, `r2c-08`.
+- On the fresh holdout they tie at 3/4. Each Skill misses a different heist: the learned one misses a window thief (`r2c-12`), the starting one a door thief (`r2c-14`).
+- So the gain is real and repeatable, but the perfect 4/4 holdout of round 2b was partly the luck of those four heists.
+
+**Cost:** 5 sessions, US$ 5.71. Total for exam v2: about US$ 10.83.
