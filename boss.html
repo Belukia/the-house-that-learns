@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The fully trained keeper · ROB ME AGAIN</title>
+<style>
+ :root{--bg:#0d0c12;--ink:#efe4cc;--dim:#9c927f;--gold:#d9bd80;--green:#7fc59a;--red:#e8604c}
+ *{box-sizing:border-box}
+ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 Georgia,"Times New Roman",serif}
+ main{max-width:980px;margin:0 auto;padding:18px 16px 40px}
+ .kick{font:700 12px ui-monospace,Menlo,monospace;letter-spacing:3px;color:var(--gold);margin:0}
+ .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0} .top a{text-decoration:none;border:1px solid var(--gold);padding:5px 10px} .top a:hover{background:var(--gold);color:var(--bg)}
+ h1{font-size:clamp(28px,5vw,44px);margin:6px 0 4px;font-weight:400}
+ h1 i{color:var(--gold)}
+ .lead{color:var(--dim);margin:0 0 14px;max-width:720px}
+ .stage{position:relative}
+ canvas{display:block;width:100%;aspect-ratio:480/288;image-rendering:pixelated;background:#131827;border:1px solid #2a2633}
+ .card{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,9,14,.82)}
+ .card.hidden{display:none}
+ .card>div{max-width:560px;padding:20px 22px;border:1px solid var(--gold);background:#141219;text-align:center}
+ .card h2{margin:4px 0 8px;font-weight:400;font-size:26px}
+ .card p{margin:6px 0}
+ .lesson{font-style:italic}
+ .sig{font:700 11px ui-monospace,Menlo,monospace;letter-spacing:2px;color:var(--gold)}
+ button{font:700 14px ui-monospace,Menlo,monospace;letter-spacing:2px;padding:10px 18px;margin-top:10px;background:var(--gold);color:#111;border:0;cursor:pointer}
+ .meta{display:flex;flex-wrap:wrap;gap:6px 18px;font:12px ui-monospace,Menlo,monospace;color:var(--dim);margin:10px 0}
+ .meta b{color:var(--ink)}
+ .keys{font:12px ui-monospace,Menlo,monospace;color:var(--dim)}
+ a{color:var(--gold)}
+</style>
+<main>
+ <p class="top"><a class="kick" href="./?game">← THE EIGHT NIGHTS</a><span class="kick">THE FULLY TRAINED KEEPER</span></p>
+ <h1>He has read <i>every</i> night</h1>
+ <p class="lead">Every lesson the eight nights can teach, all at once: he knows the upper floor, the wardrobes, the window and the door, and he is faster. And he never starts the same way twice: each try he picks one of his posts and how long to hold it. <span id="odds">You can jump over him, but only in a split second as he charges at you. In our simulations, a computer player with perfect timing that memorised a winning route escaped on a new try about 20 times in 100.</span></p>
+ <div class="stage">
+  <canvas id="game" width="960" height="576" tabindex="0" aria-label="The house"></canvas>
+  <div id="card" class="card"><div>
+   <p class="sig" id="c-kick">THE FULLY TRAINED KEEPER</p>
+   <h2 id="c-title">“I have read every one of your nights.”</h2>
+   <p id="c-result">Steal the emerald. Out by the door or the window upstairs.</p>
+   <button id="c-go">ROB THE HOUSE</button>
+  </div></div>
+ </div>
+ <div class="meta"><span>Time: <b id="m-time">0s / 55s</b></span><span>Escapes: <b id="m-score">0 of 0</b></span></div>
+ <p class="keys">← → run · Space jumps (and climbs the stairs) · ↓ drops through a floor · H hides in a wardrobe, or climbs out of the window with the emerald.</p>
+ <p class="keys"><a href="./?game">← Back to the eight nights</a></p>
+</main>
+<script type="module" src="boss.mjs"></script>
+</html>

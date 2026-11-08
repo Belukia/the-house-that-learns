@@ -1,5 +1,5 @@
 /* ROB ME AGAIN · newspaper skin (Nov 2026). Loaded after style.css. The noir skin lives in theme.css. */
-@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Abril+Fatface&display=swap');
 :root{--paper:#ebe2cc;--paper2:#e3d8bd;--ink:#1d1a15;--ink2:#3b352b;--muted:#6d6453;--line:#1d1a15;--rule:#9c907a;--red:#8c2a1c;--green:#2f5d46;--coral:#8c2a1c;
  --serif:'Old Standard TT',Georgia,'Times New Roman',serif;--head:'Playfair Display',Georgia,serif;--black:'UnifrakturMaguntia','Old English Text MT',serif;--sans:'Old Standard TT',Georgia,serif}
 html{background:#cfc4a9}
@@ -294,3 +294,371 @@ footer button{font:700 10px var(--serif);color:var(--red)}
  .result-card .primary{padding:7px 10px;margin-top:5px;font-size:9px}
  .result-card .text-button{font-size:8px;padding:5px 0}
 }
+
+/* 7 nov: the losing card says only what matters: the verdict, what he learned, play again */
+.result-card #result-kicker,.result-card #result-copy,.result-card #known,.result-card #challenge-line,.result-card #result-stats,.result-card #learn-status{display:none}
+.result-card.final #result-kicker,.result-card.final #result-copy{display:block}
+.result-card blockquote{font-size:20px!important;line-height:1.35;margin:10px 0 14px!important}
+@media(max-width:750px){.result-card h2{font-size:26px!important}.result-card blockquote{font-size:15px!important;margin:6px 0 10px!important}.result-card .primary{font-size:10px!important;padding:11px!important}.result-card .text-button{font-size:8px!important}}
+/* 7 nov: on phones, decoy and hide sit right above the arrows */
+.touch-actions{display:none}
+@media(max-width:750px){.touch-pad{flex-wrap:wrap}.touch-actions{display:flex;gap:8px;width:100%;order:0}.touch-pad>div:not(.touch-actions){order:1}.touch-pad>button{order:2}.control-bar{display:none}.touch-pad .t-act{width:auto;flex:1;height:52px;font:700 11px var(--serif);letter-spacing:1px;touch-action:none;user-select:none;-webkit-user-select:none}.t-act small{display:block;font:italic 10px var(--serif);letter-spacing:0;color:var(--ink2)}.t-act:disabled{opacity:.4}}
+
+/* 7 nov (Tami): the top is a title and one plain line, so the game shows first and reads as a game. */
+.epigraph{font:400 17px/1.45 var(--serif);font-style:normal;text-transform:lowercase;letter-spacing:.3px;color:var(--ink2);max-width:640px;margin:0 auto}
+.heading{margin-bottom:12px;padding-bottom:12px}
+/* The start card stands out from the paper: newspaper red, with the paper colour for its text. */
+.notice{background:var(--red);border-color:var(--red);box-shadow:0 10px 30px #0008,inset 0 0 0 5px var(--red),inset 0 0 0 6px #ebe2cc99}
+.notice>.eyebrow{color:#f3dcc0}
+.notice>p:not(.eyebrow),.notice .intro-note{color:#f3e7d3}
+.intro h2{color:var(--paper)}
+.intro h2 em{color:#f6c98f}
+.notice .primary{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.notice .primary:hover{background:#fff4df;border-color:#fff4df;color:var(--ink)}
+.notice .sound-hint{color:#f3e7d3}
+.notice .sound-hint u{color:#fff}
+@media(max-width:750px){.epigraph{font-size:15px;max-width:300px}.heading{margin-bottom:10px;padding-bottom:10px}main{padding-top:8px}}
+
+/* ===== 7 nov revamp: the game first, fewer labels, a goal before every night ===== */
+@media(min-width:751px){.game-layout{grid-template-columns:minmax(0,1fr) 230px}}
+@media(min-width:751px) and (max-width:1100px){.game-layout{grid-template-columns:minmax(0,1fr) 200px}}
+.board-top{display:flex;justify-content:space-between;align-items:center;text-transform:uppercase}
+.board-top button{background:var(--ink);color:var(--paper);border:0;padding:5px 10px;font:700 10px var(--serif);letter-spacing:1.2px;text-transform:uppercase;cursor:pointer}
+.board-top button:hover{background:var(--red)}
+.narrator-strip>span{text-transform:uppercase}
+.dateline{text-transform:uppercase}
+.dateline button{text-transform:uppercase}
+/* The start card: what this is, in three short lines */
+.notice .context{list-style:none;margin:6px 0 12px;padding:0;max-width:340px;text-align:left}
+.notice .context li{font:400 13px/1.35 var(--serif);color:#f6ead6;padding-left:14px;position:relative;margin:4px 0}
+.notice .context li:before{content:'◆';position:absolute;left:0;top:1px;font-size:8px;color:#f6c98f}
+.notice .context a{color:#fff;font-weight:700}
+.sound-hint{text-transform:uppercase}
+/* The goal before each night: a paper slip, waits for GO */
+.brief{background:#10121acc}
+.brief .brief-card{background:var(--paper);border-color:var(--ink);box-shadow:0 10px 30px #0008,inset 0 0 0 5px var(--paper),inset 0 0 0 6px var(--ink);transform:rotate(.6deg);text-align:center}
+.brief-night{font:900 26px/1 var(--head);text-transform:uppercase;color:var(--ink);margin:2px 0 8px}
+.brief-goal{font:400 15px/1.4 var(--serif);color:var(--ink);max-width:360px;margin:0 0 10px}
+.brief-label{font:700 10px var(--serif);letter-spacing:2px;color:var(--red);text-transform:uppercase;margin:4px 0}
+.brief-known{list-style:none;margin:0 0 10px;padding:0;font:italic 13px/1.35 var(--serif);color:var(--ink2)}
+.brief .notice .primary,.brief .primary{background:var(--ink);border-color:var(--ink);color:var(--paper);min-width:160px}
+.result-cause{font:700 13px var(--serif)!important;color:var(--red)!important;letter-spacing:.5px;margin:2px 0 6px!important;display:block}
+.rail-links{display:flex;flex-direction:column;align-items:flex-start;border-top:1px solid var(--rule);margin-top:12px;padding-top:6px}
+.rail-links .text-button{color:var(--red);font:700 11px var(--serif);letter-spacing:1px;text-transform:uppercase;padding:6px 0}
+.keeper-heading h2{text-transform:none}
+.suspicion-block span,.memory-heading span:first-child{text-transform:uppercase}
+.touch-only{display:none}
+.legend span{text-transform:uppercase}
+@media(max-width:750px){
+ .notice .context{margin:4px 0 8px}.notice .context li{font-size:11px;margin:2px 0}
+ .brief-night{font-size:20px;margin:0 0 6px}.brief-goal{font-size:13px;margin-bottom:6px}.brief-known{font-size:11px;margin-bottom:6px}
+ .touch-only{display:inline-block}.legend{justify-content:space-between}
+ .board-top button{padding:4px 8px;font-size:9px}
+}
+/* Full screen (and the iPhone game mode): only the board and its controls */
+.board-column:fullscreen,body.game-mode .board-column{position:fixed;inset:0;z-index:60;background:var(--paper);overflow:auto;padding:8px 10px;display:flex;flex-direction:column;justify-content:center}
+.board-column:fullscreen .board-frame,body.game-mode .board-frame{width:min(100%,calc((100dvh - 190px)*1.667));margin:0 auto}
+.board-column:fullscreen .legend,body.game-mode .legend{display:none}
+body.game-mode{overflow:hidden}
+/* Touch screens: touch controls at any width */
+body.touch .control-bar{display:none}
+body.touch .touch-pad{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;gap:6px;margin-top:10px}
+body.touch .touch-pad div{display:flex;gap:6px}
+body.touch .touch-pad button{width:58px;height:48px;font-size:22px;touch-action:none;background:var(--paper)!important;border:1px solid var(--ink)!important;color:var(--ink)}
+body.touch .touch-actions{display:flex;width:100%;order:0}
+body.touch .touch-pad .t-act{width:auto;flex:1;height:52px;font:700 11px var(--serif);letter-spacing:1px}
+body.touch .touch-only{display:inline-block}
+/* A phone on its side, in full screen or game mode: the board fills the height; controls float on the edges */
+@media(orientation:landscape) and (max-height:520px){
+ .board-column:fullscreen,body.game-mode .board-column{justify-content:flex-start;padding:4px 8px}
+ .board-column:fullscreen .board-top,body.game-mode .board-top{height:24px}
+ .board-column:fullscreen .narrator-strip,body.game-mode .narrator-strip{min-height:0;padding:3px 10px}
+ .board-column:fullscreen .narrator-strip p,body.game-mode .narrator-strip p{font-size:12px;line-height:1.3}
+ .board-column:fullscreen .board-status,body.game-mode .board-status{display:none}
+ .board-column:fullscreen .board-frame,body.game-mode .board-frame{width:min(100%,calc((100dvh - 78px)*1.667))}
+ body.touch.game-mode .touch-pad,body.touch .board-column:fullscreen .touch-pad{position:fixed;left:6px;right:6px;bottom:6px;margin:0;pointer-events:none;z-index:70}
+ body.touch.game-mode .touch-pad button,body.touch .board-column:fullscreen .touch-pad button{pointer-events:auto;opacity:.8;width:52px;height:44px}
+ body.touch.game-mode .touch-actions,body.touch .board-column:fullscreen .touch-actions{position:fixed;right:6px;bottom:56px;width:auto;z-index:70}
+ body.touch.game-mode .touch-pad .t-act,body.touch .board-column:fullscreen .touch-pad .t-act{width:110px;height:44px}
+ body.game-mode .control-bar{display:none}
+}
+/* Phones: a card over the board (start, goal, result) may be taller than the board. The board grows to fit it. */
+@media(max-width:750px){
+ .canvas-wrap:has(> .intro:not(.hidden)),.canvas-wrap:has(> .result:not(.hidden)){aspect-ratio:auto;min-height:60vw}
+ .canvas-wrap:has(> .intro:not(.hidden)) canvas,.canvas-wrap:has(> .result:not(.hidden)) canvas{position:absolute;inset:0}
+ .canvas-wrap > .intro:not(.hidden),.canvas-wrap > .result:not(.hidden){position:relative;inset:auto;min-height:60vw;padding:12px 8px}
+ .notice,.result-card{max-height:none!important;overflow:visible}
+}
+.brief-card>p,.brief-card>div:not(.hidden){display:block!important}
+.brief .brief-card>p.brief-night{color:var(--ink);font:900 26px/1 var(--head)}
+.brief .brief-card>p.brief-goal{color:var(--ink);font:400 15px/1.4 var(--serif);font-style:normal}
+.brief .brief-card .brief-label{color:var(--red)}
+@media(max-width:750px){.brief .brief-card>p.brief-night{font-size:20px}.brief .brief-card>p.brief-goal{font-size:13px}}
+.brief .brief-card>p.brief-goal{text-align:center}
+body.touch .touch-pad>div:not(.touch-actions){order:1}
+body.touch .touch-pad>button{order:2}
+@media(orientation:landscape) and (max-height:520px){body.touch.game-mode .t-act small,body.touch .board-column:fullscreen .t-act small{display:none}}
+/* ===== The lower page: one story, three letters, two ads ===== */
+.story-wrap .lead-story{max-width:980px;margin:0 auto}
+.story-wrap .lead-story h2{font:900 clamp(30px,4vw,54px)/1.02 var(--head);text-align:center;margin:4px 0 8px;letter-spacing:-.5px}
+.story-wrap .story-deck{text-align:center}
+.story-wrap .story-cols{columns:3}
+.story-wrap .byline a{color:var(--red)}
+.letters-title{font:900 clamp(24px,2.6vw,36px)/1.1 var(--head);text-align:center;margin:0 0 14px}
+.guestbook .reviews{grid-template-columns:repeat(3,minmax(0,1fr))}
+.guestbook .reviews .review{border-top:0!important;padding-top:4px!important}
+.guestbook .reviews .review:first-child{border-left:0;padding-left:0}
+.ads-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:760px;margin:26px auto 0}
+.ads-row .ad{margin:0}
+/* Paper: grain and slightly darker edges, so it reads as a printed page (no fold) */
+.site-shell{position:relative;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='.6' numOctaves='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .38 0 0 0 0 .31 0 0 0 0 .2 0 0 0 .13 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>"),radial-gradient(ellipse at center,transparent 60%,rgba(90,70,40,.13) 100%)}
+.board-frame{box-shadow:0 1px 0 #fff8,0 8px 22px #3b2f1d33;outline:4px double var(--ink);outline-offset:4px}
+@media(max-width:750px){.story-wrap .story-cols{columns:1}.guestbook .reviews{grid-template-columns:1fr}.guestbook .reviews .review{border-left:0;padding-left:0;border-top:1px solid var(--ink)!important;padding-top:12px!important}.ads-row{grid-template-columns:1fr}.board-frame{outline-width:3px;outline-offset:3px}}
+.masthead{grid-template-columns:1fr!important}
+.ads-row .ad{grid-column:auto!important;grid-row:auto!important}
+/* Safari before 16.4 uses the prefixed full-screen pseudo-class */
+.board-column:-webkit-full-screen{position:fixed;inset:0;z-index:60;background:var(--paper);overflow:auto;padding:8px 10px;display:flex;flex-direction:column;justify-content:center;width:100%;height:100%}
+.board-column:-webkit-full-screen .board-frame{width:min(100%,calc((100vh - 190px)*1.667));margin:0 auto}
+.board-column:fullscreen{width:100%;height:100%}
+
+/* ===== Design v2 (7 nov, Tami): cards and buttons that look finished ===== */
+:root{--gold:#f2c27b;--cream:#fbf3e2}
+/* Buttons: letterpress blocks that press down */
+.primary{position:relative;display:inline-flex;align-items:center;justify-content:space-between;gap:22px;background:var(--ink);color:var(--cream);border:0!important;border-radius:3px;padding:14px 22px;font:700 13px var(--serif);letter-spacing:3px;text-transform:uppercase;box-shadow:0 4px 0 #000,0 12px 24px #0006;transition:transform .08s ease,box-shadow .08s ease,background .15s;cursor:pointer}
+.primary span{font-size:20px;line-height:1;transition:transform .15s}
+.primary:hover{transform:translateY(-2px);box-shadow:0 6px 0 #000,0 16px 30px #0007;background:#2b261f}
+.primary:hover span{transform:translateX(4px)}
+.primary:active{transform:translateY(3px);box-shadow:0 1px 0 #000,0 4px 10px #0005}
+.primary:disabled{opacity:.5;transform:none}
+/* The start card: big question, one friendly line, one button */
+.notice.start-card{background:radial-gradient(120% 90% at 50% 20%,#a8382a 0,#8c2a1c 55%,#6f1f14 100%);border:0;box-shadow:0 18px 40px #000a,inset 0 0 0 6px #8c2a1c,inset 0 0 0 7px #f6e3c599,inset 0 0 0 11px #8c2a1c,inset 0 0 0 12px #f6e3c544;transform:rotate(-1.2deg);padding:26px 30px 18px;max-width:430px;text-align:center}
+.start-card h2{font:900 clamp(30px,3.6vw,46px)/.98 var(--head)!important;color:var(--cream)!important;text-transform:uppercase;letter-spacing:-.5px;margin:0 0 12px;text-shadow:0 2px 0 #0004}
+.start-card h2 em{color:var(--gold)!important;font-style:italic;text-transform:none;font-size:1.05em}
+.start-card .start-line{font:400 16px/1.45 var(--serif)!important;font-style:normal!important;color:#f6ead6!important;margin:0 0 18px!important;display:block!important}
+.start-card .primary{background:var(--cream);color:var(--ink);box-shadow:0 4px 0 #3c120b,0 12px 24px #0007;min-width:240px}
+.start-card .primary:hover{background:#fff;box-shadow:0 6px 0 #3c120b,0 16px 30px #0008}
+.start-card .primary:active{box-shadow:0 1px 0 #3c120b}
+.start-card .start-meta{font:700 10px var(--serif)!important;letter-spacing:2px;text-transform:uppercase;color:#f3d9b8b0!important;margin:14px 0 0!important;display:block!important}
+/* The goal card and the result card: clean paper slips */
+.brief .brief-card,.result-card{background:var(--cream)!important;border:0!important;box-shadow:0 18px 40px #000a,inset 0 0 0 6px var(--cream),inset 0 0 0 7px var(--ink),inset 0 0 0 10px var(--cream),inset 0 0 0 11px #1d1a1566!important;padding:24px 28px 18px!important;max-width:420px}
+.brief .brief-card{transform:rotate(.8deg)}
+.brief .brief-card>p.brief-night{font:900 34px/1 var(--head)!important;text-transform:uppercase;letter-spacing:-.5px;margin:0 0 4px!important}
+.brief .brief-card>p.brief-night:after{content:'';display:block;width:60px;height:3px;background:var(--red);margin:10px auto 12px}
+.brief .brief-card>p.brief-goal{font:400 16px/1.5 var(--serif)!important;margin:0 0 14px!important}
+.brief-label{font:700 10px var(--serif);letter-spacing:3px;margin:2px 0 6px!important}
+.brief-known{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:0 0 16px!important}
+.brief-known li{font:700 10px var(--serif);letter-spacing:1px;text-transform:uppercase;font-style:normal;color:var(--red);border:1px solid var(--red);border-radius:20px;padding:4px 10px}
+.brief .primary{min-width:180px}
+.result-card{text-align:center}
+.result-card h2{font:900 36px/1 var(--head)!important;text-transform:uppercase;color:var(--ink)!important;margin:2px 0 8px!important}
+.result-card .result-cause{font:700 12px var(--serif)!important;letter-spacing:2px;text-transform:uppercase;color:var(--red)!important;margin:0 0 10px!important}
+.result-card blockquote{font:italic 18px/1.4 var(--serif)!important;color:var(--ink2)!important;margin:6px 0 16px!important;padding:0 6px}
+.result-card .primary{min-width:220px}
+.result-card .text-button{display:block;margin:10px auto 0;font:700 10px var(--serif)!important;letter-spacing:2px;text-transform:uppercase;color:var(--ink2)!important;background:none;border:0}
+.result-card .text-button:hover{color:var(--red)!important}
+/* Tools above the board: music, sounds, full screen */
+.board-tools{display:flex;gap:6px;align-items:center}
+.board-top .tool{background:transparent;color:var(--ink);border:1px solid var(--ink);border-radius:20px;padding:4px 11px;font:700 10px var(--serif);letter-spacing:1.2px;text-transform:uppercase;cursor:pointer;transition:background .15s,color .15s}
+.board-top .tool[aria-pressed=true]{background:var(--ink);color:var(--cream)}
+.board-top .tool[aria-pressed=false]{opacity:.55;text-decoration:line-through}
+.board-top .tool:hover{background:var(--red);border-color:var(--red);color:var(--cream);opacity:1}
+#fullscreen{background:var(--ink);color:var(--cream)}
+/* Touch controls: the same letterpress keys */
+body.touch .touch-pad button,.touch-pad button{border-radius:4px!important;box-shadow:0 3px 0 var(--ink)!important;transition:transform .06s,box-shadow .06s}
+.touch-pad button:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)!important}
+.touch-pad .t-act{background:var(--ink)!important;color:var(--cream)!important}
+.touch-pad .t-act small{color:#e8d9bd!important}
+@media(max-width:750px){
+ .notice.start-card{padding:18px 16px 14px;max-width:320px}
+ .start-card h2{font-size:26px!important}
+ .start-card .start-line{font-size:13px!important;margin-bottom:12px!important}
+ .start-card .primary{min-width:200px;padding:12px 16px}
+ .start-card .start-meta{font-size:8px!important;margin-top:10px!important}
+ .brief .brief-card,.result-card{padding:16px 16px 12px!important}
+ .brief .brief-card>p.brief-night{font-size:24px!important}
+ .brief .brief-card>p.brief-goal{font-size:13px!important}
+ .result-card h2{font-size:26px!important}.result-card blockquote{font-size:14px!important}
+ .board-top .tool span{display:none}
+ .board-top .tool{padding:4px 8px}
+}
+/* Numbers stand as tall as capitals everywhere (Playfair's old-style 1 looked smaller than the letters) */
+body,h1,h2,h3,.primary,.brief-card,.result-card,.dateline,.board-top{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* The night card: a seal with the number, one line, chips, GO */
+.night-seal{width:96px;height:96px;margin:0 auto 12px;border-radius:50%;background:var(--red);color:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 0 4px var(--cream),0 0 0 5px var(--red),0 6px 14px #0005;transform:rotate(-6deg)}
+.night-seal small{font:700 9px var(--serif);letter-spacing:2.5px;text-transform:uppercase;opacity:.9}
+.night-seal b{font:900 44px/1 var(--head);font-variant-numeric:lining-nums;margin:1px 0}
+.brief-chips{display:flex;justify-content:center;gap:8px;margin:0 0 14px}
+.chip{font:700 10px var(--serif);letter-spacing:1.5px;text-transform:uppercase;border:1px solid var(--ink);border-radius:20px;padding:5px 12px;color:var(--ink);background:transparent}
+.chip-try{background:var(--ink);color:var(--cream)}
+.brief .brief-card>p.brief-goal{font:400 17px/1.45 var(--serif)!important;max-width:320px;margin:0 auto 12px!important}
+/* Big buttons: centred, roomy, clear */
+.primary.big{justify-content:center;gap:14px;min-width:230px;padding:16px 28px;font-size:15px;letter-spacing:3.5px}
+.primary.big span{font-size:22px}
+@media(max-width:750px){.night-seal{width:72px;height:72px;margin-bottom:8px}.night-seal b{font-size:32px}.night-seal small{font-size:7px}.brief .brief-card>p.brief-goal{font-size:14px!important}.primary.big{min-width:190px;padding:12px 18px;font-size:12px}.chip{font-size:9px;padding:4px 9px}}
+.brief-card>.night-seal{display:flex!important}
+.brief-card>.brief-chips{display:flex!important}
+.intro{justify-content:safe center;overflow:auto}
+.night-seal{width:84px;height:84px}.night-seal b{font-size:38px}
+.brief .brief-card{padding-top:20px!important}
+.brief .brief-card>div.night-seal:not(.hidden){display:flex!important;flex-direction:column}
+.brief .brief-card>div.brief-chips:not(.hidden){display:flex!important}
+/* ===== The night card, option B: a newspaper clipping taped over the board ===== */
+.clip-wrap{position:relative;width:min(88%,460px);margin:auto}
+.clip-wrap .tape{position:absolute;z-index:2;width:78px;height:20px;top:-9px;left:50%;transform:translateX(-50%) rotate(3deg);background:rgba(232,222,196,.78);box-shadow:0 1px 2px #0003}
+.brief .brief-card.clipping{max-width:none!important;width:100%;transform:rotate(-1.3deg);padding:18px 22px 16px!important;text-align:center;color:#2a2722;
+ background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .32 0 0 0 0 .3 0 0 0 0 .26 0 0 0 .2 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),linear-gradient(180deg,#e9e3d3,#ded6c1)!important;
+ box-shadow:0 12px 26px #000b!important;
+ clip-path:polygon(0 3%,4% 0,12% 2%,22% 0,35% 2%,48% 0,60% 2%,73% 0,86% 2%,96% 0,100% 3%,99% 50%,100% 97%,92% 100%,80% 98%,66% 100%,52% 98%,38% 100%,24% 98%,10% 100%,0 97%,1% 50%)}
+.clipping>p.clip-kick{display:block!important;font:700 10px var(--serif)!important;letter-spacing:3px;text-transform:uppercase;color:#6e6656!important;border-bottom:1px solid #2a2722;padding-bottom:5px;margin:2px 0 6px!important}
+.clipping>p.clip-head{display:block!important;font:900 54px/.95 var(--head)!important;text-transform:uppercase;letter-spacing:-1px;color:#1f1c18!important;margin:4px 0 6px!important;font-variant-numeric:lining-nums}
+.clipping>p.clip-head b{font-weight:900}
+.clipping>p.clip-head small{font:700 14px var(--serif);letter-spacing:2px;color:#6e6656;vertical-align:middle;text-transform:uppercase}
+.clipping>p.brief-goal{font:italic 17px/1.35 var(--serif)!important;color:#2a2722!important;margin:0 auto 10px!important;max-width:360px}
+.brief .brief-card>div.clip-rule{display:flex!important;justify-content:center;gap:16px;font:700 10px var(--serif);letter-spacing:1.6px;text-transform:uppercase;border-top:3px double #2a2722;border-bottom:1px solid #2a2722;padding:6px 0;margin:0 0 8px}
+.clip-rule .hidden{display:none}
+.clip-rule #brief-try{color:var(--red)}
+.clipping .brief-known{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;list-style:none;margin:0 0 12px!important;padding:0}
+.clipping .brief-known li{border:0!important;padding:0!important;border-radius:0!important;font:700 10px var(--serif);letter-spacing:1.4px;text-transform:uppercase;color:var(--red)}
+.clipping .brief-known li:before{content:'✶ ';color:#2a2722}
+.primary.clip-go{background:var(--red);color:#fbf3e2;min-width:170px;justify-content:center;gap:12px;padding:12px 24px;font-size:14px;letter-spacing:4px;transform:rotate(1deg);box-shadow:0 4px 0 #4a140d,0 10px 18px #0005}
+.primary.clip-go:hover{background:#a3321f;transform:rotate(1deg) translateY(-2px);box-shadow:0 6px 0 #4a140d,0 14px 22px #0006}
+.primary.clip-go:active{transform:rotate(1deg) translateY(3px);box-shadow:0 1px 0 #4a140d}
+@media(max-width:750px){.clip-wrap{width:92%}.brief .brief-card.clipping{padding:12px 12px 12px!important}.clipping>p.clip-head{font-size:36px!important}.clipping>p.brief-goal{font-size:13px!important}.clipping>p.clip-kick{font-size:8px!important;letter-spacing:2px}.primary.clip-go{min-width:140px;padding:10px 18px;font-size:12px}.brief .brief-card>div.clip-rule{gap:10px;font-size:9px}}
+
+/* Night card fixes: a headline face whose numbers stand as tall as its capitals; full-width rule; red GO */
+.clipping>p.clip-head{font:400 58px/.95 'Abril Fatface',var(--head)!important;letter-spacing:0}
+.clipping>p.clip-head b{font-weight:400}
+.brief .brief-card.clipping>div.clip-rule{width:100%}
+.brief .brief-card.clipping .primary.clip-go{background:var(--red)!important;color:#fbf3e2!important}
+.brief .brief-card.clipping .primary.clip-go:hover{background:#a3321f!important}
+.clipping>p.brief-goal{font-style:italic!important}
+@media(max-width:750px){.clipping>p.clip-head{font-size:40px!important}}
+.primary.clip-go:focus-visible{outline:2px dashed #2a2722;outline-offset:4px}
+/* Buttons are printed on paper: flat, no 3D shadow, no lift; they change colour on hover */
+.primary,.primary:hover,.primary:active{box-shadow:none!important;transform:none!important}
+.primary:hover span{transform:none}
+.brief .brief-card.clipping .primary.clip-go{background:transparent!important;color:#2a2722!important;border:2px solid #2a2722!important;border-radius:0;min-width:150px;padding:10px 26px;letter-spacing:6px;transform:none!important;box-shadow:none!important}
+.brief .brief-card.clipping .primary.clip-go:hover{background:#2a2722!important;color:#e9e3d3!important}
+.brief .brief-card.clipping .primary.clip-go:active{background:var(--red)!important;border-color:var(--red)!important;color:#fbf3e2!important}
+.primary.clip-go:focus,.primary.clip-go:focus-visible{outline:none!important}
+.start-card .primary{box-shadow:none!important}
+
+/* ===== 1900-1930 print shop: newsprint, black ink, one red, double rules, ornaments, the pointing hand ===== */
+:root{--newsprint:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .32 0 0 0 0 .3 0 0 0 0 .26 0 0 0 .2 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),linear-gradient(180deg,#e9e3d3,#ddd5c0);--inkp:#221f1b}
+/* Buttons: a ruled box of type; ink fills it on hover */
+.primary{background:transparent!important;color:var(--inkp)!important;border:2px solid var(--inkp)!important;border-radius:0!important;font:700 13px var(--serif)!important;letter-spacing:4px!important;text-transform:uppercase;padding:11px 22px!important;justify-content:center!important;gap:12px!important}
+.primary span{font-size:18px!important}
+.primary:hover{background:var(--inkp)!important;color:#ece6d6!important}
+.primary:active{background:var(--red)!important;border-color:var(--red)!important;color:#fbf3e2!important}
+.primary:focus,.primary:focus-visible{outline:none}
+.primary:focus-visible{text-decoration:underline;text-underline-offset:4px}
+/* The start card: a printed broadside on newsprint */
+.notice.start-card{background:var(--newsprint)!important;color:var(--inkp);transform:rotate(-1deg);box-shadow:0 14px 30px #000b!important;outline:3px double var(--inkp);outline-offset:-10px;padding:22px 30px 18px!important;max-width:420px}
+.start-card .orn{display:block!important;font:400 12px var(--serif)!important;letter-spacing:10px;color:var(--red)!important;margin:2px 0 6px!important}
+.start-card h2{font:400 clamp(30px,3.8vw,48px)/.98 'Abril Fatface',var(--head)!important;color:var(--inkp)!important;text-shadow:none!important;letter-spacing:.5px}
+.start-card h2 em{font:700 italic 1.02em 'Playfair Display',serif!important;color:var(--red)!important;text-transform:none}
+.start-card .start-line{color:var(--inkp)!important;font:italic 16px/1.45 var(--serif)!important;border-top:1px solid var(--inkp);border-bottom:1px solid var(--inkp);padding:7px 0;margin:6px 0 16px!important}
+.start-card .primary{background:transparent!important;min-width:230px}
+.start-card .start-meta{color:#6e6656!important;font:700 9px var(--serif)!important;letter-spacing:3px}
+/* The result card: the same clipping as the night card */
+.result-card{background:var(--newsprint)!important;color:var(--inkp)!important;box-shadow:0 14px 30px #000b!important;outline:3px double var(--inkp);outline-offset:-9px;transform:rotate(.8deg)}
+.result-card h2{font:400 40px/1 'Abril Fatface',var(--head)!important;color:var(--inkp)!important}
+.result-card .result-cause{border-top:3px double var(--inkp);border-bottom:1px solid var(--inkp);padding:5px 0;color:var(--red)!important}
+.result-card blockquote{color:var(--inkp)!important}
+.result-card blockquote:before{content:'❦ ';color:var(--red);font-style:normal}
+/* The tools above the board: small ruled labels */
+.board-top .tool{border-radius:0!important;border:1px solid var(--inkp)!important;font:700 10px var(--serif)!important;letter-spacing:1.5px}
+.board-top .tool[aria-pressed=true],#fullscreen{background:var(--inkp)!important;color:#ece6d6!important}
+.board-top .tool[aria-pressed=false]{background:transparent!important;color:var(--inkp)!important;opacity:.6}
+/* Touch keys: ruled type blocks */
+.touch-pad button,body.touch .touch-pad button{border-radius:0!important;box-shadow:none!important;border:2px solid var(--inkp)!important;background:transparent!important;color:var(--inkp)!important}
+.touch-pad button:active{background:var(--inkp)!important;color:#ece6d6!important;transform:none}
+.touch-pad .t-act{background:transparent!important;color:var(--inkp)!important;letter-spacing:3px}
+.touch-pad .t-act small{color:#6e6656!important}
+@media(max-width:750px){.notice.start-card{padding:16px 16px 12px!important;outline-offset:-7px}.start-card h2{font-size:28px!important}.start-card .start-line{font-size:13px!important;margin:4px 0 10px!important}.result-card h2{font-size:28px!important}}
+/* Buttons: black ink by default; red when you hover */
+.primary,.brief .brief-card.clipping .primary.clip-go{background:var(--inkp)!important;color:#ece6d6!important;border:2px solid var(--inkp)!important}
+.primary:hover,.brief .brief-card.clipping .primary.clip-go:hover{background:var(--red)!important;border-color:var(--red)!important;color:#fbf3e2!important}
+.primary:active,.brief .brief-card.clipping .primary.clip-go:active{background:#5e1a10!important;border-color:#5e1a10!important}
+/* The start card is red again, printed in cream */
+.notice.start-card{background:radial-gradient(120% 90% at 50% 20%,#a8382a 0,#8c2a1c 55%,#6f1f14 100%)!important;outline:3px double #f3dcbccc;outline-offset:-10px}
+.start-card .orn{color:var(--gold)!important}
+.start-card h2{color:var(--cream)!important}
+.start-card h2 em{color:var(--gold)!important}
+.start-card .start-line{color:#f6ead6!important;border-color:#f3dcbc99!important}
+.start-card .start-meta{color:#f3d9b8b0!important}
+.start-card .primary{background:var(--inkp)!important;border-color:var(--inkp)!important;color:#fbf3e2!important}
+.start-card .primary:hover{background:var(--cream)!important;border-color:var(--cream)!important;color:var(--inkp)!important}
+/* Eight nights (8 Nov): the card says what is NEW TONIGHT, once, and what HE REMEMBERS about you. */
+.brief-new{display:block;font:700 11px/1.3 ui-monospace,Menlo,monospace;letter-spacing:3px;color:#b3261e;margin:0 0 4px}
+.brief-mem{font:700 11px ui-monospace,Menlo,monospace;letter-spacing:3px;margin:10px 0 4px;text-align:center;opacity:.75}
+.start-ai{margin:8px 0 0;font:700 12px ui-monospace,Menlo,monospace;letter-spacing:1px}.start-ai a{color:inherit}
+/* Builder feedback (7 Nov): "Rob the House was partly below the fold". On wide screens the start card sits at the top of
+   the picture and is more compact, so ROB THE HOUSE is visible without scrolling on a 1440×900 screen. */
+@media (min-width:900px){
+ #intro.intro{justify-content:flex-start;align-items:center;padding-top:18px}
+ .notice.start-card{max-width:540px;padding-top:16px;padding-bottom:14px}
+ .start-card h2{font-size:clamp(28px,2.7vw,40px)!important;margin-bottom:8px}
+ .start-card .start-line{margin-bottom:12px!important}
+}
+
+/* The fully trained keeper link stays visible on narrow screens too. */
+#intro .start-boss{display:block!important}
+
+/* Two ways to play (Tami, 8 Nov): the eight nights, or the fully trained keeper. Both easy to find. */
+.start-card .boss-choice{display:inline-block;margin-top:10px;font:italic 15px var(--serif);letter-spacing:.3px;text-transform:none;text-decoration:underline;text-underline-offset:3px;opacity:.9}
+.start-card .boss-choice:hover{opacity:1;color:var(--cream)}
+.tool-keeper{text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap}
+
+/* HIS NOTES (Tami, 8 Nov): a map of the whole house with everything the keeper learned, shown on demand. */
+.notes-panel{background:#131827;color:#efe4cc;border:1px solid var(--ink);margin:10px 0 0;padding:0}
+.notes-bar{all:unset;box-sizing:border-box;display:block;width:100%;cursor:pointer;padding:10px 12px;font:700 11px ui-monospace,Menlo,monospace;letter-spacing:2px;color:#d9bd80}
+.notes-bar small{font-weight:400;letter-spacing:.5px;color:#9c927f;margin-left:6px}
+.notes-bar:hover,.notes-bar:focus-visible{background:#1d2335}
+#notes-body{padding:0 12px 10px}
+#notes-body[hidden]{display:none}
+#notes-map{display:block;width:100%;height:auto;image-rendering:auto}
+.notes-list{margin:8px 0 4px;padding:0 0 0 16px;font:700 11px ui-monospace,Menlo,monospace;letter-spacing:1px;color:#e8604c}
+.notes-list li.none{list-style:none;margin-left:-16px;color:#9c927f;font-weight:400}
+.notes-legend{margin:0;font:11px ui-monospace,Menlo,monospace;color:#9c927f}
+.lg-red{color:#e8604c}.lg-gold{color:#d9bd80}
+
+/* The published front page (Tami, 8 Nov: "con el formato del diario que estaba antes"). */
+
+/* Old front page (the published Herald) around the new game */
+.masthead{display:grid!important;grid-template-columns:150px 1fr 150px!important;align-items:center;gap:18px;padding:6px 0 10px}
+.masthead .ear{border:2px solid var(--ink);padding:8px 6px;text-align:center;display:flex;flex-direction:column;gap:2px;font:700 15px/1.05 var(--head);letter-spacing:.5px}
+.masthead .ear span{font:italic 11px var(--serif);margin-top:4px}
+.crest{font:normal 400 .55em/1 var(--head);border:2px solid var(--ink);border-radius:50% 50% 6px 6px;width:1.15em;height:1.25em;display:inline-grid;place-items:center;margin:0 .05em}
+.heading .eyebrow{display:flex;justify-content:center;font:700 13px var(--serif);letter-spacing:4px;color:var(--red);margin:4px 0 0}
+.heading .subtitle{font:700 italic clamp(19px,2.2vw,30px)/1.25 var(--head);color:var(--ink);max-width:900px;margin:0 auto 10px;text-align:center}
+.heading .subtitle span{color:var(--red)}
+@media (max-width:750px){.masthead{grid-template-columns:1fr!important;padding:2px 0 6px}.masthead .ear{display:none}.heading .eyebrow{font-size:10px;letter-spacing:3px}.heading .subtitle{font-size:19px}.dateline>span:first-child,.dateline>span:last-child{display:none}}
+
+/* The keeper's sidebar (portrait, suspicion, little black book) is gone (Tami, 8 Nov): HIS NOTES under the board shows it all,
+   for whoever wants to unfold it. The board takes the full width. */
+.right-rail{display:none!important}
+.game-layout{grid-template-columns:minmax(0,1fr)!important}
+/* The fully trained keeper is unlocked by beating the eighth night (Tami, 8 Nov): the link shows on the final card only. */
+.boss-unlock{display:block;margin:12px auto 4px;padding:10px 16px;width:max-content;max-width:100%;background:var(--ink);color:var(--cream);font:700 12px var(--serif);letter-spacing:2px;text-transform:uppercase;text-decoration:none}
+.boss-unlock[hidden]{display:none}
+.boss-unlock:hover{background:var(--red)}
+
+/* Masthead (Tami, 8 Nov): no crest. Same blackletter everywhere; the H of Herald is set a little larger so it reads as a capital,
+   and the whole name sits on one baseline. */
+.paper-name{align-items:baseline!important}
+.paper-name .herald{font-style:normal;white-space:nowrap}
+.paper-name .cap-h{font:inherit;font-size:1.25em;line-height:0}
+
+/* Front page, round 4 (Tami, 8 Nov): the red card sits in the middle of the game; THE NARRATOR and the timer appear once the
+   game starts; the status line under the board is gone and the timer lives inside the game window; no ears beside the title. */
+#intro.intro{justify-content:center!important;padding-top:0!important}
+body:not(.started) .narrator-strip,body:not(.started) .board-timer{display:none}
+.board-status{display:none!important}
+.board-timer{position:absolute;top:8px;right:10px;z-index:3;padding:4px 10px;background:#131827d9;border:1px solid #efe4cc55;color:#efe4cc;font:700 15px ui-monospace,Menlo,monospace;letter-spacing:1px;pointer-events:none}
+.masthead{grid-template-columns:1fr!important}
+
+/* Red card (Tami, 8 Nov): a breath between the headline and ROB THE HOUSE, one short line between two thin rules. */
+.start-card .start-tag{display:block!important;font:italic 16px/1.4 var(--serif);color:#f6ead6;border-top:1px solid #f3dcbc88;border-bottom:1px solid #f3dcbc88;padding:8px 0;margin:16px auto 20px;max-width:300px}
+@media (max-width:750px){.start-card .start-tag{display:block!important;font-size:13px!important;padding:5px 0;margin:8px auto 12px;max-width:240px}}
