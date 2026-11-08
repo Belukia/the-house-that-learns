@@ -118,7 +118,7 @@ export function draw(canvas,s,{time=0,started=false,replay=null,ghost=null,brief
   else if(atWardrobe)prompt(touch?'HIDE':'H · HIDE',p.x+5,p.y-8,'#a9bbd8');
   else if(doorLocked&&s.hasRelic&&p.x<110&&!upstairs(p))prompt('LOCKED · THE WINDOW IS UPSTAIRS',p.x+40,p.y-8,'#e8a25c');
   // Night 1 (builder feedback, 7 Nov): the crates you must jump glow, with a JUMP tag, so nobody gets stuck on them.
-  else if(s.tutorial&&!s.hasRelic&&!upstairs(p)&&p.x+(p.w||10)>BLOCKS[0].x-64&&p.x<BLOCKS[0].x)prompt(touch?'JUMP ↑':'SPACE · JUMP',BLOCKS[0].x+BLOCKS[0].w/2,BLOCKS[0].y-12,'#f5d281');
+  else if(s.tutorial&&!s.hasRelic&&!upstairs(p)&&p.x+(p.w||10)>BLOCKS[0].x-64&&p.x<BLOCKS[0].x)prompt(touch?'JUMP ↑':'↑ · JUMP',BLOCKS[0].x+BLOCKS[0].w/2,BLOCKS[0].y-12,'#f5d281');
   // and "a brief cue toward the stairs/nearest wardrobe": on the first nights he is awake (2 and 3), when he spots you
   // downstairs, which way the nearest wardrobe is; once he chases, the stairs too. Explained once, then left to you.
   else if(!s.tutorial&&night>=2&&night<=3&&s.sees&&!upstairs(p)){const h=HIDING.reduce((b,w)=>Math.abs(w.x-p.x)<Math.abs(b.x-p.x)?w:b),l=h.x<p.x;
