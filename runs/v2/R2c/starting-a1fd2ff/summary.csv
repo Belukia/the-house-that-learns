@@ -1,0 +1,2 @@
+run,session_id,agent_commit,score,date_utc,tasks_passed,tasks_total,tokens,tool_calls,duration_s
+1,01m6v91ng2hjqee74mz72sgww6,a1fd2ffe9f2c1abb632d1d33a1252ab5e70716cd-dirty,71.43,2026-11-07T15:14:55Z,10,14,169762,17,188
